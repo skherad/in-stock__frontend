@@ -11,15 +11,16 @@ import WarehouseHeader from "./components/Header/WarehouseHeader";
 
 function App() {
   return (
-    <BrowserRouter>
-      <WarehouseHeader />
-      <Routes>
-        <Route path="/" element={<Warehouse />} />
-        <Route path="/inventory" element={<Inventory />} />
-        <Route path="/editWarehouse/id1" element={<EditWarehouse />} />
-      </Routes>
-    </BrowserRouter>
-    
+    <>
+      <BrowserRouter>
+          <WarehouseHeader />
+          <Routes>
+            <Route path="/" element={<Warehouse />} />
+            <Route path="/inventory" element={<Inventory />} />
+            <Route path="/editWarehouse/id1" element={<EditWarehouse />} />
+          </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 
