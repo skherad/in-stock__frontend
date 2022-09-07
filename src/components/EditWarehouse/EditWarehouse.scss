@@ -1,0 +1,18 @@
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/utilities' as *;
+
+.form {
+    &__container {
+       background-color: $white; 
+    }
+    &__header {
+        font-size: 1.75rem;
+        line-height: 2.25rem;
+    }
+    &__section {
+        display: flex;
+        flex-direction: column;
+        border-top: 1px solid $Cloud;
+        padding-bottom: 1rem;
+    }
+}

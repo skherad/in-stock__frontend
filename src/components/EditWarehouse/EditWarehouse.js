@@ -1,14 +1,16 @@
-import ArrowBack from '../../assets/images/arrow_back-24px.svg'
+// import ArrowBack from '../../assets/images/arrow_back-24px.svg'
+import './EditWarehouse.scss'
+
 const EditWarehouse = () => {
 
     //TODO change all placeholders to be dynamic from onclick
     return (
-    <section>
-        <img src={ArrowBack} alt="arrow back" className=""></img>
-        <h1>EditWarehouse</h1>
+    <section className="form__container">
+        {/* <img src={ArrowBack} alt="arrow back" className=""></img> */}
+        <h1 className="form__header">Edit Warehouse</h1>
         <form>
-            <section>
-                <h2>Warehouse Details</h2>
+            <section className="form__section">
+                <h2 className="form__title">Warehouse Details</h2>
                 {/* warehouse name input field */}
                 <label 
                     htmlFor="warhouseName"
@@ -53,8 +55,8 @@ const EditWarehouse = () => {
                     placeholder="USA"
                 ></input>
             </section>
-            <section>
-                <h2>Contact Details</h2>
+            <section className="form__section">
+                <h2 className="form__title">Contact Details</h2>
 
                 {/* contact name input field */}
                 <label 
@@ -100,8 +102,8 @@ const EditWarehouse = () => {
                     placeholder="glyon@instock.com"
                 ></input>
             </section>
-            <button>Save</button>
-            <button>Cancel</button>
+            <button className="form__save-button">Save</button>
+            <button className="form__cancel-button">Cancel</button>
         </form>
     </section>
   )
