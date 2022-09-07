@@ -35,8 +35,10 @@ function AddNewWarehouse() {
                     <label className="addnewwarehouse__description">Email</label>
                     <input className="addnewwarehouse__box" type={"text"} name="comments" placeholder="Email"/>
                 </section>
-                <button className="addnewwarehouse__cancel-button"> Cancel </button>
-                <button className="addnewwarehouse__add-button"> + Add Warehouse </button>
+                <section className="addnewwarehouse__buttons">
+                    <button className="addnewwarehouse__buttons-cancel"> Cancel </button>
+                    <button className="addnewwarehouse__buttons-add"> + Add Warehouse </button>
+                </section>
             </form>
         </div>  
         </>

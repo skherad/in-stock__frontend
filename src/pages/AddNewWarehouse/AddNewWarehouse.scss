@@ -8,7 +8,7 @@
     flex-direction: column;
     border:2px solid rgba(19, 24, 44, 0.1);
     border-radius: .1875rem;
-    margin: -5rem 2rem;
+    margin: -5rem 2rem 0rem 2rem;
     background-color: utilities.$white;
     &__direct {
         display: flex;
@@ -22,23 +22,63 @@
         font-weight: 600;
         font-size: 28px;
         line-height: 36px;
-        margin: 1rem;
+        margin: 2rem;
     }
     &__form {
-        margin: 1rem;
+        display: flex;
+        flex-direction: column;
     }
     &__section {
+        color: utilities.$Instock-Black;
+        font-weight: 600;
+        font-size: 20px;
+    }
+    &__description {
+        font-weight: 600;
+        font-size: 13px;
+        color: utilities.$Instock-Black;
+        padding: 1rem 0rem 0.3rem 0rem;
+    }
+    &__warehousedetails {
+        display: flex;
+        flex-direction: column;
+        padding: 2rem; 
         border-top: 1px solid utilities.$Cloud;
     }
-    &__warehousedetails{
+    &__contactdetails {
         display: flex;
         flex-direction: column;
-    }
-    &__contactdetails{
-        display: flex;
-        flex-direction: column;
+        padding: 2rem; 
+        border-top: 1px solid utilities.$Cloud;
     }
     &__box {
         border-radius: 20px;
+        border: 1px solid utilities.$Cloud;
+        padding: 0.75rem;
+        color: utilities.$Slate;
     }
+    &__buttons{
+        display: flex; 
+        justify-content: space-around;
+        padding: 1rem 0rem;
+        background-color: rgba(247, 248, 249, 0.7);
+        &-cancel {
+            border: 1px solid #BDC5D5;
+            border-radius: 20px;
+            color: utilities.$Slate;
+            background-color: utilities.$white;
+            padding: 0.5rem;
+            width: 30vw;
+        }
+        &-add {
+            border: 1px solid #BDC5D5;
+            border-radius: 20px;
+            color: utilities.$white;
+            background-color: utilities.$Instock-Indigo;
+            padding: 0.75rem;
+            width: 40vw;
+        }
+    }
+
+
 }
