@@ -1,11 +1,12 @@
-
+import WarehouseDetails from "./WarehouseDetails/WarehouseDetails";
 
 function App() {
-    return (
-      <>
-      <h1>Instock Project👩‍💻👨‍💻</h1>
-      </>
-    );
-  }
-  
+  return (
+    <>
+      <WarehouseDetails />
+      {/* <h1>Instock Project👩‍💻👨‍💻</h1> */}
+    </>
+  );
+}
+
 export default App;
