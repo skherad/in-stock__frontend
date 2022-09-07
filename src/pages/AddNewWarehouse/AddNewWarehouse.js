@@ -12,7 +12,7 @@ function AddNewWarehouse() {
             <Link className="addnewwarehouse__direct" to="/">
             <img className="addnewwarehouse__icon" src={require("../../assets/Icons/arrow_back-24px.svg").default} alt={"icon"}/>
             <div className="addnewwarehouse__title">Add New Warehouse</div> </Link>
-            <form >
+            <form className="addnewwarehouse__form">
                 <section className="addnewwarehouse__warehousedetails"> 
                     <div className="addnewwarehouse__section">Warehouse Details</div>
                     <label className="addnewwarehouse__description">Warehouse Name</label>
