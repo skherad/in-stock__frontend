@@ -7,6 +7,7 @@ function Inventory () {
   
     return (
       <>
+      
         <InventoryHeader />
       </>
     );
