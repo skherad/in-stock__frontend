@@ -3,7 +3,8 @@
 @use "../../styles/partials/mixins" as *;
 
 .footer-main{
-    margin: 3rem 0;
+    padding: 3rem 0;
+    background-color: $Light-grey;
 
     &__text{
         text-align: center;
