@@ -1,0 +1,64 @@
+@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600&display=swap");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Titillium Web", sans-serif;
+}
+
+.warehouse-details {
+  padding: 2rem 1.5rem;
+}
+.warehouse-details__header {
+  display: flex;
+  justify-content: space-between;
+}
+.warehouse-details__back-btn {
+  display: flex;
+  align-items: center;
+}
+.warehouse-details__loc {
+  padding-left: 0.5rem;
+}
+.warehouse-details__loc-header {
+  font-size: 28px;
+}
+.warehouse-details__edit-btn-cont {
+  display: flex;
+  align-items: center;
+}
+.warehouse-details__edit-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #2e66e5;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+}
+.warehouse-details__address-cont {
+  padding: 1rem 1.75rem 1.5rem 1.5rem;
+}
+.warehouse-details__contact-cont {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+.warehouse-details__address-title, .warehouse-details__contact-title, .warehouse-details__contact-info-title, .warehouse-details__invent-title {
+  font-size: 11px;
+  color: #5c667e;
+  padding-bottom: 0.25rem;
+}
+.warehouse-details__address-loc, .warehouse-details__contact-name, .warehouse-details__contact-info {
+  font-size: 13px;
+  color: #13182c;
+}
+
+.hr__divider {
+  background: #bdc5d5;
+  height: 1.25px;
+}/*# sourceMappingURL=warehouseDetails.css.map */

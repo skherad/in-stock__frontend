@@ -130,14 +130,3 @@
 
 
 }
-.errmsg {
-    display: flex;
-    color: utilities.$Red;
-    font-weight: 400;
-    font-size: 12px;
-    &__icon{
-        width: 13.33px;
-        height: 13.33px;
-        margin: 3px;
-    }
-}
