@@ -1,0 +1,16 @@
+@use '../../styles/global.scss';
+@use '../../styles/partials/typography';
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/utilities';
+
+.errmsg {
+    display: flex;
+    color: utilities.$Red;
+    font-weight: 400;
+    font-size: 12px;
+    &__icon{
+        width: 13.33px;
+        height: 13.33px;
+        margin: 3px;
+    }
+}

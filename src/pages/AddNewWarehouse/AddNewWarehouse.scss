@@ -1,0 +1,132 @@
+@use '../../styles/global.scss';
+@use '../../styles/partials/typography';
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/utilities';
+
+.addnewwarehouse {
+    display: flex;
+    flex-direction: column;
+    border:2px solid rgba(19, 24, 44, 0.1);
+    border-radius: .1875rem;
+    margin: -5rem 2rem 0rem 2rem;
+    background-color: utilities.$white;
+    @include desktop {
+        margin: -5rem 6rem 0rem 6rem;
+    }
+    &__direct {
+        display: flex;
+        text-decoration: none;
+        justify-content: center;
+    }
+    &__icon{
+        @include tablet {
+            margin-left:2rem;
+        }
+    }
+    &__title {
+        color: utilities.$Instock-Black;
+        display: flex;
+        align-items: center;
+        font-weight: 600;
+        font-size: 28px;
+        line-height: 36px;
+        margin: 2rem 0.5rem;
+        @include tablet {
+            align-items: flex-start;
+            justify-items: flex-start;
+            width: 100vw;
+        }
+    }
+    &__form {
+        display: flex;
+        flex-direction: column;
+        @include tablet {
+            display: unset;
+        }
+    }
+    &__container {
+        @include tablet {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            border-top: 1px solid utilities.$Cloud;
+            padding: 1rem;
+        }
+    }
+    &__section {
+        color: utilities.$Instock-Black;
+        font-weight: 600;
+        font-size: 20px;
+    }
+    &__description {
+        font-weight: 600;
+        font-size: 13px;
+        color: utilities.$Instock-Black;
+        padding: 1rem 0rem 0.3rem 0rem;
+    }
+    &__warehousedetails {
+        display: flex;
+        flex-direction: column;
+        padding: 2rem; 
+        border-top: 1px solid utilities.$Cloud;
+        @include tablet {
+            border-top: none;
+            padding: 1rem;
+        }
+    }
+    &__contactdetails {
+        display: flex;
+        flex-direction: column;
+        padding: 2rem; 
+        border-top: 1px solid utilities.$Cloud;
+        @include tablet {
+            border-top: none;
+            padding: 1rem;
+            border-left: 1px solid utilities.$Cloud;
+        }
+    }
+    &__box {
+        border-radius: 20px;
+        border: 1px solid utilities.$Cloud;
+        padding: 0.75rem;
+        color: utilities.$Slate;
+        @include tablet {
+            width: 40vw; 
+        }
+    }
+    &__buttons{
+        display: flex; 
+        justify-content: space-around;
+        padding: 1rem 0rem;
+        background-color: rgba(247, 248, 249, 0.7);
+        @include tablet {
+            justify-content: flex-end;
+        }
+        &-cancel {
+            border: 1px solid #BDC5D5;
+            border-radius: 20px;
+            color: utilities.$Slate;
+            background-color: utilities.$white;
+            padding: 0.5rem;
+            width: 35vw;
+            @include tablet {
+                width: 10vw;
+                margin: 1rem 0rem;
+            }
+        }
+        &-add {
+            border: 1px solid #BDC5D5;
+            border-radius: 20px;
+            color: utilities.$white;
+            background-color: utilities.$Instock-Indigo;
+            padding: 0.5rem;
+            width: 35vw;
+            @include tablet {
+                width: 18vw;
+                margin: 1rem 2rem 1rem 1rem;
+            }
+        }
+    }
+
+
+}
