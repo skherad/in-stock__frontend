@@ -1,7 +1,10 @@
 import "./warehouseDetails.scss";
-import Logo from "../assets/Logo/InStock-Logo_1x.png";
-import edit from "../assets/Icons/edit-24px.svg";
-import arrowBack from "../assets/Icons/arrow_back-24px.svg";
+import Logo from "../../assets/Logo/InStock-Logo_1x.png";
+import edit from "../../assets/Icons/edit-24px.svg";
+import arrowBack from "../../assets/Icons/arrow_back-24px.svg";
+import WarehouseHeader from "../Header/WarehouseHeader";
+import rightArrow from "../../assets/Icons/chevron_right-24px.svg";
+import deleteIcon from "../../assets/Icons/delete_outline-24px.svg";
 
 function WarehouseDetails() {
   return (
@@ -66,6 +69,55 @@ function WarehouseDetails() {
         </div>
       </div>
       <div className="hr__divider"></div>
+
+      {/* Each Item to iterate through */}
+      <div className="warehouse-details__item-cont">
+        {/* first flex child */}
+        <div className="warehouse-details__item-invent-cont">
+          <div className="warehouse-details__invent-title">
+            <h4>INVENTORY ITEM</h4>
+          </div>
+          <div className="warehouse-details__invent-type">
+            Television
+            <img
+              className="warehouse-details__arr-cont"
+              src={rightArrow}
+              alt="product"
+            />
+          </div>
+          <div className="warehouse-details__category">
+            <h4 className="warehouse-details__category-title">CATEGORY</h4>
+
+            <div className="warehouse-details__prod-categ">Electronics</div>
+          </div>
+        </div>
+
+        {/* Second flex child */}
+        <div className="warehouse-details__item-right-cont">
+          <div className="warehouse-details__status">
+            <h4 className="warehouse-details__status-title">STATUS</h4>
+            <span className="warehouse-details__instock">IN STOCK</span>
+          </div>
+          <div className="warehouse-details__QTY-title">
+            <h4>QTY</h4>
+            <div className="warehouse-details__QTY-num">500</div>
+          </div>
+        </div>
+
+        {/* third flex child */}
+      </div>
+      <div className="warehouse-details__icons">
+        <div className="warehouse-details__delete-icon-cont">
+          <img src={deleteIcon} alt="delete item" />
+        </div>
+        <div className="warehouse-details__edit-icon-cont">
+          <img
+            className="warehouse-details__edit-icon"
+            src={edit}
+            alt="edit item"
+          />
+        </div>
+      </div>
     </>
   );
 }
