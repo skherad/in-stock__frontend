@@ -22,11 +22,21 @@
         font-weight: 600;
         font-size: 28px;
         line-height: 36px;
-        margin: 2rem;
+        margin: 2rem 0.5rem;
+        @include tablet {
+            align-items: flex-start;
+            justify-items: flex-start;
+            width: 90vw;
+        }
     }
     &__form {
         display: flex;
         flex-direction: column;
+        @include tablet {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
     }
     &__section {
         color: utilities.$Instock-Black;
@@ -44,12 +54,18 @@
         flex-direction: column;
         padding: 2rem; 
         border-top: 1px solid utilities.$Cloud;
+        @include tablet {
+            border-top: none;
+        }
     }
     &__contactdetails {
         display: flex;
         flex-direction: column;
         padding: 2rem; 
         border-top: 1px solid utilities.$Cloud;
+        @include tablet {
+            border-top: none;
+        }
     }
     &__box {
         border-radius: 20px;
