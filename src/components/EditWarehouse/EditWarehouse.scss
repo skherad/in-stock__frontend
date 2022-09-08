@@ -9,6 +9,9 @@
     @include tablet {
         padding: 1rem 2rem;
     }
+    @include desktop {
+        padding: 1rem 8.125rem;
+    }
 }
 .form {
     &__container {
@@ -27,6 +30,7 @@
         align-items: baseline;
         @include tablet {
             border-bottom: 1px solid $Cloud;
+            padding: 2rem;
         }
     }
 
@@ -51,7 +55,7 @@
             width: 50%;
             border-top: none;
             margin: 1rem 0;
-            padding: 0 1.5rem;
+            padding: 0 2rem;
         }
         &--divider {
             border-left: 1px solid $Cloud;
