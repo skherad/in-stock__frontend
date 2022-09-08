@@ -1,7 +1,7 @@
-import './InventoryHeader.scss';
+import './Header.scss';
 import { Link } from 'react-router-dom';
 
-function InventoryeHeader() {
+function Header() {
     return (
 <header className="header">
 <Link to="/">
@@ -21,4 +21,4 @@ function InventoryeHeader() {
 );
 }
 
-export default InventoryeHeader; 
+export default Header; 
