@@ -1,5 +1,5 @@
-// @use "./partials/typography" as *;
-// @use "./partials/utilities" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/utilities" as *;
 @use "../../styles/partials/mixins" as *;
 
 .footer-main{
@@ -9,6 +9,6 @@
         text-align: center;
         font-family: 'Titillium Web', sans-serif;
         font-weight: 400;
-        color: Slate;
+           color: $Slate;
     }
 }
