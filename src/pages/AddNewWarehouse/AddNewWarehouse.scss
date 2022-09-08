@@ -58,9 +58,6 @@
         font-size: 13px;
         color: utilities.$Instock-Black;
         padding: 1rem 0rem 0.3rem 0rem;
-        @include tablet {
-            padding-top: 1.5rem;
-        }
     }
     &__warehousedetails {
         display: flex;
@@ -127,4 +124,15 @@
     }
 
 
+}
+.errmsg {
+    display: flex;
+    color: utilities.$Red;
+    font-weight: 400;
+    font-size: 12px;
+    &__icon{
+        width: 13.33px;
+        height: 13.33px;
+        margin: 3px;
+    }
 }

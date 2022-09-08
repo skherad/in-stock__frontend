@@ -4,32 +4,43 @@ import { Link } from 'react-router-dom';
 import axios from "axios";
 const { v4: uuid } = require('uuid');
 
-const API_URL = "http://localhost:8080/warehouses";
 
 
 function AddNewWarehouse() {
     function handleSubmit (event) {
+        const Input = document.getElementsByClassName(".addnewwarehouse__box");
 
         event.preventDefault();
-        const newWarehouseItem = {
-          id: uuid(),
-          warehousename: event.target.warehousename.value,
-          address:event.target.address.value,
-          city: event.target.city.value,
-          country: event.target.country.value,
-            contactname: event.target.contactname.value,
-            position: event.target.position.value,
-            phone:event.target.phone.value,
-            email: event.target.emails.value,
-        }  
-      
-        axios.post(`http://localhost:8080/warehouses`, newWarehouseItem)
+
+          let id= uuid();
+          let warehousename= event.target.warehousename.value;
+          let address=event.target.address.value;
+          let city= event.target.city.value;
+          let country= event.target.country.value;
+          let contactname= event.target.contactname.value;
+          let position= event.target.position.value;
+          let phone=event.target.phone.value;
+          let email= event.target.emails.value;
+        if (Input === "") {
+            alert.error("This field is required");
+        }
+        
+        else {
+        axios.post(`http://localhost:8080/warehouses`, {
+            id,
+            name: warehousename,
+            address,
+            city,
+            country,
+            contact: {
+              name: contactname,
+              position,
+              phone,
+              email
+            }})}
       };
 
-    const Input = document.getElementsByClassName(".addnewwarehouse__box");
-    if (Input === "") {
-        alert.error("This field is required");
-    }
+
 
     return (
         <>
@@ -39,15 +50,15 @@ function AddNewWarehouse() {
             <Link className="addnewwarehouse__direct" to="/">
             <img className="addnewwarehouse__icon" src={require("../../assets/Icons/arrow_back-24px.svg").default} alt={"icon"}/>
             <div className="addnewwarehouse__title">Add New Warehouse</div> </Link>
-            <form className="addnewwarehouse__form">
+            <form className="addnewwarehouse__form" onSubmit={handleSubmit}>
                 <section className="addnewwarehouse__warehousedetails"> 
                     <div className="addnewwarehouse__section">Warehouse Details</div>
                     <label className="addnewwarehouse__description">Warehouse Name</label>
-                    <div className="errMsg"> 
-                        <img className="errMsg__icon"src={require("../../assets/Icons/error-24px.svg").default} alt={"erricon"}/>
-                        <div className="error__text"> This field is required</div>
-                    </div>
                     <input className="addnewwarehouse__box" type={"text"} name="comments" placeholder="Warehouse Name"/>
+                    <div className="errmsg"> 
+                        <img className="errmsg__icon"src={require("../../assets/Icons/error-24px.svg").default} alt={"erricon"}/>
+                        <div className="errormsg__text"> This field is required</div>
+                    </div>
                     <label className="addnewwarehouse__description">Street Address</label>
                     <input className="addnewwarehouse__box" type={"text"} name="comments" placeholder="Street Address"/>
                     <label className="addnewwarehouse__description">City</label>
