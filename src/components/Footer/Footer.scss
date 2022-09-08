@@ -1,0 +1,14 @@
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/utilities" as *;
+@use "../../styles/partials/mixins" as *;
+
+.footer-main{
+    margin: 3rem 0;
+
+    &__text{
+        text-align: center;
+        font-family: 'Titillium Web', sans-serif;
+        font-weight: 400;
+           color: $Slate;
+    }
+}
