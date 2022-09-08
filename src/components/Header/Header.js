@@ -9,12 +9,8 @@ function Header() {
      <div className="header__logo"/> </Link>
 <nav>
     <ul className="header__navbar-container">
-        <li className="header__navbar">
-        <CustomLink to="/" className="header__description">Warehouses</CustomLink>
-        </li>
-        <li className="header__navbar">
-            <CustomLink to= "/inventory" className="header__description">Inventory</CustomLink>
-        </li>
+        <CustomLink to="/" className="header__description header__navbar">Warehouses</CustomLink>
+        <CustomLink to= "/inventory" className="header__description header__navbar">Inventory</CustomLink>
      </ul>
 </nav>
 </header>
