@@ -58,7 +58,9 @@
             padding: 0 2rem;
         }
         &--divider {
-            border-left: 1px solid $Cloud;
+            @include tablet {
+                border-left: 1px solid $Cloud;
+            }
         }
     }
 

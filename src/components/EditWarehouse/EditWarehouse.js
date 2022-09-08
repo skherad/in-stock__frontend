@@ -15,20 +15,20 @@ const EditWarehouse = () => {
     const [selectedWarehouse, setSelectedWarehouse] = useState();
     //define states for handling change of input values - to be used to set edited values
     const [state, setState] = useState({
-        name: selectedWarehouse.name,
-        address: selectedWarehouse.address,
-        city: selectedWarehouse.city,
-        country: selectedWarehouse.country,
+        name: selectedWarehouse?.name,
+        address: selectedWarehouse?.address,
+        city: selectedWarehouse?.city,
+        country: selectedWarehouse?.country,
         contact: {
-            name: selectedWarehouse.contact.name,
-            position: selectedWarehouse.contact.position,
-            phone: selectedWarehouse.contact.phone,
-            email: selectedWarehouse.contact.email
+            name: selectedWarehouse?.contact.name,
+            position: selectedWarehouse?.contact.position,
+            phone: selectedWarehouse?.contact.phone,
+            email: selectedWarehouse?.contact.email
         }
     });
     //get request to receive and set selected warehouse details
     useEffect(() => {
-        axios.get(`http://localhost:8080/warehousedetails/${warehouseId}`)
+        axios.get(`http://localhost:8080/warehouse/${warehouseId}`)
         .then(response => setSelectedWarehouse(response.data))
         .catch(error => console.log(error))
     }, [warehouseId])
@@ -62,9 +62,9 @@ const EditWarehouse = () => {
     //put request to update the backend
     const handleSubmit = (event) => {
         event.preventDefault();
-        axios.put(`http://localhost:8080/warehousedetails/${warehouseId}`, state)
-        .then(response=>console.log(response))
-        .catch(error=>console.log(error))
+        // axios.put(`http://localhost:8080/warehouse/${warehouseId}`, state)
+        // .then(response=>console.log(response))
+        // .catch(error=>console.log(error))
     }
 
     if(!selectedWarehouse) { return <div>loading...</div>}
