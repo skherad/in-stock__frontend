@@ -1,46 +1,113 @@
 import BackArrow from '../../assets/Icons/arrow_back-24px.svg';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import './EditWarehouse.scss';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const EditWarehouse = () => {
 
-    //TODO change all placeholders to be dynamic from onclick
+    let selectedWarehouse = {
+        id: "5bf7bd6c-2b16-4129-bddc-9d37ff8539e9",
+        name: "Washington",
+        address: "33 Pearl Street SW",
+        city: "Washington",
+        country: "USA",
+        contact: {
+            name: "Greame Lyon",
+            position: "Warehouse Manager",
+            phone: "+1 (646) 123-1234",
+            email: "glyon@instock.com"
+        }
+    }
+    //TODO click will need to link to /warehouse:id coordinate with Michael
+    const {warehouseId} = useParams();
+
+    // const [selectedWarehouse, setSelectedWarehouse] = useState();
+    const [state, setState] = useState({
+        name: selectedWarehouse.name,
+        address: selectedWarehouse.address,
+        city: selectedWarehouse.city,
+        country: selectedWarehouse.country,
+        contact: {
+            name: selectedWarehouse.contact.name,
+            position: selectedWarehouse.contact.position,
+            phone: selectedWarehouse.contact.phone,
+            email: selectedWarehouse.contact.email
+        }
+    });
+    // useEffect(() => {
+    //     axios.get(`http://localhost:8080/warehousedetails/${warehouseId}`)
+    //     .then(response => setSelectedWarehouse(response.data))
+    //     .catch(error => console.log(error))
+    // }, [warehouseId])
+
+    const handleChangeWarehouse = (event) => {
+        const value = event.target.value;
+        setState({
+          ...state,
+          [event.target.name]: value,
+        })
+    }
+
+    const handleChangeContact = (event) => {
+        const value = event.target.value;
+        setState({
+          ...state,
+          contact: {
+            ...state.contact,
+            [event.target.name]: value,
+          }
+        })
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        // axios.put(`http://localhost:8080/warehousedetails/${warehouseId}`, state)
+        // .then(response=>console.log("update sent"))
+        // .catch(error=>console.log("error"))
+    }
+    // if(!selectedWarehouse) { return <div>loading...</div>}
+
     return (
     <div className='parent-container'>
     <section className="form__container">
         <div className='form__header-container'>
             <Link 
-                to={`/`}
+                to={`/warehouseDetails`}
                 className="form__icon"
             >
                 <img src={BackArrow} alt="arrow back"></img>
             </Link>
             <h1 className="form__header">Edit Warehouse</h1>
         </div>
-        <form>
+        <form onSubmit={handleSubmit}>
             <div className='form__section-container'>
                 <section className="form__section">
                     <h2 className="form__title">Warehouse Details</h2>
                     {/* warehouse name input field */}
                     <label 
-                        htmlFor="warhouseName"
+                        htmlFor="name"
                         className="form__label"
                     >Warehouse Name</label>
                     <input 
-                        name="warehouseName"
+                        name="name"
                         className="form__input"
-                        placeholder="Washington" 
+                        placeholder={selectedWarehouse.name}
+                        value={state.name}
+                        onChange={handleChangeWarehouse}
                     ></input>
 
                     {/* warehouse address input field */}
                     <label 
-                        htmlFor="streetAddress"
+                        htmlFor="address"
                         className="form__label"
                     >Street Address</label>
                     <input 
-                        name="streetAddress"
+                        name="address"
                         className="form__input"
-                        placeholder="33 pearl"
+                        placeholder={selectedWarehouse.address}
+                        value={state.address}
+                        onChange={handleChangeWarehouse}
                     ></input>
 
                     {/* warehouse city input field */}
@@ -51,7 +118,9 @@ const EditWarehouse = () => {
                     <input 
                         name="city"
                         className="form__input"
-                        placeholder="washington"
+                        placeholder={selectedWarehouse.city}
+                        value={state.city}
+                        onChange={handleChangeWarehouse}
                     ></input>
 
                     {/* warehouse country input field */}
@@ -62,7 +131,9 @@ const EditWarehouse = () => {
                     <input 
                         name="country"
                         className="form__input"
-                        placeholder="USA"
+                        placeholder={selectedWarehouse.country}
+                        value={state.country}
+                        onChange={handleChangeWarehouse}
                     ></input>
                 </section>
                 <section className="form__section form__section--divider">
@@ -70,13 +141,15 @@ const EditWarehouse = () => {
 
                     {/* contact name input field */}
                     <label 
-                        htmlFor="contactName"
+                        htmlFor="name"
                         className="form__label"
                     >Contact Name</label>
                     <input 
-                        name="contactName"
+                        name="name"
                         className="form__input"
-                        placeholder="Graeme Lyon"
+                        placeholder={selectedWarehouse.contact.name}
+                        value={state.contact.name}
+                        onChange={handleChangeContact}
                     ></input>
 
                     {/* contact position input field */}
@@ -87,29 +160,35 @@ const EditWarehouse = () => {
                     <input 
                         name="contactPosition"
                         className="form__input"
-                        placeholder="Warehouse Manager"
+                        placeholder={selectedWarehouse.contact.position}
+                        value={state.contact.position}
+                        onChange={handleChangeContact}
                     ></input>
 
                     {/* contact phone# input field */}
                     <label 
-                        htmlFor="contactPhone"
+                        htmlFor="phone"
                         className="form__label"
                     >Phone Number</label>
                     <input 
-                        name="contactPhone"
+                        name="phone"
                         className="form__input"
-                        placeholder="+1 (647) 504-0911"
+                        placeholder={selectedWarehouse.contact.phone}
+                        value={state.contact.phone}
+                        onChange={handleChangeContact}
                     ></input>
 
                     {/* contact email input field */}
                     <label 
-                        htmlFor="contactEmail"
+                        htmlFor="email"
                         className="form__label"
                     >Email</label>
                     <input 
-                        name="contactEmail"
+                        name="email"
                         className="form__input"
-                        placeholder="glyon@instock.com"
+                        placeholder={selectedWarehouse.contact.email}
+                        value={state.contact.email}
+                        onChange={handleChangeContact}
                     ></input>
                 </section>
             </div>
