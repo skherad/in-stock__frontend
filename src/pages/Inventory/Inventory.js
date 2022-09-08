@@ -1,5 +1,5 @@
 import './Inventory.scss';
-import InventoryHeader from '../../components/Header/InventoryHeader';
+
 
 
 function Inventory () {
@@ -7,7 +7,6 @@ function Inventory () {
   
     return (
       <>
-        <InventoryHeader />
       </>
     );
   }
