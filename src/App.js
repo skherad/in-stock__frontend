@@ -17,11 +17,10 @@ function App() {
           <Routes>
             <Route path="/" element={<Warehouse />} />
             <Route path="/inventory" element={<Inventory />} />
-            {/* <Route path="/warehouseDetails" element="Michael's warehouse detail component will go here"></Route>  */}
-            <Route path="/editWarehouse/id1" element={<EditWarehouse />} />
+            <Route path="/editWarehouse/:warehouseId" element={<EditWarehouse />} />
           </Routes>
       </BrowserRouter>
-    </>
+      </>
   );
 }
 

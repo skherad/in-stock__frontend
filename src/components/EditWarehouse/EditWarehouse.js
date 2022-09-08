@@ -1,28 +1,19 @@
 import BackArrow from '../../assets/Icons/arrow_back-24px.svg';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import './EditWarehouse.scss';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const EditWarehouse = () => {
 
-    let selectedWarehouse = {
-        id: "5bf7bd6c-2b16-4129-bddc-9d37ff8539e9",
-        name: "Washington",
-        address: "33 Pearl Street SW",
-        city: "Washington",
-        country: "USA",
-        contact: {
-            name: "Greame Lyon",
-            position: "Warehouse Manager",
-            phone: "+1 (646) 123-1234",
-            email: "glyon@instock.com"
-        }
-    }
-    //TODO click will need to link to /warehouse:id coordinate with Michael
+    let navigate = useNavigate();
+
+    //TODO click will need to link to /:warehouseId coordinate with Michael
     const {warehouseId} = useParams();
 
-    // const [selectedWarehouse, setSelectedWarehouse] = useState();
+    //define state for selected warehouse to be edited
+    const [selectedWarehouse, setSelectedWarehouse] = useState();
+    //define states for handling change of input values - to be used to set edited values
     const [state, setState] = useState({
         name: selectedWarehouse.name,
         address: selectedWarehouse.address,
@@ -35,12 +26,14 @@ const EditWarehouse = () => {
             email: selectedWarehouse.contact.email
         }
     });
-    // useEffect(() => {
-    //     axios.get(`http://localhost:8080/warehousedetails/${warehouseId}`)
-    //     .then(response => setSelectedWarehouse(response.data))
-    //     .catch(error => console.log(error))
-    // }, [warehouseId])
+    //get request to receive and set selected warehouse details
+    useEffect(() => {
+        axios.get(`http://localhost:8080/warehousedetails/${warehouseId}`)
+        .then(response => setSelectedWarehouse(response.data))
+        .catch(error => console.log(error))
+    }, [warehouseId])
 
+    //change handler for warehoue details from user inputs
     const handleChangeWarehouse = (event) => {
         const value = event.target.value;
         setState({
@@ -60,13 +53,21 @@ const EditWarehouse = () => {
         })
     }
 
+    //click handler for cancel button
+    const handleCancel = () => {
+        navigate('/warehouseDetails')
+    }
+
+    //click handler for submitting the form
+    //put request to update the backend
     const handleSubmit = (event) => {
         event.preventDefault();
-        // axios.put(`http://localhost:8080/warehousedetails/${warehouseId}`, state)
-        // .then(response=>console.log("update sent"))
-        // .catch(error=>console.log("error"))
+        axios.put(`http://localhost:8080/warehousedetails/${warehouseId}`, state)
+        .then(response=>console.log(response))
+        .catch(error=>console.log(error))
     }
-    // if(!selectedWarehouse) { return <div>loading...</div>}
+
+    if(!selectedWarehouse) { return <div>loading...</div>}
 
     return (
     <div className='parent-container'>
@@ -84,6 +85,7 @@ const EditWarehouse = () => {
             <div className='form__section-container'>
                 <section className="form__section">
                     <h2 className="form__title">Warehouse Details</h2>
+
                     {/* warehouse name input field */}
                     <label 
                         htmlFor="name"
@@ -193,7 +195,7 @@ const EditWarehouse = () => {
                 </section>
             </div>
             <div  className='button-container'>
-                <button className="form__cancel-button">Cancel</button>
+                <button className="form__cancel-button" onClick={handleCancel}>Cancel</button>
                 <button className="form__save-button">Save</button>
             </div>
         </form>
