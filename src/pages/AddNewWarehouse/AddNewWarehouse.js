@@ -1,9 +1,36 @@
 import WarehouseHeader from '../../components/Header/WarehouseHeader';
 import './AddNewWarehouse.scss';
 import { Link } from 'react-router-dom';
+import axios from "axios";
+const { v4: uuid } = require('uuid');
+
+const API_URL = "http://localhost:8080/warehouses";
 
 
 function AddNewWarehouse() {
+    function handleSubmit (event) {
+
+        event.preventDefault();
+        const newWarehouseItem = {
+          id: uuid(),
+          warehousename: event.target.warehousename.value,
+          address:event.target.address.value,
+          city: event.target.city.value,
+          country: event.target.country.value,
+            contactname: event.target.contactname.value,
+            position: event.target.position.value,
+            phone:event.target.phone.value,
+            email: event.target.emails.value,
+        }  
+      
+        axios.post(`http://localhost:8080/warehouses`, newWarehouseItem)
+      };
+
+    const Input = document.getElementsByClassName(".addnewwarehouse__box");
+    if (Input === "") {
+        alert.error("This field is required");
+    }
+
     return (
         <>
 
@@ -16,6 +43,10 @@ function AddNewWarehouse() {
                 <section className="addnewwarehouse__warehousedetails"> 
                     <div className="addnewwarehouse__section">Warehouse Details</div>
                     <label className="addnewwarehouse__description">Warehouse Name</label>
+                    <div className="errMsg"> 
+                        <img className="errMsg__icon"src={require("../../assets/Icons/error-24px.svg").default} alt={"erricon"}/>
+                        <div className="error__text"> This field is required</div>
+                    </div>
                     <input className="addnewwarehouse__box" type={"text"} name="comments" placeholder="Warehouse Name"/>
                     <label className="addnewwarehouse__description">Street Address</label>
                     <input className="addnewwarehouse__box" type={"text"} name="comments" placeholder="Street Address"/>
@@ -37,8 +68,8 @@ function AddNewWarehouse() {
                 </section>
             </form>
             <section className="addnewwarehouse__buttons">
-                <button className="addnewwarehouse__buttons-cancel"> Cancel </button>
-                <button className="addnewwarehouse__buttons-add"> + Add Warehouse </button>
+                <Link to="/"><button className="addnewwarehouse__buttons-cancel"> Cancel </button></Link>
+                <button className="addnewwarehouse__buttons-add" type="submit"> + Add Warehouse </button>
             </section>
         </div>  
         </>
