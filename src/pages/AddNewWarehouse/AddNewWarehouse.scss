@@ -10,6 +10,9 @@
     border-radius: .1875rem;
     margin: -5rem 2rem 0rem 2rem;
     background-color: utilities.$white;
+    @include desktop {
+        margin: -5rem 6rem 0rem 6rem;
+    }
     &__direct {
         display: flex;
         text-decoration: none;
@@ -17,7 +20,7 @@
     }
     &__icon{
         @include tablet {
-            margin-left:1rem;
+            margin-left:2rem;
         }
     }
     &__title {
@@ -55,6 +58,9 @@
         font-size: 13px;
         color: utilities.$Instock-Black;
         padding: 1rem 0rem 0.3rem 0rem;
+        @include tablet {
+            padding-top: 1.5rem;
+        }
     }
     &__warehousedetails {
         display: flex;
@@ -63,7 +69,6 @@
         border-top: 1px solid utilities.$Cloud;
         @include tablet {
             border-top: none;
-            border-right: 1px solid utilities.$Cloud;
             padding: 1rem;
         }
     }
@@ -75,6 +80,7 @@
         @include tablet {
             border-top: none;
             padding: 1rem;
+            border-left: 1px solid utilities.$Cloud;
         }
     }
     &__box {
