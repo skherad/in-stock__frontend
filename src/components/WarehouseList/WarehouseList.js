@@ -40,8 +40,8 @@ function WarehouseList() {
                 <div className="warehouse-table">
                     {/* table headers for tablet and desktop views */}
                     <ul className="warehouse-table__header">
-                        <li className="warehouse-table__field">WAREHOUSE</li>
-                        <li className="warehouse-table__field">ADDRESS</li>
+                        <li className="warehouse-table__field warehouse-table__field--warehouse">WAREHOUSE</li>
+                        <li className="warehouse-table__field warehouse-table__field--address">ADDRESS</li>
                         <li className="warehouse-table__field">CONTACT NAME</li>
                         <li className="warehouse-table__field warehouse-table__field--contact-info">CONTACT INFORMATION</li>
                         <li className="warehouse-table__field warehouse-table__field--action">ACTIONS</li>

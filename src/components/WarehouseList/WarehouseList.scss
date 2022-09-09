@@ -34,10 +34,8 @@
     @include tablet {
         padding: 2rem;
         padding-bottom: 0;
-    }
-
-    @include tablet {
         display: flex;
+        justify-content: space-between;
     }
 
     &__title {
@@ -45,22 +43,33 @@
 
         @include tablet {
             flex-basis: 50%;
-            margin-right: 8rem;
+        }
+
+        @include desktop {
+            flex-basis: 65%;
         }
     }
 
     &__search {
         background: url("../../assets/Icons/search-24px.svg") no-repeat 98%;
         margin-bottom: 1rem;
+        width: 100%;
         
         @include tablet {
             background-position: 90%;
             margin-right: 1rem;
+            width: 30%;
         }
     }
 
     &__button {
+        display: block;
         padding: 0 0.5rem;
+        width: 100%;
+
+        @include tablet {
+            width: 11rem;
+        }
     }
 }
 
@@ -70,6 +79,7 @@
 
         @include tablet {
             display: flex;
+            justify-content: space-between;
             list-style-type: none;
             padding: 0.3rem 2rem 0.6rem;
             background-color: $Light-grey;
@@ -82,43 +92,47 @@
         font-weight: 600;
         flex-basis: 20%;
 
+        @include desktop {
+            flex-basis: 17%;
+        }
+
         &::after {
             content: url('../../assets/Icons/sort-24px.svg');
             position: relative;
             top: 0.4rem;
         }
 
+        &--warehouse {
+            @include desktop {
+                flex-basis: 24%;
+            }
+        }
+
+        &--address {
+            padding-left: 0.25rem;
+
+            @include desktop {
+                flex-basis: 39%;
+            }
+        }
+
         &--contact-info {
             flex-basis: 30%;
+
+            @include desktop {
+                flex-basis: 25%;
+            }
         }
 
         &--action {
             position: relative;
             top: 0.5rem;
-            flex-basis: 10%;
+            flex-basis: 4rem;
             padding-left: 1rem;
 
             &::after {
                 content: none;
             }
-        }
-    }
-
-    &__name {
-        color: $Instock-Indigo;
-        font-weight: 600;
-        position: relative;
-        bottom: 0.4rem;
-        text-decoration: none;
-
-        &::after {
-            content: url('../../assets/Icons/chevron_right-24px.svg');
-            position: relative;
-            top: 0.4rem;
-        }
-
-        &:hover {
-            text-decoration: underline;
         }
     }
 
@@ -146,7 +160,25 @@
         display: flex;
 
         @include tablet {
-            flex-basis: 90%;
+            flex-basis: 100%;
+        }
+    }
+
+    &__name {
+        color: $Instock-Indigo;
+        font-weight: 600;
+        position: relative;
+        bottom: 0.4rem;
+        text-decoration: none;
+
+        &::after {
+            content: url('../../assets/Icons/chevron_right-24px.svg');
+            position: relative;
+            top: 0.4rem;
+        }
+
+        &:hover {
+            text-decoration: underline;
         }
     }
 
@@ -158,6 +190,10 @@
             display: flex;
             align-items: center;
         }
+
+        @include desktop {
+            flex-basis: 60%;
+        }
     }
 
     &__right {
@@ -165,6 +201,10 @@
 
         @include tablet {
             flex-basis: 55%;
+        }
+
+        @include desktop {
+            flex-basis: 40%;
         }
     }
 
@@ -187,10 +227,18 @@
             padding-top: 0.5rem;
         }
 
+        @include desktop {
+            padding-right: 1rem;
+        }
+
         &--address {
             @include tablet {
                 display: flex;
                 flex-wrap: wrap;
+            }
+
+            @include desktop {
+                flex-basis: 80%;
             }
         }
 
@@ -215,7 +263,7 @@
         margin-top: 1rem;
 
         @include tablet {
-            flex-basis: 10%;
+            flex-basis: 4rem;
         }
     }
 
