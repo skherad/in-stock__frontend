@@ -1,0 +1,104 @@
+@use "../../styles/partials/utilities" as *;
+@use "../../styles/partials/mixins" as *;
+
+.list-container {
+    padding: 1rem;
+    background-color: $Light-grey;
+    display: flex;
+    justify-content: center;
+
+    @include tablet {
+        padding: 1rem 2rem;
+    }
+
+    @include desktop {
+        padding: 1rem 8.125rem;
+    }
+}
+
+.warehouse-list {
+    background-color: $white; 
+    border-radius: 3px;
+    box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
+    width: 100%;
+    margin-top: -5rem;
+
+    @include tablet {
+         margin-top: -7.25rem;
+    }
+}
+
+.warehouse-header {
+    padding: 1.5rem;
+
+    &__title {
+        margin-bottom: 1rem;
+    }
+
+    &__search {
+        background: url("../../assets/Icons/search-24px.svg") no-repeat 98%;
+        margin-bottom: 1rem;
+    }
+}
+
+.warehouse-table {
+    &__header {
+        display: none;
+
+        @include tablet {
+            display: flex;
+            list-style-type: none;
+        }
+    }
+
+    &__field {
+        color: $Cloud;
+
+        &::after {
+            content: url('../../assets/Icons/sort-24px.svg');
+        }
+    }
+
+    &__name {
+        color: $Instock-Indigo;
+        font-weight: 600;
+        position: relative;
+        bottom: 0.4rem;
+        text-decoration: none;
+
+        &::after {
+            content: url('../../assets/Icons/chevron_right-24px.svg');
+            position: relative;
+            top: 0.4rem;
+        }
+    }
+
+    &__record {
+        padding: 0 1.5rem 1.5rem;
+        border-top: 2px solid $Cloud;
+    }
+
+    &__content {
+        display: flex;
+    }
+
+    &__left {
+        flex-basis: 50%;
+    }
+
+    &__label {
+        color: $Slate;
+        margin-top: 1rem;
+        margin-bottom: 0.2rem;
+        font-size: 0.85rem;
+        font-weight: 600;
+    }
+
+
+
+    &__actions {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 1rem;
+    }
+}
