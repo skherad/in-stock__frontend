@@ -43,8 +43,8 @@ function WarehouseList() {
                         <li className="warehouse-table__field">WAREHOUSE</li>
                         <li className="warehouse-table__field">ADDRESS</li>
                         <li className="warehouse-table__field">CONTACT NAME</li>
-                        <li className="warehouse-table__field">CONTACT INFORMATION</li>
-                        <li className="warehouse-table__field--action">ACTIONS</li>
+                        <li className="warehouse-table__field warehouse-table__field--contact-info">CONTACT INFORMATION</li>
+                        <li className="warehouse-table__field warehouse-table__field--action">ACTIONS</li>
                     </ul>
                     {/* create a record for each warehouse in array */}
                     {warehouses.map((warehouse) => {
@@ -55,14 +55,16 @@ function WarehouseList() {
                                         <p className="warehouse-table__label">WAREHOUSE</p>
                                         <Link to={`/warehouse/${warehouse.id}`} className="warehouse-table__value warehouse-table__name">{warehouse.name}</Link>
                                         <p className="warehouse-table__label">ADDRESS</p>
-                                        <p className="warehouse-table__value">{`${warehouse.address}, ${warehouse.city}, ${warehouse.country}`}</p>
+                                        <p className="warehouse-table__value warehouse-table__value--address">{`${warehouse.address}, ${warehouse.city}, ${warehouse.country}`}</p>
                                     </div>
                                     <div className="warehouse-table__right">
                                         <p className="warehouse-table__label">CONTACT NAME</p>
                                         <p className="warehouse-table__value">{warehouse.contact.name}</p>
                                         <p className="warehouse-table__label">CONTACT INFORMATION</p>
-                                        <p className="warehouse-table__value">{warehouse.contact.phone}</p>
-                                        <p className="warehouse-table__value">{warehouse.contact.email}</p>
+                                        <div className="warehouse-table__value warehouse-table__value--contact-info">
+                                            <p>{warehouse.contact.phone}</p>
+                                            <p>{warehouse.contact.email}</p>
+                                        </div>
                                     </div>
                                 </div>
                                 <div className="warehouse-table__actions">
