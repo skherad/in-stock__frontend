@@ -6,17 +6,25 @@
 .addnewwarehouse {
     display: flex;
     flex-direction: column;
-    border:2px solid rgba(19, 24, 44, 0.1);
     border-radius: .1875rem;
-    margin: -5rem 2rem 0rem 2rem;
-    background-color: utilities.$white;
+    padding: 0rem 2rem;
+    background-color: utilities.$Light-grey;
     @include desktop {
-        margin: -5rem 6rem 0rem 6rem;
+        padding: 0rem 6rem;
     }
+
     &__direct {
         display: flex;
         text-decoration: none;
         justify-content: center;
+        margin: -6.3rem 2rem 0rem 2rem;
+        border-top:2px solid rgba(19, 24, 44, 0.1);
+        border-left:2px solid rgba(19, 24, 44, 0.1);
+        border-right:2px solid rgba(19, 24, 44, 0.1);
+        background-color: utilities.$white;
+        @include desktop {
+            margin: -7rem 6rem 0rem 6rem;
+        }
     }
     &__icon{
         @include tablet {
@@ -40,6 +48,10 @@
     &__form {
         display: flex;
         flex-direction: column;
+        border-bottom:2px solid rgba(19, 24, 44, 0.1);
+        border-left:2px solid rgba(19, 24, 44, 0.1);
+        border-right:2px solid rgba(19, 24, 44, 0.1);
+        background-color: utilities.$white;
         @include tablet {
             display: unset;
         }
@@ -52,6 +64,7 @@
             border-top: 1px solid utilities.$Cloud;
             padding: 1rem;
         }
+
     }
     &__section {
         color: utilities.$Instock-Black;
