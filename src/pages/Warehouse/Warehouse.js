@@ -1,17 +1,10 @@
-import './Warehouse.scss';
+import "./Warehouse.scss";
 
-import WarehouseHeader from '../../components/Header/WarehouseHeader';
-import { Link } from 'react-router-dom';
+// import WarehouseHeader from "../../components/Header/WarehouseHeader";
+import { Link } from "react-router-dom";
 
+function Warehouse() {
+  return <></>;
+}
 
-
-function Warehouse () {
-
-  
-    return (
-      <>
-      </>
-    );
-  }
-  
-  export default Warehouse;
+export default Warehouse;
