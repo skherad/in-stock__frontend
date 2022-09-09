@@ -1,6 +1,5 @@
 @use '../../styles/partials/mixins' as *;
 @use '../../styles/partials/utilities' as *;
-@use '../../styles/partials/typography' as *;
 
 .parent-container {
     padding: 1rem;
@@ -14,7 +13,7 @@
         padding: 1rem 8.125rem;
     }
 }
-.inventory-form {
+.form {
     &__container {
        background-color: $white; 
        border-radius: 3px;
@@ -75,7 +74,6 @@
         line-height: 1.75rem;
         font-weight: 600;
     }
-
     &__input {
         width: 100%;
         border-radius: 20px;
@@ -87,41 +85,6 @@
             color: $Instock-Black;
             font-size: .8125rem;
         }
-    }
-    &__textarea {
-        resize: none;
-        width: 100%;
-        height: 7.5rem;
-        border-radius: 20px;
-        padding: 0.5rem 1rem;
-        border: 1px solid $Cloud;
-        margin-bottom: 1rem;
-        &::placeholder {
-            font-family: 'Titillium Web';
-            color: $Instock-Black;
-            font-size: .8125rem;
-        }
-    }
-    &__drop-down {
-        width: 100%;
-        border-radius: 20px;
-        padding: 0.5rem 1rem;
-        border: 1px solid $Cloud;
-        margin-bottom: 1rem;
-        appearance: none;
-        background-image: url('../../assets/Icons/arrow_drop_down-24px.svg');
-        background-repeat: no-repeat;
-        background-position: 95%;
-    }
-    &__radio {
-        color: $Instock-Black;
-        font-size: .8125rem;
-        margin-right: 0.5rem;
-    }
-    &__radio-label {
-        font-size: .8125rem;
-        line-height: 1.75rem;
-        color: $Instock-Black;
     }
     &__save-button {
         background-color: $Instock-Indigo;
@@ -161,12 +124,5 @@
     @include tablet {
         flex-direction: row-reverse;
         justify-content: flex-start;
-    }
-    &--radio {
-        background-color: $white;
-        padding: 0;
-        margin-bottom: 1rem;
-        padding-right: 3rem;
-
     }
 }
