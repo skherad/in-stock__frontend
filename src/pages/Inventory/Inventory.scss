@@ -1,0 +1,96 @@
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/utilities" as *;
+
+.invientory{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    // background-color: $Light-grey;
+    background-color: rgba(207, 207, 207, 0.933);
+    
+    &__head{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        //Needs to include $Slate
+        border-bottom: 1px solid rgb(141, 139, 139);
+
+        @include tablet {
+            flex-direction: row;
+            border-bottom: none;
+            justify-content: space-between;
+            width: 100%;
+        }
+    }
+    &__title{
+        color:$Instock-Black;
+        margin-left: 1rem;
+        @include tablet{
+        }
+    }
+    &__ui-head{
+        display: flex;
+        flex-direction: column;
+        margin: 0 1rem;
+        @include tablet {
+            flex-direction: row;
+        }
+        
+    }
+    &__search{
+        display: flex;
+        justify-content: space-between;
+        align-self: center;
+        border: 2px solid $Slate;
+        border-radius: 2rem;
+        margin-top: .5rem;
+        width: 100%;
+
+        @include tablet{
+            // margin: 0 3rem;
+            // width: 40%;
+        }
+    }
+    &__input{
+        border: none;
+        padding: .5rem 1rem;
+        background: none;
+        @include tablet{
+            columns: 8;
+            size: 3rem;
+            padding: .5rem;
+        }
+    }
+    &__input::placeholder{
+        color: $Slate;
+    }
+    &__s-icon{
+        align-self: center;
+        height: 1.0931rem;
+        margin-right: 1rem;
+        // padding: .5rem;  
+    }
+    &__add-btn{
+        display: flex;
+        flex-direction: center;
+        justify-content: center;
+        margin: 1rem 0;
+        background-color: $Instock-Indigo;
+        border-radius: 2rem;
+
+        @include tablet{
+            padding: 0 .5rem;
+        // border-radius: 2rem;
+        }
+    }
+    &__btn{
+        padding: .5rem;
+        color: $white;
+        background: none;
+        border: none;
+        @include tablet {
+            // border-radius: 2rem;
+        }
+    }
+}
