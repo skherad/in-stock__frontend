@@ -2,12 +2,23 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/utilities" as *;
 
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: $white;
+    margin-bottom: 3rem;
+}
+
 .invientory{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-self: center;
+    width: 90%;
+    margin: -7.25rem;
     // background-color: $Light-grey;
-    background-color: rgba(207, 207, 207, 0.933);
+    background-color:$white;
     
     &__head{
         display: flex;
@@ -80,8 +91,8 @@
         border-radius: 2rem;
 
         @include tablet{
-            padding: 0 .5rem;
-        // border-radius: 2rem;
+            width: 100%;    
+            margin-left: 1rem;
         }
     }
     &__btn{
@@ -90,7 +101,6 @@
         background: none;
         border: none;
         @include tablet {
-            // border-radius: 2rem;
         }
     }
     &__header-catagory{
@@ -99,15 +109,16 @@
             display: flex;
             justify-content: space-around;
         }
-        
     }
     &__header-cat{
         display: flex;
     }
     &__cat-i{
+        font-size: .75rem;
         color: $Slate;
     }
     &__cat-pic{
-
+        height: .75rem; 
+        align-self: center;
     }
 }
