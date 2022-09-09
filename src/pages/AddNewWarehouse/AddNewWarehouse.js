@@ -151,57 +151,53 @@ function AddNewWarehouse() {
 
     return (
         <>
-        <div className="addnewwarehouse">
+
             <Link className="addnewwarehouse__direct" to="/">
             <img className="addnewwarehouse__icon" src={require("../../assets/Icons/arrow_back-24px.svg").default} alt={"icon"}/>
             <div className="addnewwarehouse__title">Add New Warehouse</div> </Link>
+            <div className="addnewwarehouse">
             <form className="addnewwarehouse__form" onSubmit={handleSubmit}>
                 <div className="addnewwarehouse__container">
                 <section className="addnewwarehouse__warehousedetails">
                     <div className="addnewwarehouse__section">Warehouse Details</div>
-                    <div>
+
                     <label className="addnewwarehouse__description">Warehouse Name</label>
                     <input className="addnewwarehouse__box" type={"text"} name="name" onChange={handleChangeName} placeholder="Warehouse Name"/>
                     {!nameValid && <ErrorMsg/>}
-                    </div>
-                    <div>
+
                     <label className="addnewwarehouse__description">Street Address</label>
                     <input className="addnewwarehouse__box" type={"text"} name="address" onChange={handleChangeAddress} placeholder="Street Address"/>
                     {!addressValid && <ErrorMsg/>}
-                    </div>
-                    <div>
+
                     <label className="addnewwarehouse__description">City</label>
                     <input className="addnewwarehouse__box" type={"text"} name="city" onChange={handleChangeCity} placeholder="City"/>
-                    </div>
+
                     {!cityValid && <ErrorMsg/>}
-                    <div>
+
                     <label className="addnewwarehouse__description">Country</label>
                     <input className="addnewwarehouse__box" type={"text"} name="country" onChange={handleChangeCountry} placeholder="Country"/>
-                    </div>
+     
                     {!countryValid && <ErrorMsg/>}
                 </section>
                 <section className="addnewwarehouse__contactdetails"> 
                     <div className="addnewwarehouse__section">Contact Details</div>
-                    <div>
+
                     <label className="addnewwarehouse__description">Contact Name</label>
                     <input className="addnewwarehouse__box" type={"text"} name="contactName" onChange={handleChangeContactname} placeholder="Contact Name"/>
                     {!contactNameValid && <ErrorMsg/>}
-                    </div>
-                    <div>
+
                     <label className="addnewwarehouse__description">Position</label>
                     <input className="addnewwarehouse__box" type={"text"} name="contactPosition" onChange={handleChangePosition} placeholder="Position"/>
                     {!positionValid && <ErrorMsg/>}
-                    </div>
-                    <div>
+
                     <label className="addnewwarehouse__description">Phone Number</label>
                     <input className="addnewwarehouse__box" type={"text"} name="contactPhone" onChange={handleChangePhone} placeholder="Phone Number"/>
                     {!phoneValid && <ErrorMsg/>}
-                    </div>
-                    <div>
+  
                     <label className="addnewwarehouse__description">Email</label>
                     <input className="addnewwarehouse__box" type={"text"} name="contactEmail" onChange={handleChangeEmail} placeholder="Email"/>
                     {!emailValid && <ErrorMsg/>}
-                    </div>
+
                 </section>
                 </div>
                 <section className="addnewwarehouse__buttons">
