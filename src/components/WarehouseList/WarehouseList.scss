@@ -269,5 +269,9 @@
 
     &__button {
         width: 1.5rem;
+
+        &--edit {
+            filter: invert(28%) sepia(95%) saturate(1626%) hue-rotate(211deg) brightness(94%) contrast(90%);
+        }
     }
 }

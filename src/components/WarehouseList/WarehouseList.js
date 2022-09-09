@@ -69,7 +69,7 @@ function WarehouseList() {
                                 </div>
                                 <div className="warehouse-table__actions">
                                     <input className="warehouse-table__button" type="image" src={deleteIcon} alt="delete" onClick={() => handleDelete(warehouse.id)} />
-                                    <input className="warehouse-table__button"type="image" src={editIcon} alt="edit" onClick={() => handleEdit(warehouse.id)} />
+                                    <input className="warehouse-table__button warehouse-table__button--edit"type="image" src={editIcon} alt="edit" onClick={() => handleEdit(warehouse.id)} />
                                 </div>
                             </div>
                         )
