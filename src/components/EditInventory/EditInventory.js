@@ -1,9 +1,10 @@
-import BackArrow from '../../assets/Icons/arrow_back-24px.svg';
-import Error from '../../assets/Icons/error-24px.svg'
-import { Link, useParams, useNavigate } from 'react-router-dom';
 import './EditInventory.scss';
+import BackArrow from '../../assets/Icons/arrow_back-24px.svg';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:8080";
 
 const EditInventory = () => {
 
@@ -13,10 +14,12 @@ const EditInventory = () => {
 
     const [warehouses, setWarehouses] = useState();
     const [categories, setCategories] = useState();
-    
+    //define states for handling change of input values - to be used to set edited values
+    const [state, setState] = useState();
+
     //get a unique list of warehouses
     useEffect(() => {
-        axios.get(`http://localhost:8080/warehouse`)
+        axios.get(`${API_URL}/warehouse`)
         .then(response => {
             let WarehouseData = response.data;
             let warehouseArray = [];
@@ -28,7 +31,7 @@ const EditInventory = () => {
     
     //get a unique list of inventory categories
     useEffect(() => {
-        axios.get(`http://localhost:8080/inventory`)
+        axios.get(`${API_URL}/inventory`)
         .then(response => {
             let inventoryData = response.data;
             let categoryArray = [];
@@ -39,11 +42,9 @@ const EditInventory = () => {
         .catch(error => console.log(error))
     }, [])
 
-    //define states for handling change of input values - to be used to set edited values
-    const [state, setState] = useState();
     //set initial state of the inventory details
     useEffect(() => {
-        axios.get(`http://localhost:8080/inventory/${inventoryId}`)
+        axios.get(`${API_URL}/inventory/${inventoryId}`)
         .then(response => 
             setState({
                 warehouseName: response.data.warehouseName,
@@ -67,20 +68,17 @@ const EditInventory = () => {
     }
 
     //click handler for cancel button
-    const handleCancel = () => {
-        navigate(`/inventoryDetail/${inventoryId}`)
-    }
-
+    const handleCancel = () => navigate(`/inventoryDetail/${inventoryId}`)
+    
     //submit handler to update inventory information on backend
     const handleSubmit = (event) => {
         event.preventDefault();
         if(!state.itemName || !state.description) {
-            alert('no cool')
             return;
         } else {
-            // axios.put(`http://localhost:8080/inventory/${inventoryId}`, state)
-            // .then(response=>console.log(response))
-            // .catch(error=>console.log(error))
+            axios.put(`${API_URL}/inventory/${inventoryId}`, state)
+            .then(response=>console.log(response))
+            .catch(error=>console.log(error))
             navigate(`/inventoryDetail/${inventoryId}`)
         }
     }
@@ -90,10 +88,7 @@ const EditInventory = () => {
     <section className="inventory-form__container">
         {/* page header */}
         <div className='inventory-form__header-container'>
-            <Link 
-                to={`/inventoryDetail/${inventoryId}`}
-                className="inventory-form__icon"
-            >
+            <Link to={`/inventoryDetail/${inventoryId}`} className="inventory-form__icon">
                 <img src={BackArrow} alt="arrow back"></img>
             </Link>
             <h1 className="inventory-form__header">Edit Inventory Item</h1>
@@ -106,10 +101,7 @@ const EditInventory = () => {
                     <h2 className="inventory-form__title">Item Details</h2>
 
                     {/* item name input field */}
-                    <label 
-                        htmlFor="itemName"
-                        className="inventory-form__label"
-                    >Item Name</label>
+                    <label htmlFor="itemName" className="inventory-form__label">Item Name</label>
                     <input 
                         name="itemName"
                         className={!state?.itemName?"inventory-form__input inventory-form__input--invalid": "inventory-form__input"}
@@ -117,14 +109,9 @@ const EditInventory = () => {
                         value={state?.itemName}
                         onChange={handleChange}
                     ></input>
-                    <div className={!state?.itemName?"invalid": "valid"}>
-                       This field is required
-                    </div>
+                    <div className={!state?.itemName?"invalid": "valid"}>This field is required</div>
                     {/* item description input field */}
-                    <label 
-                        htmlFor="description"
-                        className="inventory-form__label"
-                    >Description</label>
+                    <label htmlFor="description" className="inventory-form__label">Description</label>
                     <textarea 
                         name="description"
                         className={!state?.description?"inventory-form__textarea inventory-form__textarea--invalid": "inventory-form__textarea"}
@@ -132,20 +119,11 @@ const EditInventory = () => {
                         value={state?.description}
                         onChange={handleChange}
                     ></textarea>
-                    <div className={!state?.description?"invalid": "valid"}>
-                       This field is required
-                    </div>
+                    <div className={!state?.description?"invalid": "valid"}>This field is required</div>
+                    
                     {/* item category drop down */}
-                    <label 
-                        htmlFor="category"
-                        className="inventory-form__label"
-                    >Category</label>
-                    <select 
-                        className='inventory-form__drop-down'
-                        onChange={handleChange}
-                        name="category"
-                        value={state?.category}
-                    >
+                    <label htmlFor="category" className="inventory-form__label">Category</label>
+                    <select className='inventory-form__drop-down' onChange={handleChange} name="category" value={state?.category}>
                         {categories?.map((category,i) => 
                             <option value={category} key={i}>{category}</option>
                         )}
@@ -155,10 +133,7 @@ const EditInventory = () => {
                 {/* item availablity section */}
                 <section className="inventory-form__section inventory-form__section--divider">
                     <h2 className="inventory-form__title">Item Availability</h2>
-                    <p 
-                        htmlFor="status"
-                        className="inventory-form__label"
-                    >Status</p>
+                    <p htmlFor="status" className="inventory-form__label" >Status</p>
 
                     {/* in/out of stock radio buttons */}
                     <div  className='inventory-form__radio-container'>
@@ -186,16 +161,8 @@ const EditInventory = () => {
                     </div>
                     
                     {/* warehouse drop down */}
-                     <label 
-                        htmlFor="warehouse"
-                        className="inventory-form__label"
-                    >Warehoue</label>
-                    <select 
-                        className='inventory-form__drop-down'
-                        onChange={handleChange}
-                        name="warehouseName"
-                        value={state?.warehouseName}
-                    >
+                     <label htmlFor="warehouse" className="inventory-form__label">Warehoue</label>
+                    <select className='inventory-form__drop-down' onChange={handleChange} name="warehouseName" value={state?.warehouseName}>
                         {warehouses?.map((warehouse,i) => 
                             <option value={warehouse} key={i}>{warehouse}</option>
                         )}
