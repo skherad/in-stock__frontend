@@ -1,0 +1,277 @@
+@use "../../styles/partials/utilities" as *;
+@use "../../styles/partials/mixins" as *;
+
+.list-container {
+    padding: 1rem;
+    background-color: $Light-grey;
+    display: flex;
+    justify-content: center;
+
+    @include tablet {
+        padding: 1rem 2rem;
+    }
+
+    @include desktop {
+        padding: 1rem 8.125rem;
+    }
+}
+
+.warehouse-list {
+    background-color: $white; 
+    border-radius: 3px;
+    box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
+    width: 100%;
+    margin-top: -5rem;
+
+    @include tablet {
+         margin-top: -7.25rem;
+    }
+}
+
+.warehouse-header {
+    padding: 1.5rem;
+
+    @include tablet {
+        padding: 2rem;
+        padding-bottom: 0;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__title {
+        margin-bottom: 1rem;
+
+        @include tablet {
+            flex-basis: 50%;
+        }
+
+        @include desktop {
+            flex-basis: 65%;
+        }
+    }
+
+    &__search {
+        background: url("../../assets/Icons/search-24px.svg") no-repeat 98%;
+        margin-bottom: 1rem;
+        width: 100%;
+        
+        @include tablet {
+            background-position: 90%;
+            margin-right: 1rem;
+            width: 30%;
+        }
+    }
+
+    &__button {
+        display: block;
+        padding: 0 0.5rem;
+        width: 100%;
+
+        @include tablet {
+            width: 11rem;
+        }
+    }
+}
+
+.warehouse-table {
+    &__header {
+        display: none;
+
+        @include tablet {
+            display: flex;
+            justify-content: space-between;
+            list-style-type: none;
+            padding: 0.3rem 2rem 0.6rem;
+            background-color: $Light-grey;
+        }
+    }
+
+    &__field {
+        color: $Slate;
+        font-size: 0.85rem;
+        font-weight: 600;
+        flex-basis: 20%;
+
+        @include desktop {
+            flex-basis: 17%;
+        }
+
+        &::after {
+            content: url('../../assets/Icons/sort-24px.svg');
+            position: relative;
+            top: 0.4rem;
+        }
+
+        &--warehouse {
+            @include desktop {
+                flex-basis: 24%;
+            }
+        }
+
+        &--address {
+            padding-left: 0.25rem;
+
+            @include desktop {
+                flex-basis: 39%;
+            }
+        }
+
+        &--contact-info {
+            flex-basis: 30%;
+
+            @include desktop {
+                flex-basis: 25%;
+            }
+        }
+
+        &--action {
+            position: relative;
+            top: 0.5rem;
+            flex-basis: 4rem;
+            padding-left: 1rem;
+
+            &::after {
+                content: none;
+            }
+        }
+    }
+
+    &__record {
+        padding: 0 1.5rem 1.5rem;
+        border-top: 2px solid $Cloud;
+
+        &:first-of-type {
+            @include tablet {
+                border-top: none;
+            }
+        }
+
+        &:hover {
+            background-color: $Light-grey;
+        }
+
+        @include tablet {
+            display: flex;
+            padding: 0.75rem 2rem 1rem;
+        }
+    }
+
+    &__content {
+        display: flex;
+
+        @include tablet {
+            flex-basis: 100%;
+        }
+    }
+
+    &__name {
+        color: $Instock-Indigo;
+        font-weight: 600;
+        position: relative;
+        bottom: 0.4rem;
+        text-decoration: none;
+
+        &::after {
+            content: url('../../assets/Icons/chevron_right-24px.svg');
+            position: relative;
+            top: 0.4rem;
+        }
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    &__left {
+        flex-basis: 50%;
+
+        @include tablet {
+            flex-basis: 45%;
+            display: flex;
+            align-items: center;
+        }
+
+        @include desktop {
+            flex-basis: 60%;
+        }
+    }
+
+    &__right {
+        @extend .warehouse-table__left;
+
+        @include tablet {
+            flex-basis: 55%;
+        }
+
+        @include desktop {
+            flex-basis: 40%;
+        }
+    }
+
+    &__label {
+        color: $Slate;
+        margin-top: 1rem;
+        margin-bottom: 0.2rem;
+        font-size: 0.85rem;
+        font-weight: 600;
+
+        @include tablet {
+            display: none;
+        }
+    }
+
+    &__value {
+        @include tablet {
+            flex-basis: 50%;
+            padding-right: 0.75rem;
+            padding-top: 0.5rem;
+        }
+
+        @include desktop {
+            padding-right: 1rem;
+        }
+
+        &--address {
+            @include tablet {
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+            @include desktop {
+                flex-basis: 80%;
+            }
+        }
+
+        &--contact-info {
+            @include tablet {
+                flex-basis: 75%;
+                display: flex;
+                flex-direction: column;
+            }
+        }
+
+        &--email {
+            @include tablet {
+                padding: none;
+            }
+        }
+    }
+
+    &__actions {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 1rem;
+
+        @include tablet {
+            flex-basis: 4rem;
+        }
+    }
+
+    &__button {
+        width: 1.5rem;
+
+        &--edit {
+            filter: invert(28%) sepia(95%) saturate(1626%) hue-rotate(211deg) brightness(94%) contrast(90%);
+        }
+    }
+}
