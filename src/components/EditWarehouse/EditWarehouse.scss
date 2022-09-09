@@ -85,6 +85,10 @@
             color: $Instock-Black;
             font-size: .8125rem;
         }
+        &:focus {
+            outline: none;
+            border:  1px solid $Instock-Indigo;
+        }
     }
     &__save-button {
         background-color: $Instock-Indigo;
@@ -97,6 +101,9 @@
         @include tablet {
             width:auto;
             padding: 0.5rem 1rem;
+        }
+        &:hover{
+            background-color: $Graphite;
         }
     }
     &__cancel-button {
@@ -112,6 +119,10 @@
             padding: 0.5rem 1rem;
             order: 1;
             margin-right: 1rem;
+        }
+        &:hover {
+            border: 1px solid $Instock-Indigo;
+            color: $Instock-Indigo;
         }
     }
 }

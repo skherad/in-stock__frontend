@@ -1,58 +1,62 @@
 import BackArrow from '../../assets/Icons/arrow_back-24px.svg';
+import Error from '../../assets/Icons/error-24px.svg'
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import './EditInventory.scss';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import inventoryData from '../../assets/JSON Data/inventories.json'
-import WarehouseData from '../../assets/JSON Data/warehouses.json';
-const EditWarehouse = () => {
 
-
+const EditInventory = () => {
 
     let navigate = useNavigate();
 
-    //TODO click will need to link to /:warehouseId coordinate with Michael
     const {inventoryId} = useParams();
 
-    //define state for selected warehouse to be edited
-    // const [selectedInventory, setSelectedInventory] = useState(); 
-    let  selectedInventory =   {
-        id: "9b4f79ea-0e6c-4e59-8e05-afd933d0b3d3",
-        warehouseID: "2922c286-16cd-4d43-ab98-c79f698aeab0",
-        warehouseName: "Manhattan",
-        itemName: "Television",
-        description: "This 50\", 4K LED TV provides a crystal-clear picture and vivid colors.",
-        category: "Electronics",
-        status: "In Stock",
-        quantity: 500
-      }
-
-    //get a unique list of categories from inventory data
-    //currently using JSON file but should use axios
-    let categoryArray = [];
-    inventoryData.forEach(inventory => categoryArray.push(inventory.category));
-    categoryArray = [...new Set(categoryArray)];
-
-    let warehouseArray = [];
-    WarehouseData.forEach(warehouse => warehouseArray.push(warehouse.name));
+    const [warehouses, setWarehouses] = useState();
+    const [categories, setCategories] = useState();
+    
+    //get a unique list of warehouses
+    useEffect(() => {
+        axios.get(`http://localhost:8080/warehouse`)
+        .then(response => {
+            let WarehouseData = response.data;
+            let warehouseArray = [];
+            WarehouseData.forEach(warehouse => warehouseArray.push(warehouse.name));
+            setWarehouses(warehouseArray)
+        })
+        .catch(error => console.log(error))
+    }, [])
+    
+    //get a unique list of inventory categories
+    useEffect(() => {
+        axios.get(`http://localhost:8080/inventory`)
+        .then(response => {
+            let inventoryData = response.data;
+            let categoryArray = [];
+            inventoryData.forEach(inventory => categoryArray.push(inventory.category));
+            categoryArray = [...new Set(categoryArray)];
+            setCategories(categoryArray)
+        })
+        .catch(error => console.log(error))
+    }, [])
 
     //define states for handling change of input values - to be used to set edited values
-    const [state, setState] = useState({
-        warehouseName: "Manhattan",
-        itemName: "Television",
-        description: "This 50\", 4K LED TV provides a crystal-clear picture and vivid colors.",
-        category: "Electronics",
-        status: "In Stock",
-    });
+    const [state, setState] = useState();
+    //set initial state of the inventory details
+    useEffect(() => {
+        axios.get(`http://localhost:8080/inventory/${inventoryId}`)
+        .then(response => 
+            setState({
+                warehouseName: response.data.warehouseName,
+                itemName: response.data.itemName,
+                description: response.data.description,
+                category: response.data.category,
+                status: response.data.status,    
+            }
+        ))
+        .catch(error => console.log(error))
+    }, [])
 
-    //get request to receive and set selected warehouse details
-    // useEffect(() => {
-    //     axios.get(`http://localhost:8080/inventory/${inventoryId}`)
-    //     .then(response => setSelectedInventory(response.data))
-    //     .catch(error => console.log(error))
-    // }, [inventoryId])
-
-    //change handler for warehoue details from user inputs
+    //change handler for inventory details from user inputs
     const handleChange = (event) => {
         const value = event.target.value;
         setState({
@@ -64,64 +68,73 @@ const EditWarehouse = () => {
 
     //click handler for cancel button
     const handleCancel = () => {
-        navigate('/inventoryDetails')
+        navigate(`/inventoryDetail/${inventoryId}`)
     }
 
-    //click handler for submitting the form
-    //put request to update the backend
+    //submit handler to update inventory information on backend
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(state)
-        // axios.put(`http://localhost:8080/inventory/${inventoryId}`, state)
-        // .then(response=>console.log(response))
-        // .catch(error=>console.log(error))
+        if(!state.itemName || !state.description) {
+            alert('no cool')
+            return;
+        } else {
+            // axios.put(`http://localhost:8080/inventory/${inventoryId}`, state)
+            // .then(response=>console.log(response))
+            // .catch(error=>console.log(error))
+            navigate(`/inventoryDetail/${inventoryId}`)
+        }
     }
-
-    if(!selectedInventory) { return <div>loading...</div>}
 
     return (
     <div className='parent-container'>
     <section className="inventory-form__container">
+        {/* page header */}
         <div className='inventory-form__header-container'>
             <Link 
-                to={`/inventoryDetails`}
+                to={`/inventoryDetail/${inventoryId}`}
                 className="inventory-form__icon"
             >
                 <img src={BackArrow} alt="arrow back"></img>
             </Link>
             <h1 className="inventory-form__header">Edit Inventory Item</h1>
         </div>
+        {/* form */}
         <form onSubmit={handleSubmit}>
             <div className='inventory-form__section-container'>
+                {/* item details section */}
                 <section className="inventory-form__section">
                     <h2 className="inventory-form__title">Item Details</h2>
 
-                    {/* warehouse name input field */}
+                    {/* item name input field */}
                     <label 
                         htmlFor="itemName"
                         className="inventory-form__label"
                     >Item Name</label>
                     <input 
                         name="itemName"
-                        className="inventory-form__input"
-                        placeholder={selectedInventory.itemName}
-                        value={state.itemName}
+                        className={!state?.itemName?"inventory-form__input inventory-form__input--invalid": "inventory-form__input"}
+                        placeholder={state?.itemName}
+                        value={state?.itemName}
                         onChange={handleChange}
                     ></input>
-
-                    {/* warehouse address input field */}
+                    <div className={!state?.itemName?"invalid": "valid"}>
+                       This field is required
+                    </div>
+                    {/* item description input field */}
                     <label 
                         htmlFor="description"
                         className="inventory-form__label"
-                    >Street Address</label>
+                    >Description</label>
                     <textarea 
                         name="description"
-                        className="inventory-form__textarea"
-                        placeholder={selectedInventory.description}
-                        value={state.description}
+                        className={!state?.description?"inventory-form__textarea inventory-form__textarea--invalid": "inventory-form__textarea"}
+                        placeholder={state?.description}
+                        value={state?.description}
                         onChange={handleChange}
                     ></textarea>
-
+                    <div className={!state?.description?"invalid": "valid"}>
+                       This field is required
+                    </div>
                     {/* item category drop down */}
                     <label 
                         htmlFor="category"
@@ -131,42 +144,45 @@ const EditWarehouse = () => {
                         className='inventory-form__drop-down'
                         onChange={handleChange}
                         name="category"
-                        value={state.category}
+                        value={state?.category}
                     >
-                        {categoryArray.map((category,i) => 
+                        {categories?.map((category,i) => 
                             <option value={category} key={i}>{category}</option>
                         )}
                     </select>                    
                 </section>
+
+                {/* item availablity section */}
                 <section className="inventory-form__section inventory-form__section--divider">
                     <h2 className="inventory-form__title">Item Availability</h2>
                     <p 
                         htmlFor="status"
                         className="inventory-form__label"
                     >Status</p>
-                    <div  className='button-container button-container--radio'>
-                        <label className="inventory-form__radio-label">
+
+                    {/* in/out of stock radio buttons */}
+                    <div  className='inventory-form__radio-container'>
                             <input 
                                 type="radio" 
                                 value="In Stock" 
                                 name='status' 
+                                id='inStock'
                                 className='inventory-form__radio'
-                                checked={state.status === "In Stock"}
+                                checked={state?.status === "In Stock"}
                                 onChange={handleChange}
                             /> 
-                            In Stock
-                        </label>
-                        <label className="inventory-form__radio-label">
+                           <label className="inventory-form__radio-label  inventory-form__radio-label--left" htmlFor='inStock'> In Stock</label>
+                
                             <input 
                                 type="radio" 
                                 value="Out of Stock" 
+                                id='Out of Stock'
                                 name='status' 
                                 className='inventory-form__radio'
-                                checked={state.status === "Out of Stock"}
+                                checked={state?.status === "Out of Stock"}
                                 onChange={handleChange}
                             />
-                            Out of Stock
-                        </label>
+                            <label className="inventory-form__radio-label">Out of Stock</label>
                     </div>
                     
                     {/* warehouse drop down */}
@@ -178,14 +194,15 @@ const EditWarehouse = () => {
                         className='inventory-form__drop-down'
                         onChange={handleChange}
                         name="warehouseName"
-                        value={state.warehouseName}
+                        value={state?.warehouseName}
                     >
-                        {warehouseArray.map((warehouse,i) => 
+                        {warehouses?.map((warehouse,i) => 
                             <option value={warehouse} key={i}>{warehouse}</option>
                         )}
                     </select>   
                 </section>
             </div>
+            {/* buttons */}
             <div  className='button-container'>
                 <button className="inventory-form__cancel-button" onClick={handleCancel}>Cancel</button>
                 <button className="inventory-form__save-button">Save</button>
@@ -196,4 +213,4 @@ const EditWarehouse = () => {
   )
 }
 
-export default EditWarehouse
+export default EditInventory

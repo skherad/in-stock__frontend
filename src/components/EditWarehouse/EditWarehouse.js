@@ -62,6 +62,7 @@ const EditWarehouse = () => {
     //put request to update the backend
     const handleSubmit = (event) => {
         event.preventDefault();
+        console.log(state)
         // axios.put(`http://localhost:8080/warehouse/${warehouseId}`, state)
         // .then(response=>console.log(response))
         // .catch(error=>console.log(error))
