@@ -93,4 +93,21 @@
             // border-radius: 2rem;
         }
     }
+    &__header-catagory{
+        display: none;
+        @include tablet {
+            display: flex;
+            justify-content: space-around;
+        }
+        
+    }
+    &__header-cat{
+        display: flex;
+    }
+    &__cat-i{
+        color: $Slate;
+    }
+    &__cat-pic{
+
+    }
 }

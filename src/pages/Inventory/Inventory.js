@@ -1,6 +1,7 @@
 import './Inventory.scss';
 //icons
 import Search from '../../assets/Icons/search-24px.svg';
+import Sort from '../../assets/Icons/sort-24px.svg'
 
 
 
@@ -21,8 +22,33 @@ function Inventory () {
             </div>
           </div>
         </div>
-        <section className='invientory__header-cat'>
-          <h3 className=''></h3>
+        <section className='invientory__header-catagory'>
+          <div className='invientory__header-cat'>
+            <h3 className='invientory__cat-i'>INVENTORY ITEM</h3>
+            <img className='invientory__cat-pic' src={Sort}></img>
+          </div>
+          <div className='invientory__header-cat'>
+            <h3 className='invientory__cat-i'>CATAGORY</h3>
+            <img className='invientory__cat-pic' src={Sort}></img>
+          </div>
+          <div className='invientory__header-cat'>
+            <h3 className='invientory__cat-i'>STATUS</h3>
+            <img className='invientory__cat-pic' src={Sort}></img>
+          </div>
+          <div className='invientory__header-cat'>
+            <h3 className='invientory__cat-i'>QTY</h3>
+            <img className='invientory__cat-pic' src={Sort}></img>
+          </div>
+          <div className='invientory__header-cat'>
+            <h3 className='invientory__cat-i'>WAREHOUSE</h3>
+            <img className='invientory__cat-pic' src={Sort}></img>
+          </div>
+          <div className='invientory__header-cat'>
+            <h3 className='invientory__cat-i'>ACTION</h3>
+          </div>
+        </section>
+        <section className='invientory__list'>
+      
         </section>
       </div>
     );
