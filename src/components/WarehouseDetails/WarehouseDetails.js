@@ -15,16 +15,6 @@ function WarehouseDetails() {
   const { warehouseId, inventoryId } = useParams();
   return (
     <>
-      {/* <div className="header">
-        <div className="header__Logo-cont">
-          <img className="header__InStock-logo" src={Logo} alt="Instock Logo" />
-        </div>
-        <div className="header__buttons">
-          <button className="header__warehouse-btn">Warehouses</button>
-          <button className="header__inventory-btn">Inventory</button>
-        </div>
-      </div> */}
-
       {/* Warehouse Name */}
       <div className="outer-background">
         <div className="box-shadow">

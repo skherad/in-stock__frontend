@@ -6,6 +6,7 @@ import EditWarehouse from "./components/EditWarehouse/EditWarehouse";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import WarehouseDetails from "./components/WarehouseDetails/WarehouseDetails";
+import InventoryItemDetails from "./components/InventoryItemDetails/InventoryItemDetails";
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
             element={<EditWarehouse />}
           />
         </Routes>
-        <WarehouseDetails />
+        <InventoryItemDetails />
         <Footer />
       </BrowserRouter>
     </>

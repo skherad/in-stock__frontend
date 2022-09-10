@@ -5,6 +5,8 @@
 .outer-background {
   background: $Light-grey;
   display: flex;
+  padding-bottom: 22%;
+  //   height: 69vh;
 }
 
 .box-shadow {
@@ -25,10 +27,9 @@
   }
 }
 
-.warehouse-details {
+.inventory-details {
   background: #fff;
   display: flex;
-
   padding: 2rem 1.5rem 1.5rem 1.5rem;
   justify-content: space-between;
 
@@ -71,85 +72,65 @@
       brightness(102%) contrast(104%);
   }
 
-  &__address-cont {
+  &__edit-btn-tab {
+    display: none;
+  }
+
+  //   INVENTORY ITEM STYLES
+
+  &__desc-cont {
     padding: 1rem 1.75rem 1.5rem 1.5rem;
     background: #fff;
   }
 
-  &__contact-cont {
-    margin-top: 30px;
+  &__top-flex {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
   }
 
-  &__item-invent-cont {
-    width: 50%;
+  &__bottom-flex {
+    display: flex;
+    flex-direction: column;
+    margin-left: 2.5rem;
   }
 
-  &__address-title,
-  &__contact-title,
-  &__contact-info-title,
-  &__invent-title,
-  &__category,
+  &__desc-title,
+  &__category-title,
   &__status,
-  &__QTY {
+  &__qty,
+  &__warehouse-title {
     font-size: 11px;
     color: $Slate;
     padding-bottom: 0.25rem;
   }
 
+  &__category-cont,
+  &__stat-qty,
+  &__warehouse {
+    margin-top: 1rem;
+  }
+
   &__QTY {
     margin-top: 30px;
   }
 
-  &__invent-title {
-    padding: 0;
-  }
-
-  &__status-title {
-    margin-bottom: 4px;
-  }
-
-  &__name-cont,
-  &__info-cont {
-    width: 50%;
-  }
-
-  &__address-loc,
-  &__contact-name,
-  &__contact-info {
+  &__desc-desc,
+  &__category-name,
+  &__warehouse,
+  &__QTY-num {
     font-size: 13px;
     color: $Instock-Black;
   }
 
-  &__arr-cont {
-    margin-bottom: -7px;
+  &__bottom-flex {
+    margin-left: 0;
   }
 
-  &__category-title {
-    margin-bottom: 4px;
-    margin-top: 30px;
-  }
-
-  &__invent-type {
-    color: $Instock-Indigo;
-    font-size: 13px;
-    font-weight: 600;
-  }
-
-  &__item-cont {
+  &__stat-qty {
     display: flex;
-    justify-content: space-between;
-    padding: 1rem 1.5rem;
-    background: #fff;
   }
-
-  &__prod-categ {
-    color: $Instock-Black;
-    font-size: 13px;
-  }
-
-  &__item-right-cont {
+  &__stat,
+  &__qty {
     width: 50%;
   }
 
@@ -159,6 +140,7 @@
     border-radius: 20px;
     padding: 0.25rem 0.5rem;
     font-weight: 600;
+    font-size: 13px;
 
     &--notinstock {
       background: rgba(201, 69, 21, 0.07);
@@ -166,35 +148,18 @@
       font-weight: 600;
       padding: 0.25rem 0.5rem;
       border-radius: 20px;
+      font-size: 13px;
     }
   }
 
   &__QTY-num {
-    font-size: 13px;
-  }
-  &__icons {
-    display: flex;
-    justify-content: space-between;
-    padding: 0 1.5rem;
-    background: #fff;
+    font-size: 14px;
   }
 
   &__edit-icon {
     // background: #2e66e6;
     filter: invert(31%) sepia(46%) saturate(5414%) hue-rotate(217deg)
       brightness(96%) contrast(87%);
-  }
-
-  &__edit-btn-tab {
-    display: none;
-  }
-
-  &__row-titles {
-    display: none;
-  }
-
-  &__icons-tab {
-    display: none;
   }
 
   //  ************* TABLET **********
@@ -213,51 +178,53 @@
       color: #fff;
     }
 
-    &__address-cont {
+    &__desc-cont {
       display: flex;
+
       padding-right: 2rem;
       padding-left: 2rem;
     }
-    &__address {
+    &__desc {
       display: flex;
       flex-direction: column;
       justify-content: center;
       // align-items: center;
-      width: 40%;
+      width: 100%;
+      margin-top: 1rem;
+    }
+
+    &__top-flex {
       border-right: 2px solid $Cloud;
+      padding-right: 2.5rem;
     }
 
-    &__contact-cont {
-      margin-top: 0;
-      display: flex;
-      width: 60%;
-      // align-items: flex-start;
-      margin-left: 2.5rem;
-    }
-
-    &__name-cont {
+    &__category-cont {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
       justify-content: center;
+      margin-top: 0;
+      width: 60%;
+      margin-top: 2rem;
     }
 
-    &__invent-title,
-    &__category-title,
-    &__status-title,
-    &__QTY-title {
-      display: none;
+    &__bottom-flex {
+      margin-left: 2.5rem;
+      width: 50%;
+    }
+
+    &__warehouse {
+      margin-top: 2rem;
     }
 
     // TABLET INVENTORY ITEMS
-    &__invent-type,
-    &__prod-cate {
-      width: 55%;
-    }
-
     &__status,
     &__QTY {
       width: 43%;
+    }
+
+    &__stat-qty {
+      display: flex;
     }
 
     &__instock {
@@ -266,53 +233,9 @@
         margin-left: -5px;
       }
     }
-    &__row-titles {
-      display: flex;
-      justify-content: space-between;
-      padding: 00.68rem 2rem;
-      background: rgba(247, 248, 249, 0.7);
-      color: $Slate;
-      font-size: 0.75rem;
-      font-weight: 600;
-    }
-
-    &__sort-invent-img,
-    &__sort-categ-img,
-    &__sort-status-img,
-    &__sort-qty-img,
-    &__sort-actions-img {
-      margin-bottom: -5px;
-    }
-
-    &__item-cont {
-      padding-left: 2rem;
-      background: #fff;
-    }
-
-    &__item-invent-cont {
-      display: flex;
-      width: 47%;
-    }
-
-    &__item-right-cont {
-      display: flex;
-      width: 51%;
-    }
 
     &__QTY {
       margin: 0;
-    }
-
-    &__icons-tab {
-      display: flex;
-    }
-
-    &__icons {
-      display: none;
-    }
-
-    &__delete-icon-cont {
-      margin-right: 1rem;
     }
   }
 }
@@ -320,17 +243,4 @@
 .hr-divider {
   background: $Cloud;
   height: 1.25px;
-  // margin: 0 1rem;
-
-  &__top {
-    background: $Cloud;
-    height: 1.25px;
-    // margin: 0 1rem;
-  }
-
-  @include tablet {
-    &__top {
-      display: none;
-    }
-  }
 }
