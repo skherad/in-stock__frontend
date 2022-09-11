@@ -1,0 +1,46 @@
+@use '../../styles/global.scss';
+@use '../../styles/partials/typography';
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/utilities';
+
+.deleteinventorymobile {
+    margin: 1rem; 
+    display: flex; 
+    flex-direction: column;
+    height: 100vh;
+    justify-content: space-between;
+    &__title {
+        font-size: 28px; 
+        font-weight: 600;
+        color: utilities.$Instock-Black;
+        margin-top: 4rem;
+    }
+    &__description {
+        font-size: 15px; 
+        font-weight: 400;
+        color: utilities.$Instock-Black;
+        margin-top: 1rem;
+    }
+    &__button {
+        display: flex;
+        justify-content: space-around;
+        &-cancel {
+            color:utilities.$Cloud;
+            border: 1px solid utilities.$Cloud;
+            background-color: utilities.$white;
+            border-radius: 20px; 
+            padding: 0.5rem;
+            width: 35vw;
+        }
+        &-delete {
+            color:utilities.$white;
+            background-color: utilities.$Red;
+            border-radius: 20px; 
+            padding: 0.5rem;
+            width: 35vw;
+        }
+
+    }
+
+
+}
