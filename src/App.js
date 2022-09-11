@@ -26,7 +26,7 @@ function App() {
             element={<EditWarehouse />}
           />
         </Routes>
-        <InventoryItemDetails />
+        <WarehouseDetails />
         <Footer />
       </BrowserRouter>
     </>
