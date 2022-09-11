@@ -1,0 +1,37 @@
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/utilities" as *;
+.item-box{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1.5rem 0;
+    border-bottom: 1px solid $Slate;
+    &__lg{
+        margin: .5rem;
+    }
+    &__in{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        margin: .5rem;
+    }
+    &__In-Stock{
+        color: $Green;
+    }
+    &__Out-of-Stock{
+        color: $Red;
+    }
+    &__title{
+        color: $Slate;
+        @include tablet{
+            display: none;
+        }
+    }
+    &__li{
+        display: flex;
+    }
+    &__data{}
+    &__ri{}
+    &__rg{}
+
+}

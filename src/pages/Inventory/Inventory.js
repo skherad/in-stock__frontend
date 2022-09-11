@@ -36,7 +36,9 @@ useEffect(() => {
 
 
     return (
+      //This is the main container
       <div className='container'>
+        {/* this is the container that will hold all content that gets displayed */}
         <div className='invientory'>
           <div className='invientory__head'>
             <h1 className='invientory__title'>Inventory</h1>
@@ -77,7 +79,17 @@ useEffect(() => {
           </section>
           <section className='invientory__list'>
             {currWarehouse.map((x)=>{
-              <ListedItem />
+              return(
+                <ListedItem
+                key = {x.id}
+                name = {x.itemName}
+                category = {x.category}
+                status = {x.status}
+                quantity = {x.quantity}
+                warehouseName = {x.warehouseName}
+                />
+              )
+              
             })}
           </section>
         </div>
