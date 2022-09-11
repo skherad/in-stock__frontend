@@ -13,7 +13,7 @@
     }
 }
 
-.delete-warehouse {
+.delete-modal {
     display: flex;
     flex-direction: column;
     position: fixed;
@@ -27,28 +27,55 @@
 
     @include tablet {
         position: fixed;
-        top: 50%;
+        top: 30%;
         left: 50%;
-        transform: translate(-50%, -50%);
-        
+        transform: translate(-50%, -30%);
+        width: 85%;
+        height: 15rem;
+        padding: 2rem 3.5rem;
+    }
+
+    @include desktop {
+        width: 55%;
+        height: 17rem;
+        padding: 3rem 4.5rem;
     }
     
     &__close {
         display: flex;
         margin-left: auto;
+        margin-bottom: 1rem;
+
+        @include tablet {
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+        }
     }
 
     &__title {
         margin-bottom: 1rem;
+
+        @include tablet {
+            font-size: 2rem;
+        }
     }
 
     &__buttons {
         display: flex;
         margin-top: auto;
+
+        @include tablet {
+            justify-content: flex-end;
+        }
     }
 
     &__button {
         flex-basis: 50%;
+
+        @include tablet {
+            flex-basis: 13%;
+        }
 
         &--cancel {
             background-color: $white;

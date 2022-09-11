@@ -18,7 +18,7 @@ function WarehouseList() {
         axios.get(API_URL+"/warehouse")
             .then((response) => setWarehouses(response.data))
             .catch((error) => console.log(error));
-    }, []);
+    }, [openDelete]);
 
     const handleAddNewWarehouse = () => {
         navigate("/addnewwarehouse");
