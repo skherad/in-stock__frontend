@@ -3,14 +3,14 @@
 @use "../../styles/partials/utilities" as *;
 
 
-.footer-main{
-    padding: 3rem 0;
-    background-color: $Light-grey;
+.footer-main {
+  padding: 3rem 0;
+  background-color: $Light-grey;
 
-    &__text{
-        text-align: center;
-        font-family: 'Titillium Web', sans-serif;
-        font-weight: 400;
-           color: $Slate;
-    }
+  &__text {
+    text-align: center;
+    font-family: "Titillium Web", sans-serif;
+    font-weight: 400;
+    color: $Slate;
+  }
 }

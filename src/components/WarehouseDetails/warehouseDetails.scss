@@ -1,5 +1,6 @@
 @use "../../styles/global.scss" as *;
 @use "../../styles/partials/utilities" as *;
+@use "../../styles/partials/mixins" as *;
 
 // .header {
 //   background: $Graphite;
@@ -42,16 +43,43 @@
 //   }
 // }
 
+// .header {
+// }
+
+.outer-background {
+  background: $Light-grey;
+  position: fixed;
+  width: 100%;
+}
+
+.box-shadow {
+  margin-top: -4.2rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  border-radius: 4px;
+  box-shadow: 0px 2px 5px 0px #13182c1a;
+  // position: absolute;
+
+  @include tablet {
+    margin-top: -6.3rem;
+  }
+
+  @include desktop {
+    margin-right: 8rem;
+    margin-left: 8rem;
+  }
+}
+
 .warehouse-details {
-  //   display: flex;
-  margin-top: -90px;
-  padding: 2rem;
-  margin: 0 1.5rem;
-  z-index: 1;
   background: #fff;
+  display: flex;
+
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  justify-content: space-between;
 
   &__header {
     display: flex;
+    width: 100%;
     justify-content: space-between;
   }
 
@@ -90,6 +118,7 @@
 
   &__address-cont {
     padding: 1rem 1.75rem 1.5rem 1.5rem;
+    background: #fff;
   }
 
   &__contact-cont {
@@ -108,13 +137,13 @@
   &__invent-title,
   &__category,
   &__status,
-  &__QTY-title {
+  &__QTY {
     font-size: 11px;
     color: $Slate;
     padding-bottom: 0.25rem;
   }
 
-  &__QTY-title {
+  &__QTY {
     margin-top: 30px;
   }
 
@@ -157,6 +186,7 @@
     display: flex;
     justify-content: space-between;
     padding: 1rem 1.5rem;
+    background: #fff;
   }
 
   &__prod-categ {
@@ -174,6 +204,14 @@
     border-radius: 20px;
     padding: 0.25rem 0.5rem;
     font-weight: 600;
+
+    &--notinstock {
+      background: rgba(201, 69, 21, 0.07);
+      color: $Red;
+      font-weight: 600;
+      padding: 0.25rem 0.5rem;
+      border-radius: 20px;
+    }
   }
 
   &__QTY-num {
@@ -183,6 +221,7 @@
     display: flex;
     justify-content: space-between;
     padding: 0 1.5rem;
+    background: #fff;
   }
 
   &__edit-icon {
@@ -190,9 +229,153 @@
     filter: invert(31%) sepia(46%) saturate(5414%) hue-rotate(217deg)
       brightness(96%) contrast(87%);
   }
+
+  &__edit-btn-tab {
+    display: none;
+  }
+
+  &__row-titles {
+    display: none;
+  }
+
+  &__icons-tab {
+    display: none;
+  }
+
+  //  ************* TABLET **********
+
+  @include tablet {
+    &__edit-btn {
+      display: flex;
+      justify-content: space-evenly;
+      width: 5rem;
+      height: 2.37rem;
+      padding: 0.5rem 1rem 0.5rem 1rem;
+      border-radius: 20px;
+    }
+    &__edit-btn-tab {
+      display: inline-block;
+      color: #fff;
+    }
+
+    &__address-cont {
+      display: flex;
+      padding-right: 2rem;
+      padding-left: 2rem;
+    }
+    &__address {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      // align-items: center;
+      width: 40%;
+      border-right: 2px solid $Cloud;
+    }
+
+    &__contact-cont {
+      margin-top: 0;
+      display: flex;
+      width: 60%;
+      // align-items: flex-start;
+      margin-left: 2.5rem;
+    }
+
+    &__name-cont {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+    }
+
+    &__invent-title,
+    &__category-title,
+    &__status-title,
+    &__QTY-title {
+      display: none;
+    }
+
+    // TABLET INVENTORY ITEMS
+    &__invent-type,
+    &__prod-cate {
+      width: 55%;
+    }
+
+    &__status,
+    &__QTY {
+      width: 43%;
+    }
+
+    &__instock {
+      margin-left: -5px;
+      &--notinstock {
+        margin-left: -5px;
+      }
+    }
+    &__row-titles {
+      display: flex;
+      justify-content: space-between;
+      padding: 00.68rem 2rem;
+      background: rgba(247, 248, 249, 0.7);
+      color: $Slate;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    &__sort-invent-img,
+    &__sort-categ-img,
+    &__sort-status-img,
+    &__sort-qty-img,
+    &__sort-actions-img {
+      margin-bottom: -5px;
+    }
+
+    &__item-cont {
+      padding-left: 2rem;
+      background: #fff;
+    }
+
+    &__item-invent-cont {
+      display: flex;
+      width: 47%;
+    }
+
+    &__item-right-cont {
+      display: flex;
+      width: 51%;
+    }
+
+    &__QTY {
+      margin: 0;
+    }
+
+    &__icons-tab {
+      display: flex;
+    }
+
+    &__icons {
+      display: none;
+    }
+
+    &__delete-icon-cont {
+      margin-right: 1rem;
+    }
+  }
 }
 
-.hr__divider {
+.hr-divider {
   background: $Cloud;
   height: 1.25px;
+  // margin: 0 1rem;
+
+  &__top {
+    background: $Cloud;
+    height: 1.25px;
+    // margin: 0 1rem;
+  }
+
+  @include tablet {
+    &__top {
+      display: none;
+    }
+  }
 }
