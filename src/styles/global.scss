@@ -42,7 +42,6 @@ body {
 
 .button {
   @extend %field-button;
-  font-weight: 600;
   cursor: pointer;
 }
 
