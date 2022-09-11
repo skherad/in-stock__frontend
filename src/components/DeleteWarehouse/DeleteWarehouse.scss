@@ -1,0 +1,76 @@
+@use "../../styles/partials/utilities" as *;
+@use "../../styles/partials/mixins" as *;
+
+.modal-overlay {
+    @include tablet {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.6);
+        z-index: 100;
+    }
+}
+
+.delete-warehouse {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: $white;
+    z-index: 100;
+    padding: 1rem;
+
+    @include tablet {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        
+    }
+    
+    &__close {
+        display: flex;
+        margin-left: auto;
+    }
+
+    &__title {
+        margin-bottom: 1rem;
+    }
+
+    &__buttons {
+        display: flex;
+        margin-top: auto;
+    }
+
+    &__button {
+        flex-basis: 50%;
+
+        &--cancel {
+            background-color: $white;
+            color: $Slate;
+            border: 1px solid $Cloud;
+            margin-right: 1rem;
+
+            &:hover {
+                color: $Instock-Indigo;
+                border: 1px solid $Instock-Indigo;
+            }
+        }
+
+        &--delete {
+            background-color: $Red;
+            color: $white;
+            border: none;
+
+            &:hover {
+                background-color: $Graphite;
+            }
+        }
+    }
+}
+

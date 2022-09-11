@@ -42,14 +42,8 @@ body {
 
 .button {
   @extend %field-button;
-  background-color: $Instock-Indigo;
-  color: $white;
-  border: none;
+  font-weight: 600;
   cursor: pointer;
-
-  &:hover {
-    background-color: $Graphite;
-  }
 }
 
 Link,
