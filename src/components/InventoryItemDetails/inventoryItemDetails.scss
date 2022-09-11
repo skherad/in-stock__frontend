@@ -49,7 +49,7 @@
   }
 
   &__loc-header {
-    font-size: 28px;
+    font-size: 1.75rem;
   }
 
   &__edit-btn-cont {
@@ -63,8 +63,8 @@
     justify-content: center;
     background: $Instock-Indigo;
     border-radius: 50%;
-    width: 30px;
-    height: 30px;
+    width: 1.87rem;
+    height: 1.87rem;
   }
 
   &__edit-btn-img {
@@ -99,9 +99,10 @@
   &__status,
   &__qty,
   &__warehouse-title {
-    font-size: 11px;
+    font-size: 0.68rem;
     color: $Slate;
     padding-bottom: 0.25rem;
+    font-weight: 600;
   }
 
   &__category-cont,
@@ -111,14 +112,14 @@
   }
 
   &__QTY {
-    margin-top: 30px;
+    margin-top: 1.875rem;
   }
 
   &__desc-desc,
   &__category-name,
   &__warehouse,
   &__QTY-num {
-    font-size: 13px;
+    font-size: 0.8125rem;
     color: $Instock-Black;
   }
 
@@ -140,7 +141,7 @@
     border-radius: 20px;
     padding: 0.25rem 0.5rem;
     font-weight: 600;
-    font-size: 13px;
+    font-size: 0.81rem;
 
     &--notinstock {
       background: rgba(201, 69, 21, 0.07);
@@ -148,12 +149,12 @@
       font-weight: 600;
       padding: 0.25rem 0.5rem;
       border-radius: 20px;
-      font-size: 13px;
+      font-size: 0.81rem;
     }
   }
 
   &__QTY-num {
-    font-size: 14px;
+    font-size: 0.8125rem;
   }
 
   &__edit-icon {
@@ -180,7 +181,6 @@
 
     &__desc-cont {
       display: flex;
-
       padding-right: 2rem;
       padding-left: 2rem;
     }
@@ -191,6 +191,22 @@
       // align-items: center;
       width: 100%;
       margin-top: 1rem;
+    }
+
+    &__desc-title,
+    &__category-title,
+    &__status,
+    &__qty,
+    &__warehouse-title {
+      font-size: 0.75rem;
+    }
+
+    &__desc-desc,
+    &__category-name,
+    &__warehouse,
+    &__QTY-num {
+      font-size: 0.875rem;
+      color: $Instock-Black;
     }
 
     &__top-flex {
@@ -228,9 +244,9 @@
     }
 
     &__instock {
-      margin-left: -5px;
+      margin-left: -0.31rem;
       &--notinstock {
-        margin-left: -5px;
+        margin-left: -0.31rem;
       }
     }
 

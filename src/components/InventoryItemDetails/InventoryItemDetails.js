@@ -88,10 +88,11 @@ function InventoryItemDetails() {
               </div>
               <div className="inventory-details__warehouse">
                 <h4 className="inventory-details__warehouse-title">
-                  WAREHOUSES
+                  WAREHOUSE:
                 </h4>
-                <div className="inventory-details__warehouse-loc"></div>
-                {warehouses[0].name}
+                <div className="inventory-details__warehouse-loc">
+                  {warehouses[0].name}
+                </div>
               </div>
             </div>
           </div>
