@@ -1,5 +1,6 @@
 @use '../../styles/partials/mixins' as *;
 @use '../../styles/partials/utilities' as *;
+@use '../../styles/partials/typography' as *;
 
 .parent-container {
     padding: 1rem;
@@ -7,13 +8,13 @@
     display: flex;
     justify-content: center;
     @include tablet {
-        padding: 1rem 2rem;
+        padding: 1rem 2rem 12rem 2rem;
     }
     @include desktop {
-        padding: 1rem 8.125rem;
+        padding: 1rem 8.125rem 7rem 8.125rem;
     }
 }
-.form {
+.inventory-form {
     &__container {
        background-color: $white; 
        border-radius: 3px;
@@ -74,6 +75,7 @@
         line-height: 1.75rem;
         font-weight: 600;
     }
+
     &__input {
         width: 100%;
         border-radius: 20px;
@@ -92,6 +94,56 @@
         &--invalid {
             border: 1px solid $Red;
             margin-bottom: 0;
+        }
+    }
+    &__textarea {
+        resize: none;
+        width: 100%;
+        height: 7.5rem;
+        border-radius: 20px;
+        padding: 0.5rem 1rem;
+        border: 1px solid $Cloud;
+        margin-bottom: 1rem;
+        font-family: 'Titillium Web';
+
+        &::placeholder {
+            color: $Instock-Black;
+            font-size: .8125rem;
+        }   
+        &--invalid {
+            border: 1px solid $Red;
+            margin-bottom: 0;
+        }
+    }
+    &__drop-down {
+        width: 100%;
+        border-radius: 20px;
+        padding: 0.5rem 1rem;
+        border: 1px solid $Cloud;
+        margin-bottom: 1rem;
+        appearance: none;
+        background-image: url('../../assets/Icons/arrow_drop_down-24px.svg');
+        background-repeat: no-repeat;
+        background-position: 95%;
+        &:focus {
+            outline: none;
+            border:  1px solid $Instock-Indigo;
+        }
+    }
+    &__radio-container {
+        margin-bottom: 1rem;
+    }
+    &__radio {
+        color: $Instock-Black;
+        font-size: .8125rem;
+        margin-right: 0.5rem;
+    }
+    &__radio-label {
+        font-size: .8125rem;
+        line-height: 1.75rem;
+        color: $Slate;
+        &--left {
+            padding-right: 5rem;
         }
     }
     &__save-button {
@@ -140,4 +192,22 @@
         flex-direction: row-reverse;
         justify-content: flex-start;
     }
+}
+
+.inventory-form__radio-container input[type="radio"]:checked+label{
+    color:$Instock-Black;
+}
+.valid {
+    display: none;
+}
+.invalid {
+    display:block;
+    color: $Red;
+    font-size: .75rem;
+    padding-left: 2rem;
+    margin-top: 0.5rem;
+    background-image: url('../../assets/Icons/error-24px.svg');
+    background-repeat: no-repeat;
+    background-position: 1%;
+    background-size: contain;
 }

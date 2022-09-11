@@ -1,8 +1,13 @@
-import "./Warehouse.scss";
-import { Link } from 'react-router-dom';
+import './Warehouse.scss';
+import WarehouseList from '../../components/WarehouseList/WarehouseList';
 
-function Warehouse() {
-  return <></>;
-}
+function Warehouse () {
+    return (
+      <>
+        <WarehouseList />
+      </>
+    );
+  }
+  
+  export default Warehouse;
 
-export default Warehouse;
