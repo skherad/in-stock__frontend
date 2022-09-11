@@ -8,6 +8,9 @@
     justify-content: center;
     background-color: $white;
     margin-bottom: 3rem;
+    @include tablet {
+        margin-bottom: 10rem;
+    }
 }
 
 .invientory{
@@ -17,10 +20,11 @@
     align-self: center;
     width: 90%;
     margin: -5.25rem;
+    border-radius: .25rem;
     // background-color: $Light-grey;
     background-color:$white;
     @include tablet{
-        margin: -7.25rem;
+        margin: -5.25rem;
 
     }
     
@@ -63,7 +67,7 @@
         width: 100%;
 
         @include tablet{
-            // margin: 0 3rem;
+            margin: 0 .5rem 0 0;
             // width: 40%;
         }
     }
