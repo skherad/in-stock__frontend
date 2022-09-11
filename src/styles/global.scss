@@ -2,7 +2,7 @@
 @use "./partials/utilities" as *;
 @use "./partials/mixins" as *;
 
-* {
+*, *::before, *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -12,7 +12,48 @@ body {
   font-family: "Titillium Web", sans-serif;
 }
 
+
+%field-button {
+  height: 2.25rem;
+  border-radius: 1.25rem;
+
+  @include tablet {
+    height: 2.375rem;
+  }
+}
+
+.form-field {
+  @extend %field-button;
+  border: 1px solid $Cloud;
+  padding: 1rem;
+
+  &::placeholder {
+    color: $Slate;
+}
+
+  &:focus {
+    outline: 2px solid $Instock-Indigo;
+  }
+
+  &--error {
+    outline: 2px solid $Red;
+  }
+}
+
+.button {
+  @extend %field-button;
+  background-color: $Instock-Indigo;
+  color: $white;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $Graphite;
+  }
+}
+
 Link,
 a {
   text-decoration: none;
 }
+

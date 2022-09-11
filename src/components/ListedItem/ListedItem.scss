@@ -1,0 +1,97 @@
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/utilities" as *;
+.item-box{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 1.5rem 0;
+    border-bottom: 1px solid $Slate;
+    @include tablet {
+        flex-wrap: nowrap;
+    }
+    &__lg{
+        display: flex;
+        flex-direction: column;
+        // margin: .5rem;
+        width: 50%;
+        @include tablet {
+            flex-direction: row;
+            width: 40%;
+            
+        }
+    }
+    &__in{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        margin: .5rem;
+    }
+    &__In-Stock{
+        flex-wrap: nowrap;
+        color: $Green;
+    }
+    &__Out-of-Stock{
+        color: $Red;
+    }
+    &__title{
+        color: $Slate;
+        @include tablet{
+            display: none;
+        }
+    }
+    &__li{
+        display: flex;
+        @include tablet {
+            margin-left: 3rem;
+        }
+    }
+    &__i-name{
+        width: 100%;
+        color: $Instock-Indigo;
+    }
+    &__c-cat{
+        @include tablet {
+            margin-left: 2rem;
+        }
+    }
+    &__ri{}
+    &__input{
+    }
+    &__rg{
+        // margin: .5rem;
+        width: 50%;
+        @include tablet {
+            display: flex;
+            flex-direction: row;
+            width: 50%;
+        }
+    }
+    &__icg{
+        display: flex;
+        width: 100%;
+        margin-bottom: 1.5rem;
+        width: 100%;
+        @include tablet {
+            justify-content: space-between;
+            margin: .5rem .5rem .5rem 0;
+            align-items: center;
+            width: 10%;
+        }
+    }
+    &__tcon{
+        height: 1.125rem;
+        margin-left: 1rem;
+    }
+    &__econ{
+        height: 1.125rem;
+        margin-left: 13rem;
+        fill: $Instock-Indigo;
+        @include tablet {
+            margin-left: 0rem;
+        }
+    }
+    &__link{
+        text-decoration: none;
+    }
+}
