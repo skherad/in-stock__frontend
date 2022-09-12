@@ -15,7 +15,13 @@ const EditInventory = () => {
     const [warehouses, setWarehouses] = useState();
     const [categories, setCategories] = useState();
     //define states for handling change of input values - to be used to set edited values
-    const [state, setState] = useState();
+    const [state, setState] = useState({
+        warehouseName: "",
+        itemName: "",
+        description: "",
+        category: "",
+        status: "",    
+    });
 
     //get a unique list of warehouses
     useEffect(() => {
@@ -79,7 +85,7 @@ const EditInventory = () => {
             axios.put(`${API_URL}/inventory/${inventoryId}`, state)
             .then(response=>console.log(response))
             .catch(error=>console.log(error))
-            navigate(`/inventoryDetail/${inventoryId}`)
+            // navigate(`/inventoryDetail/${inventoryId}`)
         }
     }
 
@@ -171,8 +177,8 @@ const EditInventory = () => {
             </div>
             {/* buttons */}
             <div  className='button-container'>
-                <button className="inventory-form__cancel-button" onClick={handleCancel}>Cancel</button>
-                <button className="inventory-form__save-button">Save</button>
+                <button type="reset" className="inventory-form__cancel-button" onClick={handleCancel}>Cancel</button>
+                <button type="submit" className="inventory-form__save-button">Save</button>
             </div>
         </form>
     </section>

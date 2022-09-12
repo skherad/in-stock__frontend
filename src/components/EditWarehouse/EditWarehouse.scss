@@ -89,6 +89,10 @@
             outline: none;
             border:  1px solid $Instock-Indigo;
         }
+        &--invalid {
+            border: 1px solid $Red;
+            margin-bottom: 0;
+        }
     }
     &__save-button {
         background-color: $Instock-Indigo;
