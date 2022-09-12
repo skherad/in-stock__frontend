@@ -58,7 +58,7 @@ useEffect(() => {
               <img className='invientory__cat-pic' src={Sort}></img>
             </div>
             <div className='invientory__header-cat'>
-              <h3 className='invientory__cat-i'>CATAGORY</h3>
+              <h3 className='invientory__cat-i'>CATEGORY</h3>
               <img className='invientory__cat-pic' src={Sort}></img>
             </div>
             <div className='invientory__header-cat'>

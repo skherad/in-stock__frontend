@@ -1,0 +1,52 @@
+@use "../../styles/partials/utilities" as *;
+@use "../../styles/partials/mixins" as *;
+
+.add-container {
+    padding: 1rem;
+    background-color: $Light-grey;
+    display: flex;
+    justify-content: center;
+
+    @include tablet {
+        padding: 1rem 2rem;
+    }
+
+    @include desktop {
+        padding: 1rem 8.125rem;
+    }
+}
+
+.add-inventory {
+    background-color: $white; 
+    border-radius: 3px;
+    box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
+    width: 100%;
+    margin-top: -5rem;
+
+    @include tablet {
+         margin-top: -7.25rem;
+    }
+}
+
+.add-header {
+    display: flex;
+    padding: 1.5rem 1rem;
+
+    &__back {
+        margin-right: 1rem;
+    }
+
+    &__title {
+        font-size: 1.5rem;
+    }
+}
+
+.add-form {
+    &__label {
+        display: block;
+    }
+
+    &__input {
+        display: block;
+    }
+}
