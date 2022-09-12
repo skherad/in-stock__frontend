@@ -53,6 +53,7 @@ function ListedItem ({key, name, category, status, quantity, warehouseName}) {
             </div>
             <div className='item-box__icg'>
             <input className="item-box__dcon" type="image" src={Trash} alt="delete" onClick={() => handleDelete(key)} />
+            
             <input className="item-box__econ" type="image" src={Edit} alt="edit" onClick={() => handleEdit(key)} />  
             </div>    
         </div>
