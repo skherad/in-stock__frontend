@@ -164,7 +164,6 @@ function WarehouseDetails() {
           {/* Each Item to iterate through */}
 
           {inventories.map((item) => {
-            console.log(item.id);
             return (
               <>
                 <div key={item.id} className="warehouse-details__item-cont">
@@ -175,7 +174,10 @@ function WarehouseDetails() {
                     </div>
 
                     <div className="warehouse-details__invent-type">
-                      <Link to={`/inventoryDetail/${warehouseId}/${item.id}`}>
+                      <Link
+                        className="warehouse-details__invent-type-Link"
+                        to={`/inventoryDetail/${warehouseId}/${item.id}`}
+                      >
                         {item.itemName}
                       </Link>
                       <Link to={`/inventoryDetail/${warehouseId}/${item.id}`}>

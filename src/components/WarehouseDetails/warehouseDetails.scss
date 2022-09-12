@@ -142,6 +142,9 @@
     justify-content: space-between;
     padding: 1rem 1.5rem;
     background: #fff;
+    :hover {
+      background: $Light-grey;
+    }
   }
 
   &__prod-categ {
@@ -210,10 +213,26 @@
       height: 2.37rem;
       padding: 0.5rem 1rem 0.5rem 1rem;
       border-radius: 20px;
+
+      &:hover {
+        background: $Graphite;
+      }
     }
+
+    &__invent-type-Link {
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
     &__edit-btn-tab {
       display: inline-block;
       color: #fff;
+
+      // :hover,
+      // :focus {
+      //   background: $Instock-Indigo;
+      // }
     }
 
     &__address-cont {
