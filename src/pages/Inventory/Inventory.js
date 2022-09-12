@@ -1,3 +1,4 @@
+
 import "./Inventory.scss";
 //icons
 import Search from "../../assets/Icons/search-24px.svg";
