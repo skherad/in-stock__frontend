@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { useState } from "react";
 
 import Warehouse from "./pages/Warehouse/Warehouse";
 import Inventory from "./pages/Inventory/Inventory";
@@ -12,6 +13,8 @@ import InventoryItemDetails from "./components/InventoryItemDetails/InventoryIte
 import AddNewInventory from "./components/AddNewInventory/AddNewInventory";
 
 function App() {
+  const [openModal, setOpenModal] = useState();
+
   return (
     <>
       <BrowserRouter>
@@ -20,15 +23,29 @@ function App() {
           {/* // warehouse routes */}
           <Route path="/" element={<Navigate to="/warehouse" />} />
           <Route path="/warehouse" element={<Warehouse />} />
-          <Route path="/warehouse/:warehouseId" element={<WarehouseDetails />} />
+          <Route
+            path="/warehouse/:warehouseId"
+            element={<WarehouseDetails />}
+          />
           <Route path="/addNewWarehouse" element={<AddNewWarehouse />} />
-          <Route path="/editWarehouse/:warehouseId" element={<EditWarehouse />} />
+          <Route
+            path="/editWarehouse/:warehouseId"
+            element={<EditWarehouse />}
+          />
           {/* inventory routes */}
           <Route path="/inventory" element={<Inventory />} />
-          <Route path="/inventoryDetail/:warehouseId/:inventoryId" element={<InventoryItemDetails />} />
+
+          <Route
+            path="/inventoryDetail/:warehouseId/:inventoryId"
+            element={<InventoryItemDetails />}
+          />
           <Route path="/addNewInventory" element={<AddNewInventory />} />
-          <Route path="/editInventory/:inventoryId" element={<EditInventory />} />
+          <Route
+            path="/editInventory/:inventoryId"
+            element={<EditInventory />}
+          />
         </Routes>
+
         <Footer />
       </BrowserRouter>
     </>

@@ -1,12 +1,10 @@
 import rightArrow from "../../assets/Icons/chevron_right-24px.svg";
 
-// import inventories from "../../assets/data/inventories.json";
-// import warehouses from "../../assets/data/warehouses.json";
 import { useParams, Link } from "react-router-dom";
 import EditWarehouse from "../EditWarehouse/EditWarehouse";
 import edit from "../../assets/Icons/edit-24px.svg";
 import arrowBack from "../../assets/Icons/arrow_back-24px.svg";
-import "./InventoryItemDetails.scss";
+import "./inventoryItemDetails.scss";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
