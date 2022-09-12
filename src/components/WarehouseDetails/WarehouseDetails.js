@@ -1,4 +1,4 @@
-import "./WarehouseDetails.scss";
+import "./warehouseDetails.scss";
 
 import edit from "../../assets/Icons/edit-24px.svg";
 import arrowBack from "../../assets/Icons/arrow_back-24px.svg";
@@ -13,13 +13,20 @@ import EditWarehouse from "../EditWarehouse/EditWarehouse";
 import axios from "axios";
 import EditInventory from "../EditInventory/EditInventory";
 import inventoryModal from "../InventoryModal/InventoryModal";
+import deleteModal from "../InventoryModal/InventoryModal";
 
 const API_URL = process.env.REACT_APP_API_URL || "http://localhost:8080";
 function WarehouseDetails() {
   const { warehouseId, inventoryId } = useParams();
   const [inventories, setInventories] = useState([]);
   const [warehouse, setWarehouse] = useState([]);
-  const [openModal, setOpenModal] = useState(false);
+
+  const [isOpen, setIsOpen] = useState(false);
+  const [deleteWarehouseItem, setDeleteWarehouseItem] = useState();
+
+  const modalHandler = () => {
+    setIsOpen(true);
+  };
 
   useEffect(() => {
     axios
@@ -215,7 +222,7 @@ function WarehouseDetails() {
                     </div>
                     <div className="warehouse-details__icons-tab">
                       <div
-                        // onClick={() => setOpenModal(true)}
+                        onClick={() => modalHandler(true)}
                         className="warehouse-details__delete-icon-cont"
                       >
                         <img src={deleteIcon} alt="delete item" />
