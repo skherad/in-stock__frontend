@@ -1,5 +1,6 @@
-import React from 'react'
+import React from 'react';
 import { useState } from 'react';
+import ReactDom from 'react-dom';
 
 function InventoryModal ({props}) {
 const[isOpen, setIsOpen] =useState (false);
@@ -13,15 +14,19 @@ deleteItem = (inventoryId) => {
         console.error(err);
       });
   };
-    return (
-    <div className="modal__overlay-style">
+    return ReactDom.createPortal(
+      <>
+    <div className="modal__overlay-style"> </div>
     <section className="modal">
         <div className="modal__title"> Delete {props.itemName} inventory item?</div>
-        <p className="modal__description">please confirm that you'd like to delete {props.itemName} from the inventory list. <br> You won't be able to undo this action</br></p>
+        <p className="modal__description">Please confirm that you'd like to delete {props.itemName} from the inventory list. <br> You won't be able to undo this action.</br></p>
+        <div className="modal__button">
         <button className="modal__button-cancel" onClick={() =>setIsOpen(false)}>Cancel</button>
         <button className="modal__button-delete" onClick={() =>setIsOpen(true)}>Delete</button>
+        </div>
     </section>
-    </div>
+    </>,
+    document.getElementById('portal')
     )
 }
 

@@ -1,0 +1,49 @@
+@use '../../styles/partials/utilities';
+@use '../../styles/partials/typography';
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/utilities';
+
+.modal {
+    margin: 1rem 2rem;
+    &__overlay-style {
+        background-color: rgba(0,0,0, 0.7);
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1000;
+    }
+    &__title {
+        font-size: 32px; 
+        font-weight: 600;
+        color: utilities.$Instock-Black;
+    }
+    &__description {
+        font-size: 16px; 
+        line-height: 28px;
+        font-weight: 400;
+        color: utilities.$Instock-Black;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+    &__button {
+        display: flex;
+        justify-content: flex-end;
+        &-cancel {
+            color:utilities.$Cloud;
+            border: 1px solid utilities.$Cloud;
+            background-color: utilities.$white;
+            border-radius: 20px; 
+            padding: 0.5rem;
+        }
+        &-delete {
+            color:utilities.$white;
+            background-color: utilities.$Red;
+            border-radius: 20px; 
+            padding: 0.5rem;
+        }
+
+    }
+    
+}
