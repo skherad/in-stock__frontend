@@ -1,4 +1,4 @@
-import "./warehouseDetails.scss";
+import "./WarehouseDetails.scss";
 
 import edit from "../../assets/Icons/edit-24px.svg";
 import arrowBack from "../../assets/Icons/arrow_back-24px.svg";
