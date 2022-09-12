@@ -1,10 +1,7 @@
 import './Inventory.scss';
-//icons
-import Search from '../../assets/Icons/search-24px.svg';
-import Sort from '../../assets/Icons/sort-24px.svg'
-import Invin from '../../assets/data/inventories.json'
 import ListedItem from '../../components/ListedItem/ListedItem';
-
+import Search from '../../assets/Icons/search-24px.svg'
+import Sort from '../../assets/Icons/sort-24px.svg'
 import { useState, useEffect } from "react"
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -14,13 +11,14 @@ const API_URL = process.env.REACT_APP_API_URL || "http://localhost:8080";
 function Inventory () {
   //state that will hold data that needs to be displayed
   const [currWarehouse, setCurrWarehouse] = useState([])
-  console.log( currWarehouse)
+
   //Links component to pull inventory data from backend
   useEffect(() => {
     axios.get(API_URL+"/inventory")
         .then((response) => getData(response.data))
         .catch((error) => console.log(error));
 }, []);
+
   // filters data pulled from above that matches a specific Warehouse Id
   function getData(array){
     const find = array.filter(x=> x.warehouseID==="2922c286-16cd-4d43-ab98-c79f698aeab0")
@@ -87,7 +85,6 @@ function Inventory () {
                 warehouseName = {x.warehouseName}
                 />
               )
-              
             })}
           </section>
         </div>

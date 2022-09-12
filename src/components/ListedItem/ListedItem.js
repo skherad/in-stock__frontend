@@ -2,6 +2,7 @@ import './ListedItem.scss'
 import lii from "../../assets/Icons/chevron_right-24px.svg"
 import Trash from '../../assets/Icons/delete_outline-24px.svg'
 import Edit from '../../assets/Icons/edit-24px.svg'
+import deleteModal from '../InventoryModal/InventoryModal'
 import {Link, useNavigate } from 'react-router-dom';
 import {useState } from 'react';
 
@@ -52,9 +53,9 @@ function ListedItem ({key, name, category, status, quantity, warehouseName}) {
                 </div>
             </div>
             <div className='item-box__icg'>
-            <input className="item-box__dcon" type="image" src={Trash} alt="delete" onClick={() => handleDelete(key)} />
-            
-            <input className="item-box__econ" type="image" src={Edit} alt="edit" onClick={() => handleEdit(key)} />  
+                <input className="item-box__dcon" type="image" src={Trash} alt="delete" onClick={() => setIsOpen(true)} />
+                <deleteModal openModal={isOpen} closeModal={()=>setIsOpen(false)}> </deleteModal>
+                <input className="item-box__econ" type="image" src={Edit} alt="edit" onClick={() => handleEdit(key)} />  
             </div>    
         </div>
     )

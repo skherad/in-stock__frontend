@@ -66,6 +66,13 @@
         display: block;
         padding: 0 0.5rem;
         width: 100%;
+        background-color: $Instock-Indigo;
+        color: $white;
+        border: none;
+
+        &:hover {
+            background-color: $Graphite;
+          }
 
         @include tablet {
             width: 11rem;
