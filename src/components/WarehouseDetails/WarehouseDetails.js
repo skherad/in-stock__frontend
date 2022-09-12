@@ -12,12 +12,14 @@ import sortImg from "../../assets/Icons/sort-24px.svg";
 import EditWarehouse from "../EditWarehouse/EditWarehouse";
 import axios from "axios";
 import EditInventory from "../EditInventory/EditInventory";
+import inventoryModal from "../InventoryModal/InventoryModal";
 
 const API_URL = process.env.REACT_APP_API_URL || "http://localhost:8080";
 function WarehouseDetails() {
   const { warehouseId, inventoryId } = useParams();
   const [inventories, setInventories] = useState([]);
   const [warehouse, setWarehouse] = useState([]);
+  const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
     axios
@@ -212,12 +214,15 @@ function WarehouseDetails() {
                       </div>
                     </div>
                     <div className="warehouse-details__icons-tab">
-                      <div className="warehouse-details__delete-icon-cont">
+                      <div
+                        // onClick={() => setOpenModal(true)}
+                        className="warehouse-details__delete-icon-cont"
+                      >
                         <img src={deleteIcon} alt="delete item" />
                       </div>
                       <div className="warehouse-details__edit-icon-cont">
                         <Link
-                          to={`/editInventory/${warehouseId}`}
+                          to={`/editInventory/${item.id}`}
                           element={EditInventory}
                         >
                           <img
