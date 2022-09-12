@@ -1,5 +1,6 @@
 @use "../../styles/partials/utilities" as *;
 @use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
 
 .add-container {
     padding: 1rem;
@@ -44,9 +45,71 @@
 .add-form {
     &__label {
         display: block;
+        margin-top: 1rem;
+        font-size: 0.8rem;
+        font-weight: 600;
     }
 
     &__input {
         display: block;
+        margin-top: 0.4rem;
+        width: 100%;
+
+        &--textarea {
+            font-family: 'Titillium Web', sans-serif;
+            resize: none;
+            height: 5rem;
+        }
+    }
+
+    &__radios {
+        display: flex;
+    }
+
+    &__radio-label {
+        margin: 0;
+        flex-basis: 50%;
+        font-weight: 400;
+    }
+
+    &__radio {
+        margin-right: 0.5rem;
+    }
+
+    &__subform {
+        border-top: 1px solid $Cloud;
+        padding: 1rem 1rem 1.5rem;
+    }
+
+    &__buttons {
+        display: flex;
+        background-color: $Light-grey;
+        padding: 1rem;
+    }
+
+    &__button {
+        flex-basis: 50%;
+
+        &--cancel {
+            background-color: $white;
+            color: $Slate;
+            border: 1px solid $Cloud;
+            margin-right: 1rem;
+
+            &:hover {
+                color: $Instock-Indigo;
+                border: 1px solid $Instock-Indigo;
+            }
+        }
+
+        &--add {
+            background-color: $Instock-Indigo;
+            color: $white;
+            border: none;
+            
+            &:hover {
+                background-color: $Graphite;
+            }
+        }
     }
 }
