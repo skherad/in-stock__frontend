@@ -2,6 +2,7 @@ import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import './WarehouseList.scss';
+import DeleteWarehouse from '../DeleteWarehouse/DeleteWarehouse';
 import deleteIcon from '../../assets/Icons/delete_outline-24px.svg';
 import editIcon from '../../assets/Icons/edit-24px.svg';
 
@@ -10,19 +11,22 @@ const API_URL = process.env.REACT_APP_API_URL || "http://localhost:8080";
 function WarehouseList() {
     const navigate = useNavigate();
     const [ warehouses, setWarehouses ] = useState([]);
+    const [ openDelete, setOpenDelete ] = useState(false);
+    const [ warehouseToDelete, setWarehouseToDelete ] = useState({});
 
     useEffect(() => {
         axios.get(API_URL+"/warehouse")
             .then((response) => setWarehouses(response.data))
             .catch((error) => console.log(error));
-    }, []);
+    }, [openDelete]);
 
     const handleAddNewWarehouse = () => {
         navigate("/addnewwarehouse");
     }
 
-    const handleDelete = (id) => {
-        // fill in
+    const handleDelete = (warehouse) => {
+        setOpenDelete(true);
+        setWarehouseToDelete(warehouse);
     }
 
     const handleEdit = (id) => {
@@ -68,7 +72,7 @@ function WarehouseList() {
                                     </div>
                                 </div>
                                 <div className="warehouse-table__actions">
-                                    <input className="warehouse-table__button" type="image" src={deleteIcon} alt="delete" onClick={() => handleDelete(warehouse.id)} />
+                                    <input className="warehouse-table__button" type="image" src={deleteIcon} alt="delete" onClick={() => handleDelete(warehouse)} />
                                     <input className="warehouse-table__button warehouse-table__button--edit"type="image" src={editIcon} alt="edit" onClick={() => handleEdit(warehouse.id)} />
                                 </div>
                             </div>
@@ -76,6 +80,10 @@ function WarehouseList() {
                     })}
                 </div>
             </main>
+            <DeleteWarehouse
+                openDelete={openDelete}
+                setOpenDelete={setOpenDelete}
+                warehouseToDelete={warehouseToDelete} />
         </div>
     );
 }
