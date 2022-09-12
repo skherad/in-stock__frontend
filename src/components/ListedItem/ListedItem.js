@@ -15,7 +15,7 @@ function ListedItem ({key, name, category, status, quantity, warehouseName}) {
                     <Link className='item-box__link' to='/item/:id'>
                     <div className='item-box__li'>
                         <p className='item-box__i-name'>{name}</p>
-                        <img className='item-bo__ri' src={lii}></img>
+                        <img className='item-box__ri' src={lii}></img>
                     </div>
                     </Link>
                 </div>

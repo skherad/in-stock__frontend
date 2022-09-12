@@ -13,19 +13,17 @@ const API_URL = process.env.REACT_APP_API_URL || "http://localhost:8080";
 function Inventory () {
 
 
-  const [currWarehouse, setCurrWarehouse] = useState(getData(Invin))
+  const [currWarehouse, setCurrWarehouse] = useState([])
   console.log(currWarehouse)
 
-  // useEffect(()=> {
-  //   axios.get(`${API_URL}/warehouse`)
-  //   .then((res) =>{
-  //     console.log(res.data)
-  //     // setCurrWarehouse(res)
-  //   })
-  // }, [])
+  useEffect(() => {
+    axios.get(API_URL+"/inventory")
+        .then((response) => getData(response.data))
+        .catch((error) => console.log(error));
+}, []);
   function getData(array){
     const find = array.filter(x=> x.warehouseID==="2922c286-16cd-4d43-ab98-c79f698aeab0")
-    return find
+    return setCurrWarehouse(find)
   }
     // console.log(getData(Invin))
   // console.lo g(currWarehouse)
@@ -52,11 +50,13 @@ useEffect(() => {
               </div>
             </div>
           </div>
+          {/* Inventory Item Header */}
           <section className='invientory__header-catagory'>
             <div className='invientory__header-cat'>
               <h3 className='invientory__cat-i'>INVENTORY ITEM</h3>
               <img className='invientory__cat-pic' src={Sort}></img>
             </div>
+            {/* CATAGORY Header */}
             <div className='invientory__header-cat'>
               <h3 className='invientory__cat-i'>CATAGORY</h3>
               <img className='invientory__cat-pic' src={Sort}></img>
@@ -65,18 +65,22 @@ useEffect(() => {
               <h3 className='invientory__cat-i'>STATUS</h3>
               <img className='invientory__cat-pic' src={Sort}></img>
             </div>
+            {/* QTY Header */}
             <div className='invientory__header-cat'>
               <h3 className='invientory__cat-i'>QTY</h3>
               <img className='invientory__cat-pic' src={Sort}></img>
             </div>
+            {/* WAREHOUSE Header */}
             <div className='invientory__header-cat'>
               <h3 className='invientory__cat-i'>WAREHOUSE</h3>
               <img className='invientory__cat-pic' src={Sort}></img>
             </div>
+            {/* ACTION Header */}
             <div className='invientory__header-cat'>
               <h3 className='invientory__cat-i'>ACTION</h3>
             </div>
           </section>
+          {/* Map for all dynamically gegneretated items */}
           <section className='invientory__list'>
             {currWarehouse.map((x)=>{
               return(

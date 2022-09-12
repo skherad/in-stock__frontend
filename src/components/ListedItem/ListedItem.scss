@@ -47,15 +47,21 @@
         }
     }
     &__i-name{
-        width: 100%;
+        // width: 100%;
         color: $Instock-Indigo;
+        @include tablet {
+            
+        }
     }
     &__c-cat{
         @include tablet {
             margin-left: 2rem;
         }
     }
-    &__ri{}
+    &__ri{
+        padding: 0;
+        margin: 0;
+    }
     &__input{
     }
     &__rg{
@@ -64,7 +70,7 @@
         @include tablet {
             display: flex;
             flex-direction: row;
-            width: 50%;
+            width: 45%;
         }
     }
     &__icg{
