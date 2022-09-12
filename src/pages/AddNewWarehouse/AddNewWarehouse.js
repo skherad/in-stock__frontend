@@ -1,5 +1,5 @@
 import './AddNewWarehouse.scss';
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 import axios from "axios";
 import { useState, useRef } from 'react';
 import ErrorMsg from '../../components/ErrorMsg/ErrorMsg';
@@ -7,7 +7,7 @@ const { v4: uuid } = require('uuid');
 
 
 function AddNewWarehouse() {
-
+    let navigate = useNavigate();
     const [warehouseName, setWarehouseName] = useState("");
     const [address, setAddress] = useState("");
     const [city, setCity] = useState("");
@@ -120,8 +120,9 @@ function AddNewWarehouse() {
             return false;
         }
         else {
-        axios.post(`http://localhost:8080/warehouses`, {newWarehouse})
-            console.log ("added")
+        axios.post(`http://localhost:8080/warehouses`, {newWarehouse}).then(()=>{
+          navigate('/warehouse')
+        })
       };}
 
       function handleChangeName(event) {

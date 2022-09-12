@@ -1,4 +1,4 @@
-import "./warehouseDetails.scss";
+import "./WarehouseDetails.scss";
 
 import edit from "../../assets/Icons/edit-24px.svg";
 import arrowBack from "../../assets/Icons/arrow_back-24px.svg";
@@ -68,7 +68,7 @@ function WarehouseDetails() {
               </div>
 
               <div className="warehouse-details__edit-btn-cont">
-                <Link to={`/editWarehouse/${warehouseId}`}>
+                <Link to={`/warehouse/editWarehouse/${warehouseId}`}>
                   <div className="warehouse-details__edit-btn">
                     <img
                       className="warehouse-details__edit-btn-img"
@@ -175,10 +175,10 @@ function WarehouseDetails() {
                     </div>
 
                     <div className="warehouse-details__invent-type">
-                      <Link to={`/inventoryDetail/${warehouseId}/${item.id}`}>
+                      <Link to={`/inventory/inventoryDetail/${warehouseId}/${item.id}`}>
                         {item.itemName}
                       </Link>
-                      <Link to={`/inventoryDetail/${warehouseId}/${item.id}`}>
+                      <Link to={`/inventory/inventoryDetail/${warehouseId}/${item.id}`}>
                         <img
                           className="warehouse-details__arr-cont"
                           src={rightArrow}
@@ -254,7 +254,7 @@ function WarehouseDetails() {
                     <img src={deleteIcon} alt="delete item" />
                   </div>
                   <div className="warehouse-details__edit-icon-cont">
-                    <Link to={`/EditWarehouse/${warehouseId}`}>
+                    <Link to={`/warehouse/EditWarehouse/${warehouseId}`}>
                       <img
                         className="warehouse-details__edit-icon"
                         src={edit}

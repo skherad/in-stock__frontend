@@ -21,7 +21,7 @@ function WarehouseList() {
     }, [openDelete]);
 
     const handleAddNewWarehouse = () => {
-        navigate("/addnewwarehouse");
+        navigate("/warehouse/addNewWarehouse");
     }
 
     const handleDelete = (warehouse) => {
@@ -30,7 +30,7 @@ function WarehouseList() {
     }
 
     const handleEdit = (id) => {
-        navigate(`/editWarehouse/${id}`);
+        navigate(`/warehouse/editWarehouse/${id}`);
     }
 
     return (
