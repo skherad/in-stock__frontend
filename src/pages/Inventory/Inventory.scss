@@ -2,131 +2,141 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/utilities" as *;
 
-.container{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: $white;
-    margin-bottom: 3rem;
-    @include tablet {
-        margin-bottom: 10rem;
-    }
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: $white;
+  margin-bottom: 3rem;
+  @include tablet {
+    margin-bottom: 10rem;
+  }
 }
 
-.invientory{
+.invientory {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+  width: 90%;
+  margin: -5.25rem;
+  border-radius: 0.25rem;
+  // background-color: $Light-grey;
+  background-color: $white;
+  @include tablet {
+    margin: -5.25rem;
+  }
+
+  &__head {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    //Needs to include $Slate
+    border-bottom: 1px solid rgb(141, 139, 139);
+
+    @include tablet {
+      flex-direction: row;
+      border-bottom: none;
+      justify-content: space-between;
+      width: 100%;
+    }
+  }
+  &__title {
+    color: $Instock-Black;
+    margin-left: 1rem;
+    @include tablet {
+      margin-left: 2rem;
+    }
+  }
+  &__ui-head {
+    display: flex;
+    flex-direction: column;
+    margin: 0 1rem;
+    @include tablet {
+      flex-direction: row;
+    }
+  }
+  &__search {
+    display: flex;
+    justify-content: space-between;
     align-self: center;
-    width: 90%;
-    margin: -5.25rem;
-    border-radius: .25rem;
-    // background-color: $Light-grey;
-    background-color:$white;
-    @include tablet{
-        margin: -5.25rem;
+    border: 1px solid $Cloud;
+    border-radius: 2rem;
+    margin-top: 0.5rem;
+    width: 100%;
 
+    ::placeholder {
+      color: $Slate;
     }
-    
-    &__head{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        //Needs to include $Slate
-        border-bottom: 1px solid rgb(141, 139, 139);
 
-        @include tablet {
-            flex-direction: row;
-            border-bottom: none;
-            justify-content: space-between;
-            width: 100%;
-        }
-    }
-    &__title{
-        color:$Instock-Black;
-        margin-left: 1rem;
-        @include tablet{
-        }
-    }
-    &__ui-head{
-        display: flex;
-        flex-direction: column;
-        margin: 0 1rem;
-        @include tablet {
-            flex-direction: row;
-        }
-        
-    }
-    &__search{
-        display: flex;
-        justify-content: space-between;
-        align-self: center;
-        border: 2px solid $Slate;
-        border-radius: 2rem;
-        margin-top: .5rem;
-        width: 100%;
+    @include tablet {
+      margin: 0 0.5rem 0 0;
 
-        @include tablet{
-            margin: 0 .5rem 0 0;
-            // width: 40%;
-        }
+      ::placeholder {
+        font-size: 0.875rem;
+      }
     }
-    &__input{
-        border: none;
-        padding: .5rem 1rem;
-        background: none;
-        @include tablet{
-            columns: 8;
-            size: 3rem;
-            padding: .5rem;
-        }
+  }
+  &__input {
+    border: none;
+    padding: 0.5rem 1rem;
+    background: none;
+    @include tablet {
+      columns: 8;
+      size: 3rem;
+      padding: 0.5rem;
     }
-    &__input::placeholder{
-        color: $Slate;
-    }
-    &__s-icon{
-        align-self: center;
-        height: 1.0931rem;
-        margin-right: 1rem;
-        // padding: .5rem;  
-    }
-    &__add-btn{
-        display: flex;
-        flex-direction: center;
-        justify-content: center;
-        margin: 1rem 0;
-        background-color: $Instock-Indigo;
-        border-radius: 2rem;
+  }
+  &__input::placeholder {
+    color: $Slate;
+  }
+  &__s-icon {
+    align-self: center;
+    height: 1.0931rem;
+    margin-right: 1rem;
+    // padding: .5rem;
+  }
+  &__add-btn {
+    display: flex;
+    flex-direction: center;
+    justify-content: center;
+    margin: 1rem 0;
+    background-color: $Instock-Indigo;
+    border-radius: 2rem;
 
-        @include tablet{
-            width: 100%;    
-            margin-left: 1rem;
-        }
+    @include tablet {
+      width: 100%;
+      margin-left: 1rem;
     }
-    &__btn{
-        padding: .5rem;
-        color: $white;
-        background: none;
-        border: none;
-        @include tablet {
-        }
+  }
+  &__btn {
+    padding: 0.5rem;
+    color: $white;
+    background: none;
+    border: none;
+    @include tablet {
+      font-size: 0.875rem;
+      font-weight: 600;
+      padding: 0.5rem 1rem;
     }
-    &__header-catagory{
-        display: none;
-        @include tablet {
-            display: flex;
-            justify-content: space-around;
-        }
+  }
+  &__header-catagory {
+    display: none;
+    @include tablet {
+      display: flex;
+      justify-content: space-between;
+      margin: 0 2rem;
     }
-    &__header-cat{
-        display: flex;
-    }
-    &__cat-i{
-        font-size: .75rem;
-        color: $Slate;
-    }
-    &__cat-pic{
-        height: .75rem; 
-        align-self: center;
-    }
+  }
+  &__header-cat {
+    display: flex;
+  }
+  &__cat-i {
+    font-size: 0.875rem;
+    color: $Slate;
+  }
+  &__cat-pic {
+    // height: 0.75rem;
+    align-self: center;
+  }
 }
