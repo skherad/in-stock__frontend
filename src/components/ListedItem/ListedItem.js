@@ -2,11 +2,24 @@ import './ListedItem.scss'
 import lii from "../../assets/Icons/chevron_right-24px.svg"
 import Trash from '../../assets/Icons/delete_outline-24px.svg'
 import Edit from '../../assets/Icons/edit-24px.svg'
-import {Link} from "react-router-dom"
+import {Link, useNavigate } from 'react-router-dom';
+import {useState } from 'react';
 
 
 function ListedItem ({key, name, category, status, quantity, warehouseName}) {
-    // console.log(catagory)
+
+    const[isOpen, setIsOpen] =useState (false);
+
+    const navigate = useNavigate();
+
+    //Handlers
+    const handleDelete = () => {
+        console.log("deleted")
+    }
+    const handleEdit = (key) => {
+        navigate(`/editInventory/${key}`);
+    }
+
     return(
         <div className="item-box">
             <div className='item-box__lg'>
@@ -39,12 +52,8 @@ function ListedItem ({key, name, category, status, quantity, warehouseName}) {
                 </div>
             </div>
             <div className='item-box__icg'>
-                <Link className='item-box__link' to='/delete'>
-                <img className='item-box__tcon' src={Trash}></img>
-                </Link>
-                <Link className='item-box__link' to='/edit'>
-                <img className='item-box__econ' src={Edit}></img>
-                </Link>       
+            <input className="item-box__dcon" type="image" src={Trash} alt="delete" onClick={() => handleDelete(key)} />
+            <input className="item-box__econ" type="image" src={Edit} alt="edit" onClick={() => handleEdit(key)} />  
             </div>    
         </div>
     )

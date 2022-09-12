@@ -92,7 +92,7 @@
     &__econ{
         height: 1.125rem;
         margin-left: 13rem;
-        fill: $Instock-Indigo;
+        filter: invert(28%) sepia(95%) saturate(1626%) hue-rotate(211deg) brightness(94%) contrast(90%);
         @include tablet {
             margin-left: 0rem;
         }
