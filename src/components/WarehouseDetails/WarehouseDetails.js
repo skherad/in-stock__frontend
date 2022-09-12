@@ -12,8 +12,7 @@ import sortImg from "../../assets/Icons/sort-24px.svg";
 import EditWarehouse from "../EditWarehouse/EditWarehouse";
 import axios from "axios";
 import EditInventory from "../EditInventory/EditInventory";
-import inventoryModal from "../InventoryModal/InventoryModal";
-import deleteModal from "../InventoryModal/InventoryModal";
+import InventoryModal from "../InventoryModal/InventoryModal";
 
 const API_URL = process.env.REACT_APP_API_URL || "http://localhost:8080";
 function WarehouseDetails() {
@@ -21,16 +20,12 @@ function WarehouseDetails() {
   const [inventories, setInventories] = useState([]);
   const [warehouse, setWarehouse] = useState([]);
 
-  const [isOpen, setIsOpen] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
   const [itemToDelete, setItemToDelete] = useState({});
 
-  const handleDelete = (name) => {
-    setIsOpen(true);
-    setItemToDelete(name);
-  };
-
-  const modalHandler = () => {
-    setIsOpen(true);
+  const handleDelete = (item) => {
+    setOpenModal(true);
+    setItemToDelete(item);
   };
 
   useEffect(() => {
@@ -227,10 +222,15 @@ function WarehouseDetails() {
                     </div>
                     <div className="warehouse-details__icons-tab">
                       <div
-                        onClick={() => modalHandler(true)}
+                        onClick={() => handleDelete(true)}
                         className="warehouse-details__delete-icon-cont"
                       >
-                        <img src={deleteIcon} alt="delete item" />
+                        <input
+                          type="image"
+                          src={deleteIcon}
+                          alt="delete item"
+                          onClick={() => handleDelete(item)}
+                        />
                       </div>
                       <div className="warehouse-details__edit-icon-cont">
                         <Link
@@ -269,10 +269,10 @@ function WarehouseDetails() {
           })}
         </div>
       </div>
-      <DeleteModal
-        openModal={isOpen}
-        closeModal={() => setIsOpen(false)}
-        itemToDelete={itemToDelete}
+      <InventoryModal
+        openModal={openModal}
+        closeModal={() => setOpenModal(false)}
+        DeleteInventory={itemToDelete}
       />
     </>
   );
