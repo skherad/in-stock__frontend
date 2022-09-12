@@ -1,0 +1,86 @@
+@use '../../styles/partials/utilities';
+@use '../../styles/partials/typography';
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/utilities';
+@use '../../styles/global.scss';
+@use '../../styles/partials/typography';
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/utilities';
+
+.modal {
+    margin: 1rem; 
+    display: flex; 
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    justify-content: space-between;
+    @include tablet{
+    margin: 1rem 2rem;
+    position:fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: utilities.$white;
+    z-index:1000; 
+    }
+    &__overlay-style {
+        @include tablet {
+        background-color: rgba(0,0,0, 0.7);
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1000;
+    }
+    }
+    &__title {
+        font-size: 28px; 
+        font-weight: 600;
+        color: utilities.$Instock-Black;
+        margin-top: 4rem;
+        @include tablet {
+        font-size: 32px; 
+    }
+    }
+    &__description {
+        font-size: 15px; 
+        font-weight: 400;
+        color: utilities.$Instock-Black;
+        margin-top: 1rem;
+        @include tablet {
+        font-size: 16px; 
+        line-height: 28px;
+        margin-bottom: 1rem;
+        }
+    }
+    &__button {
+        display: flex;
+        justify-content: space-around;
+        @include tablet {
+            justify-content: flex-end;
+        }
+        &-cancel {
+            color:utilities.$Cloud;
+            border: 1px solid utilities.$Cloud;
+            background-color: utilities.$white;
+            border-radius: 20px; 
+            padding: 0.5rem;
+            width: 35vw;
+            @include tablet {
+            width: auto; 
+            }
+        }
+        &-delete {
+            color:utilities.$white;
+            background-color: utilities.$Red;
+            border-radius: 20px; 
+            padding: 0.5rem;
+            @include tablet {
+                width: auto; 
+                }
+        }
+
+    }
+    
+}
