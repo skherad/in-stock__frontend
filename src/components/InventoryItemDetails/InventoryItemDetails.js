@@ -8,7 +8,7 @@ import EditWarehouse from "../EditWarehouse/EditWarehouse";
 import edit from "../../assets/Icons/edit-24px.svg";
 import arrowBack from "../../assets/Icons/arrow_back-24px.svg";
 
-import "./inventoryItemDetails.scss";
+import "./InventoryItemDetails.scss";
 
 function InventoryItemDetails() {
   const { warehouseId, inventoryId } = useParams();
