@@ -1,28 +1,35 @@
 @use '../../styles/partials/utilities';
 @use '../../styles/partials/typography';
 @use '../../styles/partials/mixins' as *;
-@use '../../styles/partials/utilities';
 @use '../../styles/global.scss';
-@use '../../styles/partials/typography';
-@use '../../styles/partials/mixins' as *;
-@use '../../styles/partials/utilities';
+
 
 .modal {
-    margin: 1rem; 
-    display: flex; 
+    display: flex;
     flex-direction: column;
-    height: 100vh;
-    width: 100vw;
     justify-content: space-between;
-    @include tablet{
-    margin: 1rem 2rem;
-    position:fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background-color: utilities.$white;
-    z-index:1000; 
-    }
+    z-index: 100;
+    padding: 1rem;
+        @include tablet{
+        padding: 0rem 4rem;
+        position:fixed;
+        top: 50%;
+        left: 50vw;
+        width: 90%;
+        height: 15rem;
+        transform: translate(-50%,-50%);
+        background-color: utilities.$white;
+        z-index:1000; 
+        }
+        @include desktop {
+            width: 65%;
+        }
     &__overlay-style {
         @include tablet {
         background-color: rgba(0,0,0, 0.7);
@@ -41,6 +48,7 @@
         margin-top: 4rem;
         @include tablet {
         font-size: 32px; 
+        margin-top: 2rem;
     }
     }
     &__description {
@@ -59,6 +67,7 @@
         justify-content: space-around;
         @include tablet {
             justify-content: flex-end;
+            padding-bottom: 2rem;
         }
         &-cancel {
             color:utilities.$Cloud;
@@ -76,8 +85,10 @@
             background-color: utilities.$Red;
             border-radius: 20px; 
             padding: 0.5rem;
+            width: 35vw;
             @include tablet {
                 width: auto; 
+                margin-left: 1rem;
                 }
         }
 
