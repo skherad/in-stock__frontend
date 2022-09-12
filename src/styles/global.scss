@@ -2,7 +2,9 @@
 @use "./partials/utilities" as *;
 @use "./partials/mixins" as *;
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -11,7 +13,6 @@
 body {
   font-family: "Titillium Web", sans-serif;
 }
-
 
 %field-button {
   height: 2.25rem;
@@ -29,7 +30,7 @@ body {
 
   &::placeholder {
     color: $Slate;
-}
+  }
 
   &:focus {
     outline: 2px solid $Instock-Indigo;
@@ -48,5 +49,11 @@ body {
 Link,
 a {
   text-decoration: none;
-}
+  color: $Instock-Indigo;
 
+  :visited,
+  :active,
+  :focus {
+    color: $Instock-Indigo;
+  }
+}

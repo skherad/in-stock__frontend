@@ -5,14 +5,41 @@ import arrowBack from "../../assets/Icons/arrow_back-24px.svg";
 
 import rightArrow from "../../assets/Icons/chevron_right-24px.svg";
 import deleteIcon from "../../assets/Icons/delete_outline-24px.svg";
-import inventories from "../../assets/data/inventories.json";
-import warehouses from "../../assets/data/warehouses.json";
+
 import { useParams, Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 import sortImg from "../../assets/Icons/sort-24px.svg";
 import EditWarehouse from "../EditWarehouse/EditWarehouse";
+import axios from "axios";
+import EditInventory from "../EditInventory/EditInventory";
 
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:8080";
 function WarehouseDetails() {
   const { warehouseId, inventoryId } = useParams();
+  const [inventories, setInventories] = useState([]);
+  const [warehouse, setWarehouse] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(API_URL + `/warehouse/${warehouseId}`)
+      .then((res) => {
+        setWarehouse(res.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  useEffect(() => {
+    axios
+      .get(API_URL + `/inventory/warehouse/${warehouseId}`)
+      .then((res) => {
+        setInventories(res.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  if (!warehouseId || !warehouse || !inventories) {
+    return <h1>Loading...</h1>;
+  }
   return (
     <>
       {/* Warehouse Name */}
@@ -21,19 +48,18 @@ function WarehouseDetails() {
           <div className="warehouse-details">
             <div className="warehouse-details__header">
               <div className="warehouse-details__back-btn">
-                <img src={arrowBack} alt="back arrow" />
+                <Link to="/">
+                  <img src={arrowBack} alt="back arrow" />
+                </Link>
                 <div className="warehouse-details__loc">
                   <h1 className="warehouse-details__loc-header">
-                    {warehouses[1].name}
+                    {warehouse?.name}
                   </h1>
                 </div>
               </div>
 
               <div className="warehouse-details__edit-btn-cont">
-                <Link
-                  to={`/editWarehouse/${warehouseId}`}
-                  element={EditWarehouse}
-                >
+                <Link to={`/editWarehouse/${warehouseId}`}>
                   <div className="warehouse-details__edit-btn">
                     <img
                       className="warehouse-details__edit-btn-img"
@@ -55,8 +81,8 @@ function WarehouseDetails() {
                 WAREHOUSE ADDRESS:
               </h4>
               <div className="warehouse-details__address-loc">
-                {warehouses[1].address}, <br /> {warehouses[1].city},{" "}
-                {warehouses[1].country}
+                {warehouse?.address}, <br /> {warehouse?.city},{" "}
+                {warehouse?.country}
               </div>
             </div>
             <div className="warehouse-details__contact-cont">
@@ -65,8 +91,8 @@ function WarehouseDetails() {
                   CONTACT NAME:
                 </h4>
                 <div className="warehouse-details__contact-name">
-                  {warehouses[1].contact.name} <br />
-                  {warehouses[1].contact.position}
+                  {warehouse?.contact?.name} <br />
+                  {warehouse?.contact?.position}
                 </div>
               </div>
               <div className="warehouse-details__info-cont">
@@ -74,8 +100,7 @@ function WarehouseDetails() {
                   <h4>CONTACT INFORMATION:</h4>
                 </div>
                 <div className="warehouse-details__contact-info">
-                  {warehouses[1].contact.phone} <br />{" "}
-                  {warehouses[1].contact.email}
+                  {warehouse?.contact?.phone} <br /> {warehouse?.contact?.email}
                 </div>
               </div>
             </div>
@@ -130,22 +155,29 @@ function WarehouseDetails() {
           {/* Each Item to iterate through */}
 
           {inventories.map((item) => {
+            console.log(item.id);
             return (
               <>
-                <div className="warehouse-details__item-cont">
+                <div key={item.id} className="warehouse-details__item-cont">
                   {/* first flex child */}
                   <div className="warehouse-details__item-invent-cont">
                     <div className="warehouse-details__invent-title">
                       <h4>INVENTORY ITEM</h4>
                     </div>
+
                     <div className="warehouse-details__invent-type">
-                      {item.itemName}
-                      <img
-                        className="warehouse-details__arr-cont"
-                        src={rightArrow}
-                        alt="product"
-                      />
+                      <Link to={`/inventoryDetail/${warehouseId}/${item.id}`}>
+                        {item.itemName}
+                      </Link>
+                      <Link to={`/inventoryDetail/${warehouseId}/${item.id}`}>
+                        <img
+                          className="warehouse-details__arr-cont"
+                          src={rightArrow}
+                          alt="product"
+                        />
+                      </Link>
                     </div>
+
                     <div className="warehouse-details__category">
                       <h4 className="warehouse-details__category-title">
                         CATEGORY
@@ -185,8 +217,8 @@ function WarehouseDetails() {
                       </div>
                       <div className="warehouse-details__edit-icon-cont">
                         <Link
-                          to={`/editWarehouse/${warehouseId}`}
-                          element={EditWarehouse}
+                          to={`/editInventory/${warehouseId}`}
+                          element={EditInventory}
                         >
                           <img
                             className="warehouse-details__edit-icon"

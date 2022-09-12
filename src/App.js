@@ -29,7 +29,6 @@ function App() {
           <Route path="/addNewInventory" element={<AddNewInventory />} />
         </Routes>
         <Footer />
-
       </BrowserRouter>
     </>
   );

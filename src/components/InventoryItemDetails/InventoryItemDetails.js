@@ -1,17 +1,42 @@
 import rightArrow from "../../assets/Icons/chevron_right-24px.svg";
 
-import inventories from "../../assets/data/inventories.json";
-import warehouses from "../../assets/data/warehouses.json";
+// import inventories from "../../assets/data/inventories.json";
+// import warehouses from "../../assets/data/warehouses.json";
 import { useParams, Link } from "react-router-dom";
-
 import EditWarehouse from "../EditWarehouse/EditWarehouse";
 import edit from "../../assets/Icons/edit-24px.svg";
 import arrowBack from "../../assets/Icons/arrow_back-24px.svg";
+import "./inventoryItemDetails.scss";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
-import "./InventoryItemDetails.scss";
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:8080";
+let warehouseArray;
 
 function InventoryItemDetails() {
+  const [warehouseInvent, setWarehouseInvent] = useState([]);
   const { warehouseId, inventoryId } = useParams();
+
+  const warehouseIdNum = warehouseId;
+
+  useEffect(() => {
+    axios
+      .get(API_URL + `/inventory/warehouse/${warehouseIdNum}`)
+      .then((res) => {
+        if (res.status > 199 && res.status < 300) {
+          console.log("RES: ", res.data);
+          setWarehouseInvent(res.data);
+        }
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  warehouseArray = warehouseInvent.filter((obj) => obj.id === inventoryId);
+
+  if (!warehouseInvent) {
+    return <h1>Loading...</h1>;
+  }
+
   return (
     <>
       {/* Warehouse Name */}
@@ -20,10 +45,12 @@ function InventoryItemDetails() {
           <div className="inventory-details">
             <div className="inventory-details__header">
               <div className="inventory-details__back-btn">
-                <img src={arrowBack} alt="back arrow" />
+                <Link to={`/warehouse/${warehouseIdNum}`}>
+                  <img src={arrowBack} alt="back arrow" />
+                </Link>
                 <div className="inventory-details__loc">
                   <h1 className="inventory-details__loc-header">
-                    {inventories[0].itemName}
+                    {warehouseArray[0]?.itemName}
                   </h1>
                 </div>
               </div>
@@ -55,13 +82,13 @@ function InventoryItemDetails() {
                   ITEM DESCRIPTION:
                 </h4>
                 <div className="inventory-details__desc-desc">
-                  {inventories[0].description}
+                  {warehouseArray[0]?.description}
                 </div>
               </div>
               <div className="inventory-details__category-cont">
                 <h4 className="inventory-details__category-title">CATEGORY</h4>
                 <div className="inventory-details__category-name">
-                  {inventories[0].category}
+                  {warehouseArray[0]?.category}
                 </div>
               </div>
             </div>
@@ -71,18 +98,20 @@ function InventoryItemDetails() {
                   <h4 className="inventory-details__status">STATUS</h4>
                   <span
                     className={
-                      inventories.quantity !== 0
+                      warehouseArray[0]?.quantity !== 0
                         ? "inventory-details__instock"
                         : "inventory-details__instock--notinstock"
                     }
                   >
-                    {inventories.quantity !== 0 ? "IN STOCK" : "OUT OF STOCK"}
+                    {warehouseArray[0]?.quantity !== 0
+                      ? "IN STOCK"
+                      : "OUT OF STOCK"}
                   </span>
                 </div>
                 <div className="inventory-details__qty">
                   <h4>QUANTITY:</h4>
                   <div className="inventory-details__QTY-num">
-                    {inventories[0].quantity}
+                    {warehouseArray[0]?.quantity}
                   </div>
                 </div>
               </div>
@@ -91,7 +120,7 @@ function InventoryItemDetails() {
                   WAREHOUSE:
                 </h4>
                 <div className="inventory-details__warehouse-loc">
-                  {warehouses[0].name}
+                  {warehouseArray[0]?.warehouseName}
                 </div>
               </div>
             </div>
