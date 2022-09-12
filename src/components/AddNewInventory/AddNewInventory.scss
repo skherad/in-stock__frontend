@@ -32,13 +32,25 @@
 .add-header {
     display: flex;
     padding: 1.5rem 1rem;
+    border-bottom: 2px solid $Cloud;
+
+    @include tablet {
+        padding: 1.5rem 2rem 1rem;
+    }
+
+    @include desktop {
+        padding-left: 2.5rem;
+    }
 
     &__back {
-        margin-right: 1rem;
+        margin-right: 0.5rem;
+        align-self: flex-start;
+        padding-top: 0.4rem;
     }
 
     &__title {
         font-size: 1.5rem;
+        line-height: 2rem;
     }
 }
 
@@ -48,43 +60,109 @@
         margin-top: 1rem;
         font-size: 0.8rem;
         font-weight: 600;
+
+        @include tablet {
+            margin-top: 1.4rem;
+        }
     }
 
     &__input {
+        font-family: 'Titillium Web', sans-serif;
         display: block;
         margin-top: 0.4rem;
+        margin-bottom: 0.4rem;
         width: 100%;
 
         &--textarea {
-            font-family: 'Titillium Web', sans-serif;
             resize: none;
-            height: 5rem;
+            height: 7rem;
+            padding-top: 0.5rem;
+        }
+
+        &--select {
+            padding: 0;
+            padding-left: 1rem;
+            appearance: none;
+            background: url('../../assets/Icons/arrow_drop_down-24px.svg') no-repeat 98%;
+
+            &:invalid {
+                color: $Slate
+            }
+        }
+
+        &--quantity {
+            @include desktop {
+                width: 30%;
+            }
         }
     }
 
     &__radios {
         display: flex;
+        margin-top: 0.4rem;
+    }
+
+    &__radio-container {
+        flex-basis: 50%;
+
+        @include desktop {
+            flex-basis: 25%;
+        }
     }
 
     &__radio-label {
         margin: 0;
-        flex-basis: 50%;
         font-weight: 400;
+        color: $Slate;
     }
 
     &__radio {
         margin-right: 0.5rem;
+        color: $Slate;
+
+        &:checked ~ label {
+            color: $Instock-Black;
+        }
+    }
+
+    &__subforms {
+        @include tablet {
+            display: flex;
+        }
     }
 
     &__subform {
-        border-top: 1px solid $Cloud;
         padding: 1rem 1rem 1.5rem;
+
+        &:first-of-type {
+            border-bottom: 2px solid $Cloud;
+        }
+
+        @include tablet {
+            flex-basis: 50%;
+            padding: 0 2rem;
+            margin: 1.5rem 0 1.8rem;
+
+            &:first-of-type {
+                border-right: 2px solid $Cloud;
+                border-bottom: none;
+            }
+        }
+
+        @include desktop {
+            padding: 0 2.5rem;
+        }
     }
 
     &__buttons {
         display: flex;
         background-color: $Light-grey;
         padding: 1rem;
+
+        @include tablet {
+            justify-content: flex-end;
+            padding: 1rem 2rem;
+        }
     }
 
     &__button {
@@ -100,6 +178,14 @@
                 color: $Instock-Indigo;
                 border: 1px solid $Instock-Indigo;
             }
+
+            @include tablet {
+                flex-basis: 12%;
+            }
+
+            @include desktop {
+                flex-basis: 8%;
+            }
         }
 
         &--add {
@@ -109,6 +195,14 @@
             
             &:hover {
                 background-color: $Graphite;
+            }
+
+            @include tablet {
+                flex-basis: 16%;
+            }
+
+            @include desktop {
+                flex-basis: 11%;
             }
         }
     }
