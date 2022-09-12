@@ -27,10 +27,16 @@ function App() {
             path="/editWarehouse/:warehouseId"
             element={<EditWarehouse />}
           />
+          <Route
+            path="/editInventory/:warehouseId"
+            element={<EditInventory />}
+          />
+          <Route
+            path="/inventoryDetail/:warehouseId"
+            element={<InventoryItemDetails />}
+          />
         </Routes>
-        <WarehouseDetails />
         <Footer />
-
       </BrowserRouter>
     </>
   );
