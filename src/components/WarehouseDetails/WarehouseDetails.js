@@ -23,7 +23,6 @@ function WarehouseDetails() {
     axios
       .get(API_URL + `/warehouse/${warehouseId}`)
       .then((res) => {
-        console.log(res.data);
         setWarehouse(res.data);
       })
       .catch((err) => console.log(err));
@@ -33,7 +32,6 @@ function WarehouseDetails() {
     axios
       .get(API_URL + `/inventory/warehouse/${warehouseId}`)
       .then((res) => {
-        console.log(res.data);
         setInventories(res.data);
       })
       .catch((err) => console.log(err));
@@ -157,9 +155,10 @@ function WarehouseDetails() {
           {/* Each Item to iterate through */}
 
           {inventories.map((item) => {
+            console.log(item.id);
             return (
               <>
-                <div className="warehouse-details__item-cont">
+                <div key={item.id} className="warehouse-details__item-cont">
                   {/* first flex child */}
                   <div className="warehouse-details__item-invent-cont">
                     <div className="warehouse-details__invent-title">
@@ -167,11 +166,10 @@ function WarehouseDetails() {
                     </div>
 
                     <div className="warehouse-details__invent-type">
-                      <Link to={`/inventoryDetail/${item.id}`}>
-                        {" "}
+                      <Link to={`/inventoryDetail/${warehouseId}/${item.id}`}>
                         {item.itemName}
                       </Link>
-                      <Link to={`/inventoryDetail/${item.id}`}>
+                      <Link to={`/inventoryDetail/${warehouseId}/${item.id}`}>
                         <img
                           className="warehouse-details__arr-cont"
                           src={rightArrow}

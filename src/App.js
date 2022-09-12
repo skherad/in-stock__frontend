@@ -32,7 +32,7 @@ function App() {
             element={<EditInventory />}
           />
           <Route
-            path="/inventoryDetail/:warehouseId"
+            path="/inventoryDetail/:warehouseId/:inventoryId"
             element={<InventoryItemDetails />}
           />
         </Routes>
