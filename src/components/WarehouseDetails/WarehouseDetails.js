@@ -272,7 +272,7 @@ function WarehouseDetails() {
       <InventoryModal
         openModal={openModal}
         closeModal={() => setOpenModal(false)}
-        DeleteInventory={itemToDelete}
+        itemToDelete={itemToDelete}
       />
     </>
   );
