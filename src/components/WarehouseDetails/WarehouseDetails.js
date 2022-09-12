@@ -22,7 +22,12 @@ function WarehouseDetails() {
   const [warehouse, setWarehouse] = useState([]);
 
   const [isOpen, setIsOpen] = useState(false);
-  const [deleteWarehouseItem, setDeleteWarehouseItem] = useState();
+  const [itemToDelete, setItemToDelete] = useState({});
+
+  const handleDelete = (name) => {
+    setIsOpen(true);
+    setItemToDelete(name);
+  };
 
   const modalHandler = () => {
     setIsOpen(true);
@@ -264,6 +269,11 @@ function WarehouseDetails() {
           })}
         </div>
       </div>
+      <DeleteModal
+        openModal={isOpen}
+        closeModal={() => setIsOpen(false)}
+        itemToDelete={itemToDelete}
+      />
     </>
   );
 }
