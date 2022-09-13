@@ -80,7 +80,6 @@ const EditInventory = () => {
     //submit handler to update inventory information on backend
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(state)
         if(!state.itemName || !state.description) {
             return;
         } else if(state.quantity === 0 && state.status === "In Stock"){
