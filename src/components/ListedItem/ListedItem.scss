@@ -5,8 +5,12 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    margin: 1.5rem 0;
+    padding: 1.5rem 0;
     border-bottom: 1px solid $Slate;
+
+    &:hover{
+        background-color: $Light-grey;
+    }
     @include tablet {
         flex-wrap: nowrap;
     }
