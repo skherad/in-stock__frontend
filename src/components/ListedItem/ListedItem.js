@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import DeleteModal from "../InventoryModal/InventoryModal"
 import { useState } from "react";
 
-function ListedItem({ key, name, category, status, quantity, warehouseName }) {
+function ListedItem({ inventoryId, name, category, status, quantity, warehouseName }) {
   // console.log(catagory)
   const[isOpen, setIsOpen] =useState (false);
   const [ itemToDelete, setItemToDelete ] = useState({});
@@ -23,7 +23,7 @@ function ListedItem({ key, name, category, status, quantity, warehouseName }) {
 
           <div className="item-box__li">
             <div className="item-box__i-name">
-              <Link className="item-box__link" to={`/inventory/inventoryDetail/${key}`}>
+              <Link className="item-box__link" to={`/inventory/inventoryDetail/${inventoryId}`}>
                 {" "}
                 {name}
                 <img className="item-box__ri" src={lii}></img>
@@ -59,9 +59,14 @@ function ListedItem({ key, name, category, status, quantity, warehouseName }) {
       <div className="item-box__icg">
         <button className="item-box__link" onClick={handleDelete}>
           <img className="item-box__tcon" src={Trash}></img>
+
         </button>
 
         <Link className="item-box__link" to={`/editInventory/${key}`}>
+
+        </Link>
+        <Link className="item-box__link" to={`/inventory/editInventory/${inventoryId}`}>
+
           <img className="item-box__econ" src={Edit}></img>
         </Link>
       </div>

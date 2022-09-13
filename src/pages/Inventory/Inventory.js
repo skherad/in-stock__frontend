@@ -7,30 +7,24 @@ import Invin from "../../assets/data/inventories.json";
 import ListedItem from "../../components/ListedItem/ListedItem";
 
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 const API_URL = process.env.REACT_APP_API_URL || "http://localhost:8080";
 
 function Inventory() {
-  const [currWarehouse, setCurrWarehouse] = useState(getData(Invin));
-  console.log(currWarehouse);
+  const [currWarehouse, setCurrWarehouse] = useState();
 
-  // useEffect(()=> {
-  //   axios.get(`${API_URL}/warehouse`)
-  //   .then((res) =>{
-  //     console.log(res.data)
-  //     // setCurrWarehouse(res)
-  //   })
-  // }, [])
+  useEffect(()=>{
+    axios.get(`${API_URL}/inventory`)
+    .then(res=>setCurrWarehouse(getData(res.data)))
+  })
   function getData(array) {
     const find = array.filter(
       (x) => x.warehouseID === "2922c286-16cd-4d43-ab98-c79f698aeab0"
+      // this should be replaced with whatever is searched
     );
     return find;
   }
-  // console.log(getData(Invin))
-  // console.lo g(currWarehouse)
-
-  useEffect(() => {});
 
   return (
     //This is the main container
@@ -54,7 +48,9 @@ function Inventory() {
               ></img>
             </div>
             <div className="invientory__add-btn">
-              <button className="invientory__btn">+ Add New Item</button>
+              <Link to="/inventory/addNewInventory">
+                <button className="invientory__btn">+ Add New Item</button>
+              </Link>
             </div>
           </div>
         </div>
@@ -84,15 +80,16 @@ function Inventory() {
           </div>
         </section>
         <section className="invientory__list">
-          {currWarehouse.map((x) => {
+          {currWarehouse?.map((x) => {
             return (
               <ListedItem
-                key={x.id}
-                name={x.itemName}
-                category={x.category}
-                status={x.status}
-                quantity={x.quantity}
-                warehouseName={x.warehouseName}
+                key={x?.id}
+                name={x?.itemName}
+                category={x?.category}
+                status={x?.status}
+                quantity={x?.quantity}
+                warehouseName={x?.warehouseName}
+                inventoryId = {x?.id}
               />
             );
           })}

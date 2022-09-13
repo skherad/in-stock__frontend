@@ -20,7 +20,8 @@ const EditInventory = () => {
         itemName: "",
         description: "",
         category: "",
-        status: "",    
+        status: "",
+        quantity: null    
     });
 
     //get a unique list of warehouses
@@ -57,7 +58,8 @@ const EditInventory = () => {
                 itemName: response.data.itemName,
                 description: response.data.description,
                 category: response.data.category,
-                status: response.data.status,    
+                status: response.data.status,
+                quantity: response.data.quantity    
             }
         ))
         .catch(error => console.log(error))
@@ -73,19 +75,38 @@ const EditInventory = () => {
     }
 
     //click handler for cancel button
-    const handleCancel = () => navigate(`/inventoryDetail/${inventoryId}`)
+    const handleCancel = () => navigate(`/inventory/inventoryDetail/${inventoryId}`)
     
     //submit handler to update inventory information on backend
     const handleSubmit = (event) => {
         event.preventDefault();
         if(!state.itemName || !state.description) {
             return;
+        } else if(state.quantity === 0 && state.status === "In Stock"){
+            alert("please either change quantity or status")
+            return;
         } else {
             axios.put(`${API_URL}/inventory/${inventoryId}`, state)
             .then(response=>console.log(response))
             .catch(error=>console.log(error))
-            navigate(`inventory/inventoryDetail/${inventoryId}`)
+            navigate(`/inventory/inventoryDetail/${inventoryId}`)
         }
+    }
+
+    // show or hide quantity option depending on status (invoked if status is in stock)
+    const showQuantity = () => {
+        return (
+            <>
+            <label className="inventory-form__label" name="quantity">Quantity</label>
+                <input 
+                    className="inventory-form__input" 
+                    name="quantity"
+                    placeholder={state?.quantity}
+                    value={state?.quantity} 
+                    onChange={handleChange} 
+                ></input>
+            </>
+        );
     }
 
     return (
@@ -93,7 +114,7 @@ const EditInventory = () => {
     <section className="inventory-form__container">
         {/* page header */}
         <div className='inventory-form__header-container'>
-            <Link to={`/inventoryDetail/${inventoryId}`} className="inventory-form__icon">
+            <Link to={`/inventory/inventoryDetail/${inventoryId}`} className="inventory-form__icon">
                 <img src={BackArrow} alt="arrow back"></img>
             </Link>
             <h1 className="inventory-form__header">Edit Inventory Item</h1>
@@ -164,7 +185,7 @@ const EditInventory = () => {
                             />
                             <label className="inventory-form__radio-label">Out of Stock</label>
                     </div>
-                    
+                    {state?.status === "In Stock" ? showQuantity() : null}
                     {/* warehouse drop down */}
                      <label htmlFor="warehouse" className="inventory-form__label">Warehouse</label>
                     <select className='inventory-form__drop-down' onChange={handleChange} name="warehouseName" value={state?.warehouseName}>

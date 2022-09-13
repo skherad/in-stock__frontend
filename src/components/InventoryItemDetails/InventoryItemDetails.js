@@ -12,28 +12,14 @@ const API_URL = process.env.REACT_APP_API_URL || "http://localhost:8080";
 let warehouseArray;
 
 function InventoryItemDetails() {
-  const [warehouseInvent, setWarehouseInvent] = useState([]);
-  const { warehouseId, inventoryId } = useParams();
-
-  const warehouseIdNum = warehouseId;
-
+  // const [warehouseInvent, setWarehouseInvent] = useState([]);
+  const {inventoryId } = useParams();
+  const [selectedInventory, setSelectedInventory] = useState();
   useEffect(() => {
-    axios
-      .get(API_URL + `/inventory/warehouse/${warehouseIdNum}`)
-      .then((res) => {
-        if (res.status > 199 && res.status < 300) {
-          console.log("RES: ", res.data);
-          setWarehouseInvent(res.data);
-        }
-      })
-      .catch((err) => console.log(err));
-  }, []);
-
-  warehouseArray = warehouseInvent.filter((obj) => obj.id === inventoryId);
-
-  if (!warehouseInvent) {
-    return <h1>Loading...</h1>;
-  }
+    axios.get(`${API_URL}/inventory/${inventoryId}`)
+    .then(res => setSelectedInventory(res.data))
+    .catch(err=>console.log(err))
+  },[])
 
   return (
     <>
@@ -43,12 +29,12 @@ function InventoryItemDetails() {
           <div className="inventory-details">
             <div className="inventory-details__header">
               <div className="inventory-details__back-btn">
-                <Link to={`/warehouse/${warehouseIdNum}`}>
+                <Link to={`/warehouse/${selectedInventory?.warehouseID}`}>
                   <img src={arrowBack} alt="back arrow" />
                 </Link>
                 <div className="inventory-details__loc">
                   <h1 className="inventory-details__loc-header">
-                    {warehouseArray[0]?.itemName}
+                    {selectedInventory?.itemName}
                   </h1>
                 </div>
               </div>
@@ -79,13 +65,13 @@ function InventoryItemDetails() {
                   ITEM DESCRIPTION:
                 </h4>
                 <div className="inventory-details__desc-desc">
-                  {warehouseArray[0]?.description}
+                  {selectedInventory?.description}
                 </div>
               </div>
               <div className="inventory-details__category-cont">
                 <h4 className="inventory-details__category-title">CATEGORY</h4>
                 <div className="inventory-details__category-name">
-                  {warehouseArray[0]?.category}
+                  {selectedInventory?.category}
                 </div>
               </div>
             </div>
@@ -95,12 +81,12 @@ function InventoryItemDetails() {
                   <h4 className="inventory-details__status">STATUS</h4>
                   <span
                     className={
-                      warehouseArray[0]?.quantity !== 0
+                      selectedInventory?.quantity !== 0
                         ? "inventory-details__instock"
                         : "inventory-details__instock--notinstock"
                     }
                   >
-                    {warehouseArray[0]?.quantity !== 0
+                    {selectedInventory?.quantity !== 0
                       ? "IN STOCK"
                       : "OUT OF STOCK"}
                   </span>
@@ -108,7 +94,7 @@ function InventoryItemDetails() {
                 <div className="inventory-details__qty">
                   <h4>QUANTITY:</h4>
                   <div className="inventory-details__QTY-num">
-                    {warehouseArray[0]?.quantity}
+                    {selectedInventory?.quantity}
                   </div>
                 </div>
               </div>
@@ -117,7 +103,7 @@ function InventoryItemDetails() {
                   WAREHOUSE:
                 </h4>
                 <div className="inventory-details__warehouse-loc">
-                  {warehouseArray[0]?.warehouseName}
+                  {selectedInventory?.warehouseName}
                 </div>
               </div>
             </div>

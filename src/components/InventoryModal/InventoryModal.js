@@ -10,7 +10,6 @@ function InventoryModal({ openModal, closeModal, itemToDelete }) {
     axios
       .delete(`http://localhost:8080/inventory/${itemToDelete.id}`)
       .then((response) => {
-        // console.log(response.data);
         closeModal();
       })
       .catch((err) => {

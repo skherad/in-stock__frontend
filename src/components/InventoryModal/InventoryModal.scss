@@ -81,22 +81,32 @@
             padding-bottom: 2rem;
         }
         &-cancel {
+            cursor: pointer;
             color:utilities.$Cloud;
             border: 1px solid utilities.$Cloud;
             background-color: utilities.$white;
             border-radius: 20px; 
             padding: 0.5rem;
             width: 35vw;
+            &:hover {
+                border: 1px solid utilities.$Instock-Indigo;
+                color: utilities.$Instock-Indigo;
+            }
             @include tablet {
             width: auto; 
             }
         }
         &-delete {
+            cursor: pointer;
             color:utilities.$white;
             background-color: utilities.$Red;
             border-radius: 20px; 
             padding: 0.5rem;
             width: 35vw;
+            border: none;
+            &:hover {
+                background-color: utilities.$Graphite;
+            }
             @include tablet {
                 width: auto; 
                 margin-left: 1rem;

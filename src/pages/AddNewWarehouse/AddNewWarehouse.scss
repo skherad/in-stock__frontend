@@ -116,24 +116,33 @@
             justify-content: flex-end;
         }
         &-cancel {
+            cursor: pointer;
             border: 1px solid #BDC5D5;
             border-radius: 20px;
             color: utilities.$Slate;
             background-color: utilities.$white;
             padding: 0.5rem;
             width: 35vw;
+            &:hover {
+                border: 1px solid utilities.$Instock-Indigo;
+                color: utilities.$Instock-Indigo;
+            }
             @include tablet {
                 width: 10vw;
                 margin: 1rem 0rem;
             }
         }
         &-add {
+            cursor: pointer;
             border: 1px solid #BDC5D5;
             border-radius: 20px;
             color: utilities.$white;
             background-color: utilities.$Instock-Indigo;
             padding: 0.5rem;
             width: 35vw;
+            &:hover {
+                background-color: utilities.$Graphite;
+            }
             @include tablet {
                 width: 18vw;
                 margin: 1rem 2rem 1rem 1rem;

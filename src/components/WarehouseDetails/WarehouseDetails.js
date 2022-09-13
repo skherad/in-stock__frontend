@@ -1,4 +1,9 @@
+
 import "./warehouseDetails.scss";
+
+
+import uniqid from 'uniqid';
+
 
 import edit from "../../assets/Icons/edit-24px.svg";
 import arrowBack from "../../assets/Icons/arrow_back-24px.svg";
@@ -169,58 +174,62 @@ function WarehouseDetails() {
           {inventories.map((item) => {
             return (
               <>
-                <div key={item.id} className="warehouse-details__item-cont">
-                  {/* first flex child */}
-                  <div className="warehouse-details__item-invent-cont">
-                    <div className="warehouse-details__invent-title">
-                      <h4>INVENTORY ITEM</h4>
-                    </div>
+                <div className="warehouse-details__background-hover">
+                  <div key={item.id} className="warehouse-details__item-cont">
+                    {/* first flex child */}
+                    <div className="warehouse-details__item-invent-cont">
+                      <div className="warehouse-details__invent-title">
+                        <h4>INVENTORY ITEM</h4>
+                      </div>
 
-                    <div className="warehouse-details__invent-type">
-                      <Link to={`/inventory/inventoryDetail/${warehouseId}/${item.id}`}>
-                        {item.itemName}
-                      </Link>
-                      <Link to={`/inventory/inventoryDetail/${warehouseId}/${item.id}`}>
-                        <img
-                          className="warehouse-details__arr-cont"
-                          src={rightArrow}
-                          alt="product"
-                        />
-                      </Link>
-                    </div>
+                      <div className="warehouse-details__invent-type">
+                        <Link
+                          className="warehouse-details__invent-type-Link"
+                          to={`/inventory/inventoryDetail/${item.id}`}
+                        >
+                          {/* <Link to={`/inventory/inventoryDetail/${warehouseId}/${item.id}`}> */}
 
-                    <div className="warehouse-details__category">
-                      <h4 className="warehouse-details__category-title">
-                        CATEGORY
-                      </h4>
+                          {item.itemName}
+                        </Link>
+                        <Link
+                          to={`/inventory/inventoryDetail/${item.id}`}
+                        >
+                          <img
+                            className="warehouse-details__arr-cont"
+                            src={rightArrow}
+                            alt="product"
+                          />
+                        </Link>
+                      </div>
 
-                      <div className="warehouse-details__prod-categ">
-                        {item.category}
+                      <div className="warehouse-details__category">
+                        <h4 className="warehouse-details__category-title">
+                          CATEGORY
+                        </h4>
+
+                        <div className="warehouse-details__prod-categ">
+                          {item.category}
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  {/* Second flex child */}
-                  <div className="warehouse-details__item-right-cont">
-                    <div className="warehouse-details__status">
-                      <h4 className="warehouse-details__status-title">
-                        STATUS
-                      </h4>
-                      <span
-                        className={
-                          item.quantity !== 0
-                            ? "warehouse-details__instock"
-                            : "warehouse-details__instock--notinstock"
-                        }
-                      >
-                        {item.quantity !== 0 ? "IN STOCK" : "OUT OF STOCK"}
-                      </span>
-                    </div>
-                    <div className="warehouse-details__QTY">
-                      <h4 className="warehouse-details__QTY-title">QTY</h4>
-                      <div className="warehouse-details__QTY-num">
-                        {item.quantity}
+                    {/* Second flex child */}
+                    <div className="warehouse-details__item-right-cont">
+                      <div className="warehouse-details__status">
+                        <h4 className="warehouse-details__status-title">
+                          STATUS
+                        </h4>
+                        <span
+                          className={
+                            item.quantity !== 0
+                              ? "warehouse-details__instock"
+                              : "warehouse-details__instock--notinstock"
+                          }
+                        >
+                          {item.quantity !== 0 ? "IN STOCK" : "OUT OF STOCK"}
+                        </span>
                       </div>
+
                     </div>
                     <div className="warehouse-details__icons-tab">
                       {/* <div
@@ -238,32 +247,57 @@ function WarehouseDetails() {
                         <Link
                           to={`/editInventory/${item.id}`}
                           element={EditInventory}
+
+                      <div className="warehouse-details__QTY">
+                        <h4 className="warehouse-details__QTY-title">QTY</h4>
+                        <div className="warehouse-details__QTY-num">
+                          {item.quantity}
+                        </div>
+                      </div>
+                      <div className="warehouse-details__icons-tab">
+                        <div
+                          onClick={() => handleDelete(true)}
+                          className="warehouse-details__delete-icon-cont"
+
                         >
-                          <img
-                            className="warehouse-details__edit-icon"
-                            src={edit}
-                            alt="edit item"
+                          <input
+                            type="image"
+                            src={deleteIcon}
+                            alt="delete item"
+                            onClick={() => handleDelete(item)}
                           />
-                        </Link>
+                        </div>
+                        <div className="warehouse-details__edit-icon-cont">
+                          <Link
+                            to={`/inventory/editInventory/${item.id}`}
+                            element={EditInventory}
+                          >
+                            <img
+                              className="warehouse-details__edit-icon"
+                              src={edit}
+                              alt="edit item"
+                            />
+                          </Link>
+                        </div>
                       </div>
                     </div>
                   </div>
-
                   {/* third flex child */}
-                </div>
-                <div className="warehouse-details__icons">
-                  <div className="warehouse-details__delete-icon-cont">
-                    <img src={deleteIcon} alt="delete item" />
+                  <div className="warehouse-details__icons">
+                    <div className="warehouse-details__delete-icon-cont">
+                      <img src={deleteIcon} alt="delete item" />
+                    </div>
+                    <div className="warehouse-details__edit-icon-cont">
+                      <Link to={`/warehouse/EditWarehouse/${warehouseId}`}>
+                        <img
+                          className="warehouse-details__edit-icon"
+                          src={edit}
+                          alt="edit item"
+                        />
+                      </Link>
+                    </div>
                   </div>
-                  <div className="warehouse-details__edit-icon-cont">
-                    <Link to={`/warehouse/EditWarehouse/${warehouseId}`}>
-                      <img
-                        className="warehouse-details__edit-icon"
-                        src={edit}
-                        alt="edit item"
-                      />
-                    </Link>
-                  </div>
+                  <div className="hr-divider"></div>
                 </div>
                 <div className="hr-divider"></div>
               </>
