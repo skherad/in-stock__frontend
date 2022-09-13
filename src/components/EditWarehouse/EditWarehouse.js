@@ -75,7 +75,7 @@ const EditWarehouse = () => {
             return;
         } else{
             axios.put(`${API_URL}/warehouse/${warehouseId}`, state)
-            .then(response=>console.log(response))
+            .then(response=> navigate(`/warehouse/${warehouseId}`))
             .catch(error=>console.log(error))}
         }
 

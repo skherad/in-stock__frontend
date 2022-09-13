@@ -4,7 +4,7 @@ import { useParams, Link } from "react-router-dom";
 import EditWarehouse from "../EditWarehouse/EditWarehouse";
 import edit from "../../assets/Icons/edit-24px.svg";
 import arrowBack from "../../assets/Icons/arrow_back-24px.svg";
-import "./inventoryItemDetails.scss";
+import "./InventoryItemDetails.scss";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -55,8 +55,7 @@ function InventoryItemDetails() {
 
               <div className="inventory-details__edit-btn-cont">
                 <Link
-                  to={`/editWarehouse/${warehouseId}`}
-                  element={EditWarehouse}
+                  to={`/inventory/editInventory/${inventoryId}`}
                 >
                   <div className="inventory-details__edit-btn">
                     <img

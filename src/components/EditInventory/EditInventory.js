@@ -70,7 +70,6 @@ const EditInventory = () => {
           ...state,
           [event.target.name]: value,
         })
-        console.log(value)
     }
 
     //click handler for cancel button
@@ -85,7 +84,7 @@ const EditInventory = () => {
             axios.put(`${API_URL}/inventory/${inventoryId}`, state)
             .then(response=>console.log(response))
             .catch(error=>console.log(error))
-            // navigate(`/inventoryDetail/${inventoryId}`)
+            navigate(`inventory/inventoryDetail/${inventoryId}`)
         }
     }
 
@@ -167,7 +166,7 @@ const EditInventory = () => {
                     </div>
                     
                     {/* warehouse drop down */}
-                     <label htmlFor="warehouse" className="inventory-form__label">Warehoue</label>
+                     <label htmlFor="warehouse" className="inventory-form__label">Warehouse</label>
                     <select className='inventory-form__drop-down' onChange={handleChange} name="warehouseName" value={state?.warehouseName}>
                         {warehouses?.map((warehouse,i) => 
                             <option value={warehouse} key={i}>{warehouse}</option>
