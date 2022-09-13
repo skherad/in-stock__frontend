@@ -14,7 +14,10 @@ function ListedItem({ key, name, category, status, quantity, warehouseName }) {
 
           <div className="item-box__li">
             <div className="item-box__i-name">
-              <Link className="item-box__link" to={`/inventory/inventoryDetail/${key}`}>
+              <Link
+                className="item-box__link"
+                to={`/inventory/inventoryDetail/${key}`}
+              >
                 {" "}
                 {name}
                 <img className="item-box__ri" src={lii}></img>
@@ -28,7 +31,7 @@ function ListedItem({ key, name, category, status, quantity, warehouseName }) {
         </div>
       </div>
       <div className="item-box__rg">
-        <div className="item-box__in-right">
+        <div className="item-box__in-right-status">
           <h4 className="item-box__title">STATUS</h4>
           <span
             className={`item-box__${

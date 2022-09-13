@@ -1,4 +1,3 @@
-
 import "./Inventory.scss";
 //icons
 import Search from "../../assets/Icons/search-24px.svg";
@@ -47,11 +46,11 @@ function Inventory() {
                 size="25"
                 placeholder="Search..."
               ></input>
-              <img
+              {/* <img
                 className="invientory__s-icon"
                 src={Search}
                 alt="magnifying glass"
-              ></img>
+              ></img> */}
             </div>
             <div className="invientory__add-btn">
               <button className="invientory__btn">+ Add New Item</button>

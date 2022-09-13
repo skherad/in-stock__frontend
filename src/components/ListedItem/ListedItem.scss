@@ -6,10 +6,20 @@
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: wrap;
-  margin: 1.25rem 0 1.5rem 0;
+  padding: 1.25rem 0 1.5rem 0;
   border-bottom: 1px solid $Cloud;
+
+  &:hover {
+    background: rgba(46, 102, 230, 0.07);
+  }
   @include tablet {
     flex-wrap: nowrap;
+  }
+
+  &__link {
+    &:hover {
+      text-decoration: underline;
+    }
   }
   &__lg {
     display: flex;
@@ -37,6 +47,10 @@
       flex-direction: row;
       justify-content: flex-start;
     }
+  }
+
+  &__in-right-status {
+    width: 118%;
   }
 
   &__in-right {

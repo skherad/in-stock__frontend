@@ -52,20 +52,32 @@
     display: flex;
     flex-direction: column;
     margin: 0 1rem;
+    width: 30%;
     @include tablet {
       flex-direction: row;
     }
   }
   &__search {
     display: flex;
+    background: url("../../assets/Icons/search-24px.svg") no-repeat;
+    background-position: 11.875rem;
     justify-content: space-between;
     align-self: center;
-    border: 1px solid $Cloud;
-    border-radius: 2rem;
+
     margin-top: 0.5rem;
     width: 100%;
+  }
 
-    ::placeholder {
+  &__input {
+    outline: 1px solid $Cloud;
+    border-radius: 2rem;
+
+    &:active,
+    &:focus,
+    &:focus-visible {
+      outline: 2px solid $Instock-Indigo;
+    }
+    &::placeholder {
       color: $Slate;
     }
 
@@ -114,6 +126,11 @@
     color: $white;
     background: none;
     border: none;
+
+    &:hover {
+      background: $Graphite;
+      border-radius: 20px;
+    }
     @include tablet {
       font-size: 0.875rem;
       font-weight: 600;
@@ -121,6 +138,8 @@
     }
   }
   &__header-catagory {
+    background: $Light-grey;
+    padding: 0.75rem 0;
     display: none;
     @include tablet {
       display: flex;
