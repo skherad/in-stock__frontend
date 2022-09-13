@@ -177,7 +177,7 @@ function WarehouseDetails() {
                       <div className="warehouse-details__invent-type">
                         <Link
                           className="warehouse-details__invent-type-Link"
-                          to={`/inventoryDetail/${warehouseId}/${item.id}`}
+                          to={`/inventory/inventoryDetail/${warehouseId}/${item.id}`}
                         >
                           {/* <Link to={`/inventory/inventoryDetail/${warehouseId}/${item.id}`}> */}
 
