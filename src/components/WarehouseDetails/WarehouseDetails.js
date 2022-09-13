@@ -1,4 +1,4 @@
-import "./WarehouseDetails.scss";
+import "./warehouseDetails.scss";
 import uniqid from 'uniqid';
 
 import edit from "../../assets/Icons/edit-24px.svg";
