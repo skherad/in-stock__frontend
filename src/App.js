@@ -20,32 +20,18 @@ function App() {
       <BrowserRouter>
         <Header />
         <Routes>
-          {/* // warehouse routes */}
+          {/* warehouse routes */}
           <Route path="/" element={<Navigate to="/warehouse" />} />
           <Route path="/warehouse" element={<Warehouse />} />
-          <Route
-            path="/warehouse/:warehouseId"
-            element={<WarehouseDetails />}
-          />
+          <Route path="/warehouse/:warehouseId" element={<WarehouseDetails />} />
           <Route path="/warehouse/addNewWarehouse" element={<AddNewWarehouse />} />
-          <Route
-            path="/warehouse/editWarehouse/:warehouseId"
-            element={<EditWarehouse />}
-          />
+          <Route path="/warehouse/editWarehouse/:warehouseId" element={<EditWarehouse />} />
           {/* inventory routes */}
           <Route path="/inventory" element={<Inventory />} />
-
-          <Route
-            path="/inventory/inventoryDetail/:inventoryId"
-            element={<InventoryItemDetails />}
-          />
+          <Route path="/inventory/inventoryDetail/:inventoryId" element={<InventoryItemDetails />} />
           <Route path="/inventory/addNewInventory" element={<AddNewInventory />} />
-          <Route
-            path="/inventory/editInventory/:inventoryId"
-            element={<EditInventory />}
-          />
+          <Route path="/inventory/editInventory/:inventoryId" element={<EditInventory />} />
         </Routes>
-
         <Footer />
       </BrowserRouter>
     </>

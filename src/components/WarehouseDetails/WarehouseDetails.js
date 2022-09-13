@@ -1,4 +1,5 @@
 import "./WarehouseDetails.scss";
+import uniqid from 'uniqid';
 
 import edit from "../../assets/Icons/edit-24px.svg";
 import arrowBack from "../../assets/Icons/arrow_back-24px.svg";
@@ -164,10 +165,9 @@ function WarehouseDetails() {
           {/* Each Item to iterate through */}
 
           {inventories.map((item) => {
-            console.log(item.id);
             return (
               <>
-                <div key={item.id} className="warehouse-details__item-cont">
+                <div key={uniqid()} className="warehouse-details__item-cont">
                   {/* first flex child */}
                   <div className="warehouse-details__item-invent-cont">
                     <div className="warehouse-details__invent-title">
@@ -175,10 +175,10 @@ function WarehouseDetails() {
                     </div>
 
                     <div className="warehouse-details__invent-type">
-                      <Link to={`/inventory/inventoryDetail/${warehouseId}/${item.id}`}>
+                      <Link to={`/inventory/inventoryDetail/${item.id}`}>
                         {item.itemName}
                       </Link>
-                      <Link to={`/inventory/inventoryDetail/${warehouseId}/${item.id}`}>
+                      <Link to={`/inventory/inventoryDetail/${item.id}`}>
                         <img
                           className="warehouse-details__arr-cont"
                           src={rightArrow}
@@ -199,7 +199,7 @@ function WarehouseDetails() {
                   </div>
 
                   {/* Second flex child */}
-                  <div className="warehouse-details__item-right-cont">
+                  <div key={uniqid()} className="warehouse-details__item-right-cont">
                     <div className="warehouse-details__status">
                       <h4 className="warehouse-details__status-title">
                         STATUS
@@ -234,8 +234,7 @@ function WarehouseDetails() {
                       </div>
                       <div className="warehouse-details__edit-icon-cont">
                         <Link
-                          to={`/editInventory/${item.id}`}
-                          element={EditInventory}
+                          to={`/inventory/editInventory/${item.id}`}
                         >
                           <img
                             className="warehouse-details__edit-icon"
@@ -249,7 +248,7 @@ function WarehouseDetails() {
 
                   {/* third flex child */}
                 </div>
-                <div className="warehouse-details__icons">
+                <div key={uniqid()} className="warehouse-details__icons">
                   <div className="warehouse-details__delete-icon-cont">
                     <img src={deleteIcon} alt="delete item" />
                   </div>
@@ -263,7 +262,7 @@ function WarehouseDetails() {
                     </Link>
                   </div>
                 </div>
-                <div className="hr-divider"></div>
+                <div key={uniqid()} className="hr-divider"></div>
               </>
             );
           })}
