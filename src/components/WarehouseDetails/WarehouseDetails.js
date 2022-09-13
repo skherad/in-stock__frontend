@@ -1,9 +1,5 @@
-
-import "./warehouseDetails.scss";
-
-
+import "./WarehouseDetails.scss";
 import uniqid from 'uniqid';
-
 
 import edit from "../../assets/Icons/edit-24px.svg";
 import arrowBack from "../../assets/Icons/arrow_back-24px.svg";
@@ -33,9 +29,6 @@ function WarehouseDetails() {
     setItemToDelete(item);
   };
 
-
-
-
   useEffect(() => {
     axios
       .get(API_URL + `/warehouse/${warehouseId}`)
@@ -43,7 +36,7 @@ function WarehouseDetails() {
         setWarehouse(res.data);
       })
       .catch((err) => console.log(err));
-  }, [openModal]);
+  }, []);
 
   useEffect(() => {
     axios
@@ -52,7 +45,7 @@ function WarehouseDetails() {
         setInventories(res.data);
       })
       .catch((err) => console.log(err));
-  }, [openModal]);
+  }, []);
 
   if (!warehouseId || !warehouse || !inventories) {
     return <h1>Loading...</h1>;
@@ -229,25 +222,6 @@ function WarehouseDetails() {
                           {item.quantity !== 0 ? "IN STOCK" : "OUT OF STOCK"}
                         </span>
                       </div>
-
-                    </div>
-                    <div className="warehouse-details__icons-tab">
-                      {/* <div
-                        onClick={() => handleDelete(true)}
-                        className="warehouse-details__delete-icon-cont"
-                      > */}
-                        <input
-                          type="image"
-                          src={deleteIcon}
-                          alt="delete item"
-                          onClick={() => handleDelete(item)}
-                        />
-                      {/* </div> */}
-                      <div className="warehouse-details__edit-icon-cont">
-                        <Link
-                          to={`/editInventory/${item.id}`}
-                          element={EditInventory}
-
                       <div className="warehouse-details__QTY">
                         <h4 className="warehouse-details__QTY-title">QTY</h4>
                         <div className="warehouse-details__QTY-num">
@@ -255,18 +229,17 @@ function WarehouseDetails() {
                         </div>
                       </div>
                       <div className="warehouse-details__icons-tab">
-                        <div
+                        {/* <div
                           onClick={() => handleDelete(true)}
                           className="warehouse-details__delete-icon-cont"
-
-                        >
+                        > */}
                           <input
                             type="image"
                             src={deleteIcon}
                             alt="delete item"
                             onClick={() => handleDelete(item)}
                           />
-                        </div>
+                        {/* </div> */}
                         <div className="warehouse-details__edit-icon-cont">
                           <Link
                             to={`/inventory/editInventory/${item.id}`}
@@ -299,18 +272,17 @@ function WarehouseDetails() {
                   </div>
                   <div className="hr-divider"></div>
                 </div>
-                <div className="hr-divider"></div>
+                <div key={uniqid()} className="hr-divider"></div>
               </>
             );
           })}
         </div>
       </div>
-      {itemToDelete &&  <InventoryModal
+      <InventoryModal
         openModal={openModal}
         closeModal={() => setOpenModal(false)}
         itemToDelete={itemToDelete}
-      />}
-     
+      />
     </>
   );
 }

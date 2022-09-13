@@ -62,9 +62,9 @@ function ListedItem({ inventoryId, name, category, status, quantity, warehouseNa
 
         </button>
 
-        <Link className="item-box__link" to={`/editInventory/${key}`}>
+        {/* <Link className="item-box__link" to={`/editInventory/${key}`}>
 
-        </Link>
+        </Link> */}
         <Link className="item-box__link" to={`/inventory/editInventory/${inventoryId}`}>
 
           <img className="item-box__econ" src={Edit}></img>

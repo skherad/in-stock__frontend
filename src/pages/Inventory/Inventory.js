@@ -17,7 +17,7 @@ function Inventory() {
   useEffect(()=>{
     axios.get(`${API_URL}/inventory`)
     .then(res=>setCurrWarehouse(getData(res.data)))
-  })
+  },[])
   function getData(array) {
     const find = array.filter(
       (x) => x.warehouseID === "2922c286-16cd-4d43-ab98-c79f698aeab0"
@@ -41,11 +41,11 @@ function Inventory() {
                 size="25"
                 placeholder="Search..."
               ></input>
-              <img
+              {/* <img
                 className="invientory__s-icon"
                 src={Search}
                 alt="magnifying glass"
-              ></img>
+              ></img> */}
             </div>
             <div className="invientory__add-btn">
               <Link to="/inventory/addNewInventory">
