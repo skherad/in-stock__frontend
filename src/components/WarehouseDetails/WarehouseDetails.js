@@ -38,7 +38,7 @@ function WarehouseDetails() {
         setWarehouse(res.data);
       })
       .catch((err) => console.log(err));
-  }, [warehouseId]);
+  }, [openModal]);
 
   useEffect(() => {
     axios
@@ -47,7 +47,7 @@ function WarehouseDetails() {
         setInventories(res.data);
       })
       .catch((err) => console.log(err));
-  }, [warehouseId]);
+  }, [openModal]);
 
   if (!warehouseId || !warehouse || !inventories) {
     return <h1>Loading...</h1>;

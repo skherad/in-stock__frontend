@@ -1,5 +1,6 @@
 import "./InventoryModal.scss";
 import axios from "axios";
+import closeIcon from '../../assets/Icons/close-24px.svg'
 
 function InventoryModal({ openModal, closeModal, itemToDelete }) {
   if (!openModal) return null;
@@ -21,12 +22,13 @@ function InventoryModal({ openModal, closeModal, itemToDelete }) {
     <>
       <div className="modal__overlay-style"> </div>
       <section className="modal">
+      <img className="modal__close" src={closeIcon} alt="close" onClick={closeModal}/>
         <div className="modal__top">
           <div className="modal__title">
-            Delete {itemToDelete.name} inventory item?
+            Delete {itemToDelete.itemName} inventory item?
           </div>
           <p className="modal__description">
-            Please confirm that you'd like to delete {itemToDelete.name} from
+            Please confirm that you'd like to delete {itemToDelete.itemName} from
             the inventory list. You won't be able to undo this action.
           </p>
         </div>
