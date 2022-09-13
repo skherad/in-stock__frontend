@@ -1,4 +1,5 @@
 import "./WarehouseDetails.scss";
+import uniqid from 'uniqid';
 
 import edit from "../../assets/Icons/edit-24px.svg";
 import arrowBack from "../../assets/Icons/arrow_back-24px.svg";
@@ -177,14 +178,14 @@ function WarehouseDetails() {
                       <div className="warehouse-details__invent-type">
                         <Link
                           className="warehouse-details__invent-type-Link"
-                          to={`/inventoryDetail/${warehouseId}/${item.id}`}
+                          to={`/inventory/inventoryDetail/${item.id}`}
                         >
                           {/* <Link to={`/inventory/inventoryDetail/${warehouseId}/${item.id}`}> */}
 
                           {item.itemName}
                         </Link>
                         <Link
-                          to={`/inventory/inventoryDetail/${warehouseId}/${item.id}`}
+                          to={`/inventory/inventoryDetail/${item.id}`}
                         >
                           <img
                             className="warehouse-details__arr-cont"
@@ -241,7 +242,7 @@ function WarehouseDetails() {
                         </div>
                         <div className="warehouse-details__edit-icon-cont">
                           <Link
-                            to={`/editInventory/${item.id}`}
+                            to={`/inventory/editInventory/${item.id}`}
                             element={EditInventory}
                           >
                             <img
@@ -255,7 +256,6 @@ function WarehouseDetails() {
                     </div>
                   </div>
                   {/* third flex child */}
-
                   <div className="warehouse-details__icons">
                     <div className="warehouse-details__delete-icon-cont">
                       <img src={deleteIcon} alt="delete item" />
@@ -272,6 +272,7 @@ function WarehouseDetails() {
                   </div>
                   <div className="hr-divider"></div>
                 </div>
+                <div key={uniqid()} className="hr-divider"></div>
               </>
             );
           })}

@@ -4,7 +4,7 @@ import Trash from "../../assets/Icons/delete_outline-24px.svg";
 import Edit from "../../assets/Icons/edit-24px.svg";
 import { Link } from "react-router-dom";
 
-function ListedItem({ key, name, category, status, quantity, warehouseName }) {
+function ListedItem({ inventoryId, name, category, status, quantity, warehouseName }) {
   // console.log(catagory)
   return (
     <div className="item-box">
@@ -14,7 +14,7 @@ function ListedItem({ key, name, category, status, quantity, warehouseName }) {
 
           <div className="item-box__li">
             <div className="item-box__i-name">
-              <Link className="item-box__link" to={`/inventory/inventoryDetail/${key}`}>
+              <Link className="item-box__link" to={`/inventory/inventoryDetail/${inventoryId}`}>
                 {" "}
                 {name}
                 <img className="item-box__ri" src={lii}></img>
@@ -51,7 +51,7 @@ function ListedItem({ key, name, category, status, quantity, warehouseName }) {
         <Link className="item-box__link" to="/delete">
           <img className="item-box__tcon" src={Trash}></img>
         </Link>
-        <Link className="item-box__link" to={`/editInventory/${key}`}>
+        <Link className="item-box__link" to={`/inventory/editInventory/${inventoryId}`}>
           <img className="item-box__econ" src={Edit}></img>
         </Link>
       </div>

@@ -93,6 +93,7 @@ function Inventory() {
                 status={x.status}
                 quantity={x.quantity}
                 warehouseName={x.warehouseName}
+                inventoryId = {x.id}
               />
             );
           })}
