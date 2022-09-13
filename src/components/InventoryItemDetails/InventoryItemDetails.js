@@ -4,7 +4,7 @@ import { useParams, Link } from "react-router-dom";
 import EditWarehouse from "../EditWarehouse/EditWarehouse";
 import edit from "../../assets/Icons/edit-24px.svg";
 import arrowBack from "../../assets/Icons/arrow_back-24px.svg";
-import "./InventoryItemDetails.scss";
+import "./inventoryItemDetails.scss";
 import { useEffect, useState } from "react";
 import axios from "axios";
 

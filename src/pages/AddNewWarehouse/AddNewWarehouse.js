@@ -40,28 +40,28 @@ function AddNewWarehouse() {
     const handleSubmit = (event) => {
     event.preventDefault();
           let id= uuid();
-          let name= event.target.name.value;
+          let warehouseName= event.target.warehouseName.value;
           let address=event.target.address.value;
           let city= event.target.city.value;
           let country= event.target.country.value;
           let contactName= event.target.contactName.value;
-          let contactPosition= event.target.contactPosition.value;
-          let contactPhone= event.target.contactPhone.value;
-          let contactEmail= event.target.contactEmail.value;
+          let position= event.target.position.value;
+          let phone= event.target.phone.value;
+          let email= event.target.email.value;
       const newWarehouse =   {
-            "id": uuid(),
-            name,
+            id,
+            warehouseName,
             address,
             city,
             country,
-            "contact": {
+            contact: {
                 contactName,
-                contactPosition,
-                contactPhone,
-                contactEmail
+                position,
+                phone,
+                email
             }
         };
-        if (!name) {
+        if (!warehouseName) {
           setNameValid(false)}
             else {
               setNameValid (true)
@@ -91,36 +91,36 @@ function AddNewWarehouse() {
               setContactNameValid (true)
             }    
 
-        if (!contactPosition) {
+        if (!position) {
           setPositionValid(false)}
             else {
               setPositionValid(true)
             }
 
-        if (!contactPhone) {
+        if (!phone) {
           setPhoneValid(false)}
             else {
               setPhoneValid(true)
             }
 
-        if (!contactEmail) {
+        if (!email) {
           setEmailValid(false)}
             else {
               setEmailValid (true)
             }
-        if (!name || !address || !city || !country || !contactName || !contactPosition || !contactPhone || !contactEmail) {
+        if (!warehouseName || !address || !city || !country || !contactName || !position || !phone || !email) {
               return false;
           }
-        else if (!phoneRegex.test(contactPhone)) {
+        else if (!phoneRegex.test(phone)) {
             alert("Please enter a valid phone number");
             return false;
         }
-        else if (!emailRegex.test(contactEmail)) {
+        else if (!emailRegex.test(email)) {
             alert("Please enter a valid email address");
             return false;
         }
         else {
-        axios.post(`http://localhost:8080/warehouses`, {newWarehouse}).then(()=>{
+        axios.post(`http://localhost:8080/warehouse`, {newWarehouse}).then(()=>{
           navigate('/warehouse')
         })
       };}
@@ -163,7 +163,7 @@ function AddNewWarehouse() {
                     <div className="addnewwarehouse__section">Warehouse Details</div>
 
                     <label className="addnewwarehouse__description">Warehouse Name</label>
-                    <input className="addnewwarehouse__box" type={"text"} name="name" onChange={handleChangeName} placeholder="Warehouse Name"/>
+                    <input className="addnewwarehouse__box" type={"text"} name="warehouseName" onChange={handleChangeName} placeholder="Warehouse Name"/>
                     {!nameValid && <ErrorMsg/>}
 
                     <label className="addnewwarehouse__description">Street Address</label>
@@ -188,15 +188,15 @@ function AddNewWarehouse() {
                     {!contactNameValid && <ErrorMsg/>}
 
                     <label className="addnewwarehouse__description">Position</label>
-                    <input className="addnewwarehouse__box" type={"text"} name="contactPosition" onChange={handleChangePosition} placeholder="Position"/>
+                    <input className="addnewwarehouse__box" type={"text"} name="position" onChange={handleChangePosition} placeholder="Position"/>
                     {!positionValid && <ErrorMsg/>}
 
                     <label className="addnewwarehouse__description">Phone Number</label>
-                    <input className="addnewwarehouse__box" type={"text"} name="contactPhone" onChange={handleChangePhone} placeholder="Phone Number"/>
+                    <input className="addnewwarehouse__box" type={"text"} name="phone" onChange={handleChangePhone} placeholder="Phone Number"/>
                     {!phoneValid && <ErrorMsg/>}
   
                     <label className="addnewwarehouse__description">Email</label>
-                    <input className="addnewwarehouse__box" type={"text"} name="contactEmail" onChange={handleChangeEmail} placeholder="Email"/>
+                    <input className="addnewwarehouse__box" type={"text"} name="email" onChange={handleChangeEmail} placeholder="Email"/>
                     {!emailValid && <ErrorMsg/>}
 
                 </section>

@@ -3,9 +3,18 @@ import lii from "../../assets/Icons/chevron_right-24px.svg";
 import Trash from "../../assets/Icons/delete_outline-24px.svg";
 import Edit from "../../assets/Icons/edit-24px.svg";
 import { Link } from "react-router-dom";
+import DeleteModal from "../InventoryModal/InventoryModal"
+import { useState } from "react";
 
 function ListedItem({ key, name, category, status, quantity, warehouseName }) {
   // console.log(catagory)
+  const[isOpen, setIsOpen] =useState (false);
+  const [ itemToDelete, setItemToDelete ] = useState({});
+
+  const handleDelete = (name) => {
+    setIsOpen(true);
+    setItemToDelete(name)
+}
   return (
     <div className="item-box">
       <div className="item-box__lg">
@@ -48,13 +57,18 @@ function ListedItem({ key, name, category, status, quantity, warehouseName }) {
         </div>
       </div>
       <div className="item-box__icg">
-        <Link className="item-box__link" to="/delete">
+        <button className="item-box__link" onClick={handleDelete}>
           <img className="item-box__tcon" src={Trash}></img>
-        </Link>
+        </button>
+
         <Link className="item-box__link" to={`/editInventory/${key}`}>
           <img className="item-box__econ" src={Edit}></img>
         </Link>
       </div>
+      <DeleteModal 
+                 openModal={isOpen} 
+                 closeModal={()=>setIsOpen(false)}
+                 itemToDelete={itemToDelete} /> 
     </div>
   );
 }

@@ -4,10 +4,10 @@ import axios from "axios";
 function InventoryModal({ openModal, closeModal, itemToDelete }) {
   if (!openModal) return null;
 
-  const handleSubmit = (event, id) => {
-    event.preventDefault();
+  const handleSubmit = (itemToDelete) => {
+    console.log(itemToDelete.id);
     axios
-      .delete(`http://localhost:8080/inventory/${id}`)
+      .delete(`http://localhost:8080/inventory/${itemToDelete.id}`)
       .then((response) => {
         // console.log(response.data);
         closeModal();
@@ -23,7 +23,6 @@ function InventoryModal({ openModal, closeModal, itemToDelete }) {
       <section className="modal">
         <div className="modal__top">
           <div className="modal__title">
-            {" "}
             Delete {itemToDelete.name} inventory item?
           </div>
           <p className="modal__description">
@@ -35,7 +34,7 @@ function InventoryModal({ openModal, closeModal, itemToDelete }) {
           <button className="modal__button-cancel" onClick={closeModal}>
             Cancel
           </button>
-          <button className="modal__button-delete" onClick={handleSubmit}>
+          <button className="modal__button-delete" onClick={() => handleSubmit(itemToDelete)}>
             Delete
           </button>
         </div>

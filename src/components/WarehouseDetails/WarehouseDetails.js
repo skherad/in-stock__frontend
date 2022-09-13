@@ -1,4 +1,4 @@
-import "./WarehouseDetails.scss";
+import "./warehouseDetails.scss";
 
 import edit from "../../assets/Icons/edit-24px.svg";
 import arrowBack from "../../assets/Icons/arrow_back-24px.svg";
@@ -28,6 +28,9 @@ function WarehouseDetails() {
     setItemToDelete(item);
   };
 
+
+
+
   useEffect(() => {
     axios
       .get(API_URL + `/warehouse/${warehouseId}`)
@@ -35,7 +38,7 @@ function WarehouseDetails() {
         setWarehouse(res.data);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [warehouseId]);
 
   useEffect(() => {
     axios
@@ -44,7 +47,7 @@ function WarehouseDetails() {
         setInventories(res.data);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [warehouseId]);
 
   if (!warehouseId || !warehouse || !inventories) {
     return <h1>Loading...</h1>;
@@ -164,7 +167,6 @@ function WarehouseDetails() {
           {/* Each Item to iterate through */}
 
           {inventories.map((item) => {
-            console.log(item.id);
             return (
               <>
                 <div key={item.id} className="warehouse-details__item-cont">
@@ -221,17 +223,17 @@ function WarehouseDetails() {
                       </div>
                     </div>
                     <div className="warehouse-details__icons-tab">
-                      <div
+                      {/* <div
                         onClick={() => handleDelete(true)}
                         className="warehouse-details__delete-icon-cont"
-                      >
+                      > */}
                         <input
                           type="image"
                           src={deleteIcon}
                           alt="delete item"
                           onClick={() => handleDelete(item)}
                         />
-                      </div>
+                      {/* </div> */}
                       <div className="warehouse-details__edit-icon-cont">
                         <Link
                           to={`/editInventory/${item.id}`}
@@ -269,11 +271,12 @@ function WarehouseDetails() {
           })}
         </div>
       </div>
-      <InventoryModal
+      {itemToDelete &&  <InventoryModal
         openModal={openModal}
         closeModal={() => setOpenModal(false)}
         itemToDelete={itemToDelete}
-      />
+      />}
+     
     </>
   );
 }
