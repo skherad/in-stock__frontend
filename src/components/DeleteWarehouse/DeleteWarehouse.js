@@ -16,7 +16,6 @@ const DeleteWarehouse = ({ openDelete, setOpenDelete, warehouseToDelete }) => {
     const handleDelete = () => {
         axios.delete(API_URL+"/warehouse/"+warehouseToDelete.id)
             .then((response) => {
-                console.log(response.data);
                 closeModal();
             }).catch((error) => console.log(error));
     }

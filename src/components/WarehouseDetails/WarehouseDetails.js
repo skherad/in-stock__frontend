@@ -272,7 +272,7 @@ function WarehouseDetails() {
                   </div>
                   <div className="hr-divider"></div>
                 </div>
-                <div key={uniqid()} className="hr-divider"></div>
+                <div className="hr-divider"></div>
               </>
             );
           })}
