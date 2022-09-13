@@ -64,6 +64,10 @@
     border-radius: 50%;
     width: 30px;
     height: 30px;
+
+    &:hover {
+      background: $Graphite;
+    }
   }
 
   &__edit-btn-img {
@@ -137,6 +141,12 @@
     font-weight: 600;
   }
 
+  &__background-hover {
+    &:hover > div {
+      background: rgba(46, 102, 230, 0.07);
+    }
+  }
+
   &__item-cont {
     display: flex;
     justify-content: space-between;
@@ -160,6 +170,7 @@
     padding: 0.25rem 0.5rem;
     font-weight: 600;
     font-size: 0.875rem;
+
     &--notinstock {
       background: rgba(201, 69, 21, 0.07);
       color: $Red;
@@ -175,6 +186,7 @@
   &__invent-type {
     font-size: 0.875rem;
   }
+
   &__icons {
     display: flex;
     justify-content: space-between;
@@ -211,6 +223,13 @@
       padding: 0.5rem 1rem 0.5rem 1rem;
       border-radius: 20px;
     }
+
+    &__invent-type-Link {
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
     &__edit-btn-tab {
       display: inline-block;
       color: #fff;
