@@ -28,7 +28,7 @@ function App() {
             element={<EditWarehouse />}
           />
         </Routes>
-        <InventoryItemDetails />
+        {/* <InventoryItemDetails /> DELETE ME */}
         <Footer />
 
       </BrowserRouter>
